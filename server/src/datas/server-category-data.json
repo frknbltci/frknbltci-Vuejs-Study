@@ -1,0 +1,136 @@
+[
+    {
+        "id": 1,
+        "title": "Bisküvi,Gofret",
+        "subtitle":[
+            {
+                
+                "id":1,
+                "name":"Bisküvi",
+                "Biskuvi":[ 
+                      {"id":1,"name":"Tatbis Bisküvi 55 GR(12 Adet)+Starbis Bisküvi 55 GR(12 Adet)","gr":55,"fiyat":34.20},
+                      {"id":2,"name":"Bebe Bisküvisi 800 GR","gr":800,"fiyat":13.90},
+                      {"id":3,"name":"Tatbis Bisküvi 55 GR(24 Adet)","gr":55,"fiyat":34.20} 
+                         ]
+                         
+
+            },
+            {
+                "id":2,
+                "name":"Gofret",
+                "Gofret":[]
+            },
+            {
+                "id":3,
+                "name":"Kraker Çeşitleri",
+                "KrakerCesitleri":[]
+            }
+        
+        
+        ]
+        
+    },
+    {
+            "id": 2,
+            "title": "Çikolata,Kek",
+            "subtitle":[]
+
+    },
+    {
+            "id": 3,
+            "title": "Temizlik",
+            "subtitle":[]
+    
+    },
+    {
+            "id": 4,
+            "title": "Sos,Baharat",
+            "subtitle":[]
+    
+    },
+    {
+            "id": 5,
+            "title": "Şeker,Hediyelik",
+            "subtitle":[]
+    
+    },
+    {
+            "id": 6,
+            "title": "Pasta Malzemeleri",
+            "subtitle":[]
+    
+    },
+    {
+            "id": 7,
+            "title": "İçecek",
+            "subtitle":[]
+    
+    },
+    {
+            "id": 8,
+            "title": "Kuru Gıda,Baharat",
+            "subtitle":[]
+    
+    },
+    {
+            "id": 9,
+            "title": "Kozmetik,Kişisel Bakım",
+            "subtitle":[]
+    
+    },
+    {
+            "id": 10,
+            "title": "Kitap",
+            "subtitle":[]
+    
+    },
+    {
+            "id": 11,
+            "title": "Kampanyalı Ürünler",
+            "subtitle":[]
+    
+    },
+    {
+            "id": 12,
+            "title": "Kahvaltılık",
+            "subtitle":[]
+    
+    },
+    {
+            "id": 13,
+            "title": "Et-Et Ürünleri",
+            "subtitle":[]
+    
+    },
+    {
+            "id": 14,
+            "title": "Cips,Atıştırmalık",
+            "subtitle":[]
+    
+    },
+    {
+            "id": 15,
+            "title": "Çay,Kahve,Şeker",
+            "subtitle":[]
+    
+    },
+    {
+            "id": 16,
+            "title": "Bal,Gıda Takviyeleri",
+            "subtitle":[]
+    
+    },
+    {
+            "id": 17,
+            "title": "Organik Sertifakalı Ürünler",
+            "subtitle":[]
+    
+    }
+           
+           
+
+]
+
+    
+    
+       

@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "Sube": "Küçükçekmece Şubesi",
+        "Adres": "Cumhuriyet Mahallesi Aşık Veysel Cad. No: 67/ Küçükçekmece / İstanbul / Türkiye",
+        "Telefon": "0212 599 23 42",
+        "Faks": "",
+        "E-posta": ""
+    },
+    {
+        "id": 2,
+        "Sube": "Şirinevler Şubesi",
+        "Adres": "Şirinevler Mah. Fetih Cad. 5. Sok. No 28/A/ Bahçelievler / İstanbul / Türkiye",
+        "Telefon": "02126395733",
+        "Faks": "",
+        "E-posta": ""
+    },
+    {
+        "id": 3,
+        "Sube": "Gaziosmanpaşa Beşyüzevler Şubesi",
+        "Adres": "YENİ MAHALLE PAŞA ÇAYIRI CADDESİ NO:96/A GAZİOSMANPAŞA/İSTANBULBeşyüzevler / Gaziosmanpaşa / İstanbul / Türkiye",
+        "Telefon": "0212 479 15 80",
+        "Faks": "",
+        "E-posta": ""
+    },
+    {
+        "id": 4,
+        "Sube": "Başakşehir Şubesi",
+        "Adres": "Metrokent 5. Etap Başçarşı (İmam-i Azam Camii karşısı)Metrokent 5. Etap / Başakşehir / İstanbul / Türkiye",
+        "Telefon": "0212 487 46 69",
+        "Faks": "",
+        "E-posta": ""
+    },
+    {
+        "id": 5,
+        "Sube": "Başakşehir 2.Şubesi",
+        "Adres": "Başakşehir Mah. Cahit Zarifoğlu Cad. Olimpa Avm Karşısı/ Başakşehir / İstanbul / Türkiye",
+        "Telefon": "0212 487 46 69",
+        "Faks": "",
+        "E-posta": ""
+    },
+    {
+        "id": 6,
+        "Sube": "Ümraniye Şubesi",
+        "Adres": "Atakent Reşitpaşa Cad. Gülleryüz Sok. No:40/ Ümraniye / İstanbul / Türkiye",
+        "Telefon": "0216 344 6040",
+        "Faks": "",
+        "E-posta": ""
+    },
+    {
+        "id": 7,
+        "Sube": "Fatih Çarşamba Şubesi",
+        "Adres": "Fethiye Cad. Fethiye Kapı Sok. No:4/ Fatih / İstanbul / Türkiye",
+        "Telefon": "0212 524 19 62",
+        "Faks": "",
+        "E-posta": ""
+    }
+]

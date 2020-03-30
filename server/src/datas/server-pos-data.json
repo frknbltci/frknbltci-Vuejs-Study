@@ -1,0 +1,25 @@
+[
+    {
+        "ID": 1,
+        "ADINIZ": "Fatih",
+        "SOYADINIZ": "Cengiz",
+        "CEP TEL": "053333333",
+        "E-POSTA": "fthcngz@gmail.com",
+        "İL": "Bursa",
+        "İLÇE": "Yıldırım",
+        "SEMT": "Erikli",
+        "MAHALLE": "Gazi",
+        "CADDE": "32.",
+        "SOKAK": "Demirtaş",
+        "NOTUNUZ": "aaa"
+    },
+    {
+        "id": "2",
+        "name": "fatih2",
+        "phoneNumber": "6666666666",
+        "address": "Bursa2",
+        "surname": "cengiz2",
+        "email": "fthcngz@gmail.com",
+        "message": "lorem ipsummmmm"
+    }
+]

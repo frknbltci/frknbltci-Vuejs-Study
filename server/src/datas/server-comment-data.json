@@ -1,0 +1,37 @@
+[
+    {
+        "productId": 5,
+        "productVote": 3,
+        "commentId": 1,
+        "comment": "lskflsdkflsdfsdjfdskfksjfkdsjfsjdf",
+        "isFavor": 0
+    },
+    {
+        "productId": 2,
+        "productVote": 5,
+        "commentId": 2,
+        "comment": "lskflsdkflsdfsdjfdskfksjfkdsjfsjdf",
+        "isFavor": 0
+    },
+    {
+        "productId": 7,
+        "productVote": 3,
+        "commentId": 3,
+        "comment": "lskhfghfhfhksjfkdsjfsjdf",
+        "isFavor": 1
+    },
+    {
+        "productId": 18,
+        "productVote": 3,
+        "commentId": 4,
+        "comment": "lskhfghfhfhksdfxjfkdsjfsjdf",
+        "isFavor": 1
+    },
+    {
+        "productId": 11,
+        "productVote": 3,
+        "commentId": 5,
+        "comment": "lskhfghfhfhksdfxjfkdsjfsjdf",
+        "isFavor": 1
+    }
+]

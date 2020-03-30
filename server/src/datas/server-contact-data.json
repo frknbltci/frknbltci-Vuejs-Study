@@ -1,0 +1,45 @@
+[
+    {
+        "id": 1,
+        "department": [
+            {
+                "id": 1
+            },
+            {
+                "id": 2
+            },
+            {
+                "id": 3
+            },
+            {
+                "id": 4
+            },
+            {
+                "id": 5
+            }
+        ],
+        "name": "Furkan",
+        "surname": "Baltacı",
+        "email": "xyz@gmail.com",
+        "phoneNumber": "05348420561",
+        "message": "Lorem xyz Lorem"
+    },
+    {
+        "id": 2,
+        "department": 3,
+        "name": "furkan",
+        "surname": "baltacı",
+        "email": "xyz@gmail.com",
+        "phoneNumber": "546546484",
+        "message": "Lorem Ipsum sakfsjdfsdjf"
+    },
+    {
+        "id": 4,
+        "department": 5,
+        "name": "fatih",
+        "surname": "cengiz",
+        "email": "xyz@gmail.com",
+        "phoneNumber": "546546484",
+        "message": "Lorem Ipsum sakasdasdsadadadfsjdfsdjf"
+    }
+]

@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "name": "Furkan",
+        "surname": "Baltacı",
+        "email": "xyz@gmail.com",
+        "phoneNumber": "05348420561",
+        "company": "xyz comp.",
+        "taxAdmin": "KALEME VERGİ DAİRESİ",
+        "taxNumber": 213,
+        "ıdNumber": 23131313,
+        "password": 1234,
+        "password2": 1234
+    },
+    {
+        "id": 2,
+        "name": "Furkan2",
+        "surname": "Baltacı2",
+        "email": "xyz2@gmail.com",
+        "phoneNumber": "05348420562",
+        "company": "xyz2 comp.",
+        "taxAdmin": "KALEME2 VERGİ DAİRESİ",
+        "taxNumber": 2132,
+        "ıdNumber": 231313132,
+        "password": 1234,
+        "password2": 1234
+    },
+    {
+        "id": 3,
+        "name": "Furkan3",
+        "surname": "Baltacı3",
+        "email": "xyz3@gmail.com",
+        "phoneNumber": "05348420563",
+        "company": "xyz3 comp.",
+        "taxAdmin": "KALEME3 VERGİ DAİRESİ",
+        "taxNumber": 2132,
+        "ıdNumber": 231313132,
+        "password": 1234,
+        "password2": 1234
+    },
+    {
+        "id": 4,
+        "name": "Furkan4",
+        "surname": "Baltacı4",
+        "email": "xyz4@gmail.com",
+        "phoneNumber": "05348420563",
+        "company": "xyz comp.",
+        "taxAdmin": "KALEME3 VERGİ DAİRESİ",
+        "taxNumber": 2132,
+        "ıdNumber": 231313132,
+        "password": 1234,
+        "password2": 1234
+    },
+    {
+        "id": 5,
+        "name": "Furkan4",
+        "surname": "Baltacı4",
+        "email": "xyz4@gmail.com",
+        "phoneNumber": "05348420563",
+        "company": "xyz comp.",
+        "taxAdmin": "KALEME3 VERGİ DAİRESİ",
+        "taxNumber": 2132,
+        "ıdNumber": 231313132,
+        "password": 1234,
+        "password2": 1234
+    },
+    {
+        "id": 13,
+        "name": "Furkan2",
+        "surname": "Baltacı2",
+        "email": "xyz2@gmail.com",
+        "phoneNumber": "05348420562",
+        "company": "xyz2 comp.",
+        "taxAdmin": "KALEME2 VERGİ DAİRESİ",
+        "taxNumber": 2132,
+        "ıdNumber": 231313132,
+        "password": 1234,
+        "password2": 1234
+    }
+]
