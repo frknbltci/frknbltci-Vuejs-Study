@@ -3,7 +3,7 @@
    <v-container fluid class="grey lighten-5">
      <v-row>
        <v-col cols="1">
-         <a href="//www.afiagida.com/">
+         <a href="http://localhost:8082/">
                 <img
                     class="logo"
                     src="//www.afiagida.com/Data/EditorFiles/afia_logo_little.png"

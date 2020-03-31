@@ -1,53 +1,54 @@
 <template>
-  <v-card flat color="transparent">
-  <v-card-text>
-      <v-row>
-        <v-col class="px-4">
-          <v-range-slider
-            v-model="range"
-            :max="max"
-            :min="min"
-            hide-details
-            class="align-center"
-          >
-            <template v-slot:prepend>
-              <v-text-field
-                :value="range[0]"
-                class="mt-0 pt-0"
-                hide-details
-                single-line
-                type="number"
-                style="width: 60px"
-                @change="$set(range, 0, $event)"
-              ></v-text-field>
-            </template>
-            <template v-slot:append>
-              <v-text-field
-                :value="range[1]"
-                class="mt-0 pt-0"
-                hide-details
-                single-line
-                type="number"
-                style="width: 60px"
-                @change="$set(range, 1, $event)"
-              ></v-text-field>
-            </template>
-          </v-range-slider>
-        </v-col>
-      </v-row>
-    </v-card-text>
-  </v-card>
+  <v-col >
+ <div class="rangeslider"> 
+ <h6 class="fiyatText">{{ `1 TL -`+ value + ` TL`}}</h6>
+<input v-model="value" type="range"  min="1" max="300"  
+				class="myslider" id="sliderRange"> 
+</div> 
+
+  </v-col>
 </template>
 
+<style>
 
+      .fiyatText{
+    margin-left: 15%;
+    font-size: 13px;
+  
+    }
+    .rangeslider{
+    width: 100%;
+    }
+    .myslider {
+    -webkit-appearance: none;
+    background: red  ;
+    width: 90%;
+    height: 3px;
+    opacity: 2;
+    
+   }
+   .myslider:hover {
+    opacity: 1;
+   }
+
+  .myslider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    cursor: pointer;
+    background: red  ;
+    width: 5%;
+    height: 15px;
+      
+    border-radius: 80%;
+   }
+
+
+</style>
 <script>
   export default {
     data () {
       return {
-        min: -50,
-        max: 90,
-        slider: 40,
-        range: [-20, 70],
+        value:"",
+        
       }
     },
   }

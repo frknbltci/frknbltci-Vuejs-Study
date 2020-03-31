@@ -26,7 +26,13 @@ export default new Router({
             component: lazyLoad('LoginPage')
 
         },
+        {
+            path: '/biskuvi',
+            name: 'BiskuviPage',
+            component: lazyLoad('BiskuviPage')
+        }
       
 
-    ]
+    ],
+    mode:'history'
 });

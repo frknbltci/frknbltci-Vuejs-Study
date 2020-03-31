@@ -12,7 +12,7 @@
   <b-collapse id="collapse-1" class="mt-2">
     <b-card>
       <ul href="#" class="card-text">
-        <ul><a href="#">Bisküvi</a></ul>
+        <ul><a href="http://localhost:8082/biskuvi">Bisküvi</a></ul>
         <ul><a href="#">Gofret</a></ul>
         <ul><a href="#">Kraker Çeşitleri</a></ul>
          <ul class="tumGorTexts"><a href="#">Tümünü Gör >></a></ul>

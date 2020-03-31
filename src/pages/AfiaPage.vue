@@ -2,7 +2,7 @@
     <v-app>
         <Header></Header>
         <side></side>
-        <p>Burası Afia Sayfası</p>
+        
     </v-app>
 </template>
 

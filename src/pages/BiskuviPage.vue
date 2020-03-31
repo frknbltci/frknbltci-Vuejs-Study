@@ -1,15 +1,12 @@
 <template>
-  
- <v-container fluid class="grey lighten-5">
-  
-<v-row>
-  
-<br/>
+    <v-app>
+        <Header></Header>
+        <br/>
 <div class="sideBar">
   <p class="textSide">Kategori</p>
   <hr/>
   <ul>
-    <div v-for="item in 4" :key="item.id" >
+    <div v-for="item in 1" :key="item.id" >
   <b-link class="sideBarTitles" v-b-toggle.collapse-1 variant="primary">{{categoryList[0].title + `(${categoryList[0].subtitle[0].Biskuvi.length})`}}<b-icon class="icons" icon="arrow-right"></b-icon></b-link>
   <hr/>
       <ul href="#" class="card-text">
@@ -23,93 +20,32 @@
     </div>
   </ul>
   </div>
-   <br/>
-  <v-col class="navAlti" cols="9">
-  
-   <div>
-     
-     <button class="navAltic" v-for="a in categoryList" :key="a.id" >{{a.title}}</button>
-
-   </div>
- 
-  </v-col>
-</v-row>
-  
- 
- <v-col class="rangSlide" cols="2">
+  <v-col>
+    <slideCheck/>
+     <div class="rangSlide" >
  <b class="slideBaslik">Fiyat</b>
  <hr>
   <rangeSlider />
-  <div >
+ 
         <v-btn style="width:100%; color:white;" color="red" >FİLTRELE</v-btn>
-  </div>
-   </v-col>
-
-  </v-container>
-  
+        
+        
+   </div>
+    <a href="https://wa.me/+90-(850)3026555" target="_blank" rel="noopener noreferrer">
+     <img style="margin-left:1%;" src="@/assets/images/kargoBedava.jpg" alt="112d6.jpg (1.06 MB)" width="200" height="300" caption="false"></a>
+    </v-col>
+        
+    </v-app>
 </template>
 
-<script>
-
-
-import categoryJson from 'C:/Users/fbalt/Desktop/Vuejs-Study-master/server/src/datas/server-category-data.json';
-
-import slider from '@/components/rangeSlider.vue'
-
-export default {
-  name: "sideBar",
-  
-
-  data(){
-    return{
-       categoryList:categoryJson,
-       subtitles:[],
-       errors:[]
-    };
-    
-    },
-    methods:{
-
-      },
-      components:{
-        rangeSlider:slider
-      }
-    
-      
-};
-</script>
-
-<style >
-
-.navAlti{
-   
-  border: 0.2px solid rgb(221, 213, 213);
-  height: 40%;
-  width: 85%;
-  margin-left: 1%;
-  
-}
-.navAltic{
-background-color:grey; 
-color:rgb(116, 114, 114); 
-margin: 1%;  
-font-family: 'Courier New', Courier, monospace;
-font-size: 20.5px;
-}
-
- .navAltic:hover{
- background-color: black;
-  opacity: 0.8;
-  text-decoration-color: black;
-  color: white;
-}
-
+<style>
 .sideBar{
   background-color: white;
   width: 13%;
   margin-left: 2%;
   border: 0.2px solid rgb(221, 213, 213);
   border-top: none;
+  
 
 }
 .textSide{
@@ -139,17 +75,50 @@ font-size: 20.5px;
    margin-left:15%;
    
 }
+.fiyatText{
+    margin-left: 15%;
+    font-size: 13px;
+  
+}
 .rangSlide{
    background-color: white;
-  width: 13.2%;
-  margin-left: 1.3%;
+  width: 13%;
+  margin-left: 20px;
   border: 0.2px solid rgb(221, 213, 213);
-  border-top: none;
-  height: 150px;
+  margin-top: 0%;
+  
 }
 
+    
+   
+   
 
-
-
+ 
 </style>
 
+<script>
+
+import categoryJson from 'C:/Users/fbalt/Desktop/Vuejs-Study-master/server/src/datas/server-category-data.json';
+import Header from '@/components/Header.vue';
+import slideCheck   from '@/components/slideCheckBoxMarka.vue';
+import slider from '@/components/rangeSlider.vue';
+
+
+export default {
+  name :'MainPage',
+  components:{
+    
+    "Header":Header,
+    "slideCheck":slideCheck,
+    rangeSlider:slider
+    
+    
+    
+  },
+  data:()=>({
+    categoryList:categoryJson
+  })
+
+};
+
+</script>
