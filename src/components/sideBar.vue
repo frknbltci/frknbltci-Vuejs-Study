@@ -12,7 +12,7 @@
   <b-collapse id="collapse-1" class="mt-2">
     <b-card>
       <ul href="#" class="card-text">
-        <ul><a href="http://localhost:8082/biskuvi">Bisküvi</a></ul>
+        <ul><a href="http://localhost:3030/biskuvi">Bisküvi</a></ul>
         <ul><a href="#">Gofret</a></ul>
         <ul><a href="#">Kraker Çeşitleri</a></ul>
          <ul class="tumGorTexts"><a href="#">Tümünü Gör >></a></ul>
@@ -319,8 +319,7 @@
 
 <script>
 
- 
-import markaJson from 'C:/Users/fbalt/Desktop/Vuejs-Study-master/server/src/datas/server-brands-data.json';
+import markaJson from '../../server/src/datas/server-brands-data.json';
 
 
 
@@ -354,7 +353,7 @@ export default {
   background-color: white;
   width: 13%;
   margin-left: 2%;
-   border: 0.2px solid rgb(221, 213, 213);
+  border: 0.2px solid rgb(221, 213, 213);
   border-top: none;
 
 }

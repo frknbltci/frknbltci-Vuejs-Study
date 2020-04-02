@@ -3,7 +3,7 @@
    <v-container fluid class="grey lighten-5">
      <v-row>
        <v-col cols="1">
-         <a href="http://localhost:8082/">
+         <a href="http://localhost:3030/">
                 <img
                     class="logo"
                     src="//www.afiagida.com/Data/EditorFiles/afia_logo_little.png"
@@ -89,10 +89,11 @@
 
 <script>
 
-import menujson from 'C:/Users/fbalt/Desktop/Vuejs-Study-master/server/src/datas/server-menu-data.json'; 
-import categoryJson from 'C:/Users/fbalt/Desktop/Vuejs-Study-master/server/src/datas/server-category-data.json';
-import markaJson from 'C:/Users/fbalt/Desktop/Vuejs-Study-master/server/src/datas/server-brands-data.json';
 
+//import menujson from 'C:/Users/fbalt/Desktop/Vuejs-Study-master/server/src/datas/server-menu-data.json'; 
+import categoryJson from '../../server/src/datas/server-category-data.json';
+import markaJson from '../../server/src/datas/server-brands-data.json';
+import menujson from '../../server/src/datas/server-menu-data.json';
 
 
 export default {
@@ -105,7 +106,16 @@ export default {
        markaList:markaJson
     };
     
-    }
+    },
+    created() {
+      
+ },
+ methods:{
+
+     }
+   
+ 
+
 
 };
 </script>

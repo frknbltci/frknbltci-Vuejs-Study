@@ -51,9 +51,7 @@
 
 <script>
 
-
-import categoryJson from 'C:/Users/fbalt/Desktop/Vuejs-Study-master/server/src/datas/server-category-data.json';
-
+import categoryJson from '../../server/src/datas/server-category-data.json';
 import slider from '@/components/rangeSlider.vue'
 
 export default {

@@ -18,12 +18,62 @@
             {
                 "id":2,
                 "name":"Gofret",
-                "Gofret":[]
+                "Gofret":[
+                {
+                        "id": 1,
+                        "name": "Tatlı Dost 5 Çeşit",
+                        "fiyat": 18.53
+                }, {
+                        "id": 2,
+                        "name": "Tatlı Dost Vanilya Kremalı Gofret 150 Gr (5 Adet)",
+                        "gr": 150,
+                        "fiyat": 18.53
+                }, {
+                        "id": 3,
+                        "name": "Tatlı Dost Vanilya Kremalı Gofret 150 Gr",
+                        "gr": 150,
+                        "fiyat": 3.90
+                }, {
+                        "id": 4,
+                        "name": "Tatlı Dost Muzlu Kremalı Gofret 150 Gr (5 Adet)",
+                        "gr": 150 ,
+                        "fiyat": 18.53
+                }, {
+                        "id": 5,
+                        "name": "Tatlı Dost Hindistan Cevizli Gofret 150 Gr (5 Adet)",
+                        "gr": 150,
+                        "fiyat": 18.53
+                }, {
+                        "id": 6,
+                        "name": "Tatlı Dost Fındıklı Kremalı Kakaolu Gofret 150 Gr",
+                        "gr":150,
+                        "fiyat": 3.90
+                }
+
+                ]
             },
             {
                 "id":3,
                 "name":"Kraker Çeşitleri",
-                "KrakerCesitleri":[]
+                "KrakerCesitleri":[
+                        {
+                                "id": 4,
+                                "name": "Tuzlu Çubuk Kraker (100 Gr x 24 Adet)",
+                                "gr": 2400,
+                                "fiyat": 62.70
+                        }, {
+                                "id": 5,
+                                "name": "Tuzlu Çubuk Kraker (100 Gr)",
+                                "gr": 100,
+                                "fiyat": 2.75
+                        }, {
+                                "id": 6,
+                                "name": "Susamlı Çubuk Kraker 100 Gr",
+                                "gr": 100,
+                                "fiyat": 2.75
+                        }
+
+                ]
             }
         
         

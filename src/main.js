@@ -7,15 +7,19 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify';
 import '@mdi/font/css/materialdesignicons.css'
 import TreeView from "vue-json-tree-view"
+import axios from 'axios'
 
 
+Vue.use(axios)
 
 Vue.use(TreeView)
 
 Vue.config.productionTip = false
 
 
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue, {
+  breakpoints: [`xs`, 'sm', 'md', 'lg', 'xl', 'xxl']
+})
 Vue.use(IconsPlugin)
 
 new Vue({

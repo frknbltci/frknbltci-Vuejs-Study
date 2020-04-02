@@ -7,7 +7,7 @@
   <hr/>
   <ul>
     <div v-for="item in 1" :key="item.id" >
-  <b-link class="sideBarTitles" v-b-toggle.collapse-1 variant="primary">{{categoryList[0].title + `(${categoryList[0].subtitle[0].Biskuvi.length})`}}<b-icon class="icons" icon="arrow-right"></b-icon></b-link>
+  <b-link class="sideBarTitles" v-b-toggle.collapse-1 variant="primary">{{categoryList[0].title + `(${categoryList[0].subtitle[0].Biskuvi.length + categoryList[0].subtitle[2].KrakerCesitleri.length + categoryList[0].subtitle[1].Gofret.length})`}}<b-icon class="icons" icon="arrow-right"></b-icon></b-link>
   <hr/>
       <ul href="#" class="card-text">
         <ul><a href="#">{{categoryList[0].subtitle[0].name + `(${categoryList[0].subtitle[0].Biskuvi.length})`}}</a></ul>
@@ -98,7 +98,9 @@
 
 <script>
 
-import categoryJson from 'C:/Users/fbalt/Desktop/Vuejs-Study-master/server/src/datas/server-category-data.json';
+
+import categoryJson from '../../server/src/datas/server-category-data.json';
+
 import Header from '@/components/Header.vue';
 import slideCheck   from '@/components/slideCheckBoxMarka.vue';
 import slider from '@/components/rangeSlider.vue';

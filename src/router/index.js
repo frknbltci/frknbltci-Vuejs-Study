@@ -30,6 +30,12 @@ export default new Router({
             path: '/biskuvi',
             name: 'BiskuviPage',
             component: lazyLoad('BiskuviPage')
+        },
+        {
+            path: '/Markalar',
+            name: 'markalarPage',
+            component: lazyLoad('markalarPage')
+            
         }
       
 
