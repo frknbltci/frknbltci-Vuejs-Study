@@ -37,6 +37,46 @@ export default new Router({
             component: lazyLoad('markalarPage')
             
         }
+        , 
+        {
+            path: '/Markalar',
+            name: 'markalarPage',
+            component: lazyLoad('markalarPage')
+
+        },
+        {
+            path: '/satisnoktasianketi',
+            name: 'SatisNoktasiPage',
+            component: lazyLoad('SatisNoktasiPage')
+
+        },
+        {
+            path: '/sertifikalarimiz',
+            name: 'SertifikalarimizPage',
+            component: lazyLoad('SertifikalarimizPage')
+
+        },
+        {
+            path: '/hesapno',
+            name: 'hesapnoPage',
+            component: lazyLoad('hesapnoPage')
+
+        },
+        {
+            path: '/magazalar',
+            name: 'magazalarPage',
+            component: lazyLoad('magazalarPage')
+
+        },
+        {
+            path: '/iletisim',
+            name: 'iletisimPage',
+            component: lazyLoad('iletisimPage')
+
+        },
+    
+            
+        
       
 
     ],

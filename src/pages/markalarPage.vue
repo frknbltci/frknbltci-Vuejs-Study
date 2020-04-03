@@ -20,7 +20,32 @@
  
    </v-col>
     </v-row>
+   <hr style="margin:1%;">
 
+  <v-row style="padding:10px;">
+  
+  <v-btn style="margin:0.5%; " small="true" v-for="harf in alfabe" :key="harf.id" >{{harf}}</v-btn>
+</v-row>
+
+<v-row>
+  
+  <v-card class="Cards"
+    width="370"
+      href="http://localhost:3030/Afia"    
+      v-for="marka in markalar"
+      :key="marka.id" >
+      
+    <v-img
+      class="white--text align-end"
+      height="370px"
+      src="@/assets/images/AfiaMarka.jpg"
+    >
+</v-img>
+  <v-card-subtitle style="font:bolder; font-size:22px; color:black; background-color:rgb(212, 211, 211); " > {{marka.title}}</v-card-subtitle>
+      
+
+</v-card>
+</v-row>
   </div>
  
 </v-app>
@@ -31,26 +56,38 @@
     border: 0.2px solid rgb(221, 213, 213);
     margin-left: 5%;
     margin-right: 5%;
+    
 }
-.v-btn{
+.markalarDis v-btn{
     width: 25%;
+}
+.Cards{
+   
+   text-align:center;
+   
+   margin:1%;
+         
 }
 </style>
 
 <script>
 import Header from '@/components/Header.vue';
+import markalarJson from '../../server/src/datas/server-brands-data.json';
+
 
 
 
 export default {
-  name :'MainPage',
+  name :'markalarPage',
   components:{
     "Header":Header
 
   
   },
   data:()=>({
-    
+    markalar:markalarJson,
+    alfabe:['Tümü','A','B','C','Ç','D','E','F','G','I','İ','J','K','L','M','N','O',
+    'Ö','P','R','S','Ş','T','U','Ü','V','Y','Z','0-9']
   })
 
 };

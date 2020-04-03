@@ -1,26 +1,32 @@
 [   
     {
         "id": 2,
-        "title": "MARKALAR"
+        "title": "MARKALAR",
+        "path": "http://localhost:3030/Markalar"
     },
     {
         "id": 3,
-        "title": "SATIŞ NOKTASI ANKETİ"  
+        "title": "SATIŞ NOKTASI ANKETİ",
+        "path": "http://localhost:3030/satisnoktasianketi" 
     },    
     {
         "id": 4,
-        "title": "SERTİFİKALARIMIZ"
+        "title": "SERTİFİKALARIMIZ",
+        "path": "http://localhost:3030/sertifikalarimiz"
     },
     {
         "id": 5,
-        "title": "HESAP NUMARALARI"  
+        "title": "HESAP NUMARALARI",
+        "path": "http://localhost:3030/hesapno"
     },    
     {
         "id": 6,
-        "title": "MAĞAZALAR"
+        "title": "MAĞAZALAR",
+        "path": "http://localhost:3030/magazalar"
     },
     {
         "id": 7,
-        "title": "İLETİŞİM"
+        "title": "İLETİŞİM",
+        "path": "http://localhost:3030/iletisim"
     }
 ]

@@ -64,7 +64,7 @@
     </div>
   </div>
  
- <a  href="#" v-for="title of menuList" :key="title.id">{{title.title}}</a>
+ <a  v-bind:href="title.path" v-for="title of menuList" :key="title.id">{{title.title}}</a>
   
 </div>
 
