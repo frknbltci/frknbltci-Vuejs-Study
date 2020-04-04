@@ -7,7 +7,7 @@
 						<div class="col-12" style="box-shadow: 0 0 5px 0 grey;">
 							<div class="row">
 								<div class="col-2">
-									<img src="@/assets/products/1.jpg" alt="" style="width: 100%; height: 100%; object-fit: scale-down;">
+									<img src="@/assets/logo.png" alt="" style="width: 100%; height: 100%; object-fit: scale-down;">
 								</div>
 								<div class="col-3 my-auto text-left">
 									<h6><b>Ürün İsmi</b></h6>

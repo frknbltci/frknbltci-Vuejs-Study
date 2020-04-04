@@ -42,16 +42,44 @@
               </v-col>
   
             <v-col cols=6>
-           <a href="#" class="grey--text" >Kayıt Ol</a>
+           <a href="" class="grey--text" >Kayıt Ol</a>
               </v-col>
            </v-row>
           
           </v-col>
         <v-spacer></v-spacer>
-        <v-col class="sepet"  cols="2">
-          <v-icon large>shopping</v-icon>
+
+  
+        <!--  <v-icon large>shopping</v-icon>
          <b style="font-size: 20px; --white">Sepetim 0.0TL</b>
-        </v-col>
+        -->
+        <v-col cols=2> 
+        <a style="text-decoration:none;" href="http://localhost:3030/sepet">
+          
+        <div class="sepet">
+          
+            <div class="sepeticYuvarlak">
+             {{urunAdet}}
+
+           </div>
+                  
+                  <v-icon 
+                  style="color:white;
+                  margin-left:15%;
+                  margin-top:10%;
+                  
+                  " x-large  >shopping_cart</v-icon> 
+                  <b style="color:white; text-decoration:none;" > 
+                    Sepetim  0,0 TL
+                    </b> 
+           
+           
+
+        
+        </div>
+    </a>
+    </v-col>
+  
       </v-row>    
 
 
@@ -103,7 +131,8 @@ export default {
     return{
        menuList:menujson,
        categoryList:categoryJson,
-       markaList:markaJson
+       markaList:markaJson,
+       urunAdet:0
     };
     
     },
@@ -132,6 +161,22 @@ export default {
   border-radius: 5%;
   background-color: #616161;
   height: 90px;
+}
+.sepeticYuvarlak{
+  position:absolute;
+  border-radius: 50%;
+  border:4px solid white;
+  background-color: #616161;
+  width: 15%;
+  height: 40%;
+  color:white;
+  font-size: 18px;
+  margin-left: -5%;
+  margin-top: -7%;
+  text-align: center;
+  font: bolder;
+  
+
 }
 .hesap {
   border: 2px solid #616161;

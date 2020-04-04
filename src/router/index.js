@@ -74,6 +74,11 @@ export default new Router({
             component: lazyLoad('iletisimPage')
 
         },
+        {
+            path: '/sepet',
+            name: 'sepetPage',
+            component: lazyLoad('sepetPage')
+        }
     
             
         
