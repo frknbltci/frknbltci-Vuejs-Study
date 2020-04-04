@@ -46,8 +46,12 @@
 
 </v-card>
 </v-row>
-  </div>
  
+  
+
+  </div>
+ <fo />
+
 </v-app>
 </template>
 
@@ -73,14 +77,15 @@
 <script>
 import Header from '@/components/Header.vue';
 import markalarJson from '../../server/src/datas/server-brands-data.json';
-
+import footer from '@/components/Footer.vue';
 
 
 
 export default {
   name :'markalarPage',
   components:{
-    "Header":Header
+    "Header":Header,
+    "fo":footer
 
   
   },

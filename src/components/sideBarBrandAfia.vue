@@ -108,6 +108,8 @@ font-size: 20.5px;
   margin-left: 2%;
   border: 0.2px solid rgb(221, 213, 213);
   border-top: none;
+  margin-top:0%;
+  height: auto;
 
 }
 .textSide{
@@ -138,12 +140,12 @@ font-size: 20.5px;
    
 }
 .rangSlide{
-   background-color: white;
+  background-color: white;
   width: 13.2%;
   margin-left: 1.3%;
   border: 0.2px solid rgb(221, 213, 213);
   border-top: none;
-  height: 150px;
+  height: 200px;
 }
 
 

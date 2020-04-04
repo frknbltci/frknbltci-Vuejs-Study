@@ -5,6 +5,7 @@
   
 <br/>
 <div class="sideBar">
+  <hr/>
   <p class="textSide">Kategori</p>
   <hr/>
   <ul>
@@ -56,7 +57,7 @@
     </b-card>
   </b-collapse>
   </ul>
-  <hr/><hr/>
+  <hr/>
    <ul>
  <b-link class="sideBarTitles" v-b-toggle.collapse-5 variant="primary">Sos,Baharat <b-icon class="icons" icon="arrow-right"></b-icon></b-link>
   <b-collapse id="collapse-5" class="mt-2">
@@ -145,6 +146,7 @@
     
     </b-card>
   </b-collapse>
+  
   </ul>
 <hr/>
    <ul>
@@ -170,7 +172,7 @@
 <hr/>
    <ul>
  <b-link class="sideBarTitles" v-b-toggle.collapse-11 variant="primary">Kitap <b-icon class="icons" icon="arrow-right"></b-icon></b-link>
-  <hr/>
+  
   </ul>
   <hr/>
    <ul>
@@ -266,7 +268,7 @@
   </ul>
 <hr/>
    <ul>
- <b-link class="sideBarTitles"  v-b-toggle.collapse-18 variant="primary">Organik Sertifikalı Ürünler <b-icon class="icons" icon="arrow-right"></b-icon></b-link>
+ <b-link class="sideBarTitles"  v-b-toggle.collapse-18 variant="primary">Organik Sertifikalı  <b-icon class="icons" icon="arrow-right"></b-icon><p style="text-align:left; margin-left:5%" >Ürünler</p></b-link>
   <b-collapse id="collapse-18" class="mt-2">
     <b-card>
       <ul href="#" class="card-text">
@@ -284,8 +286,8 @@
 </div>
 <template>
    <v-app>
-<v-col cols="2">
-  <div class="dropdown-title"> 
+<v-col cols="4" >
+  <div class="dropdown-title" style="width:105%" > 
     MARKALAR
 
     
@@ -299,13 +301,13 @@
   </div>
  
      <a href="https://www.afiagida.com/tanitim-videolari.shtm" target="_blank" rel="noopener noreferrer">
-     <img src="@/assets/images/sideBarAltındaAfiaTvLogo.jpg" alt="444.jpg (54 KB)" width="200" height="200" caption="false"></a>
+     <img src="@/assets/images/sideBarAltındaAfiaTvLogo.jpg" alt="444.jpg (54 KB)" width="230" height="200" caption="false"></a>
 
      <a href="https://www.instagram.com/mutfakhelal/?hl=tr" target="_blank" rel="noopener noreferrer">
-     <img src="@/assets/images/sideBarAltındaHelalMutfak.png" alt="lo.png (1.09 MB)" width="200" height="200"></a>
+     <img src="@/assets/images/sideBarAltındaHelalMutfak.png" alt="lo.png (1.09 MB)" width="230" height="200"></a>
 
      <a href="https://wa.me/+90-(850)3026555" target="_blank" rel="noopener noreferrer">
-     <img src="@/assets/images/sideBarEnaltAramaWp.jpg" alt="112d6.jpg (1.06 MB)" width="200" height="300" caption="false"></a>
+     <img src="@/assets/images/sideBarEnaltAramaWp.jpg" alt="112d6.jpg (1.06 MB)" width="230" height="300" caption="false"></a>
 
 
 </v-col>
@@ -351,16 +353,19 @@ export default {
 
 .sideBar{
   background-color: white;
-  width: 13%;
+  width: 32%;
   margin-left: 2%;
   border: 0.2px solid rgb(221, 213, 213);
   border-top: none;
+  margin-top: -7%;
 
 }
 .textSide{
   color: red;
   font-size:20px;
-  text-align: center;
+  text-align: left;
+  font-size: 30px;
+  margin-left: 8%;
   
 }
 .tumGorTexts{
@@ -379,7 +384,7 @@ export default {
 }
 .sideBarTitles{
   font-size: 120%;
-  margin-left: 15%;
+  margin-left: 5%;
   
 }
 

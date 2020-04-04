@@ -23,9 +23,11 @@
 }
   .sideBarCombo{
   background-color: white;
-  width: 13%;
-  margin-left: 0.8%;
+  width: 15%;
+  margin-left: 0.6%;
   border: 0.2px solid rgb(221, 213, 213);
+  margin-top: -24px;
+  margin-bottom: -11px;
 }
 .textSide{
   color: red;

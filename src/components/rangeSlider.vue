@@ -1,5 +1,5 @@
 <template>
-  <v-col >
+  <v-col style >
  <div class="rangeslider"> 
  <h6 class="fiyatText">{{ `1 TL -`+ value + ` TL`}}</h6>
 <input v-model="value" type="range"  min="1" max="300"  

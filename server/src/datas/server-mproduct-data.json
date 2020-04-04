@@ -1,0 +1,50 @@
+[
+    {
+        "id":1,
+        "brand":"Afia",
+        "title":"Aficips Acılı Mısır Cipsi 50 gr",
+        "price":"2,50 TL"
+    },
+    {
+        "id":2,
+        "brand":"Afia",
+        "title":"Aficips Peynirli Mısır Cipsi 50 gr",
+        "price":"2,50 TL"
+    },
+    {
+        "id":3,
+        "brand":"Afia",
+        "title":"Starbis Bisküvi 55 GR(24 ADET)",
+        "price":"34,20 TL"
+    },
+    {
+        "id":4,
+        "brand":"Afia",
+        "title":"Afia Kağıt Helva 40 GR (12 Adet)r",
+        "price":"28,20 TL"
+    },
+    {
+        "id":5,
+        "brand":"Afia",
+        "title":"Aficips Baharatlı Mısır Cipsi 50 gr",
+        "price":"2,50 TL"
+    },
+    {
+        "id":6,
+        "brand":"Millat Çikolata",
+        "title":"Milat Prime Life Madlen Çikolata 200 GR",
+        "price":"19,90 TL"
+    },
+    {
+        "id":7,
+        "brand":"Poloxin",
+        "title":"Paloxin Antiseptic Wipe Mendil (30 Adet)",
+        "price":"29,90 TL"
+    },
+    {
+        "id":8,
+        "brand":"Afia",
+        "title":"Aficips Acılıı 35 Gr (24 Adet)",
+        "price":"28,80 TL"
+    }
+]

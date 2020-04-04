@@ -96,19 +96,7 @@
   
 </div>
 
-<!--
-<v-col cols="1">
-<div class="sideBarAltDropDown">
-  <div class="AltDropDownTitle">MARKALAR</div>    
-    <select class="selectMarka"> Tüm Markalar
-    <a href="www.google.com.tr">Tüm Markalar</a>
-    <option value="#">2</option>
-    <option value="#">3</option>
 
-
-</select>
-  </div></v-col>
--->
 
 
   </v-container>
