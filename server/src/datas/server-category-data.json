@@ -8,9 +8,16 @@
                 "id":1,
                 "name":"Bisküvi",
                 "Biskuvi":[ 
-                      {"id":1,"name":"Tatbis Bisküvi 55 GR(12 Adet)+Starbis Bisküvi 55 GR(12 Adet)","gr":55,"fiyat":34.20},
-                      {"id":2,"name":"Bebe Bisküvisi 800 GR","gr":800,"fiyat":13.90},
-                      {"id":3,"name":"Tatbis Bisküvi 55 GR(24 Adet)","gr":55,"fiyat":34.20} 
+                      {
+                              "id": 1,
+                              "marka": "Afia",
+                              "Images": "@server/Starbis.png",
+                              "name": "Tatbis Bisküvi 55 GR(12 Adet)+Starbis Bisküvi 55 GR(12 Adet)",
+                              "gr": 55,
+                              "fiyat": 34.20
+                      },
+                      {"id":2,"marka":"Afia","name":"Bebe Bisküvisi 800 GR","gr":800,"fiyat":13.90},
+                      {"id":3,"marka":"Afia","name":"Tatbis Bisküvi 55 GR(24 Adet)","gr":55,"fiyat":34.20} 
                          ]
                          
 
@@ -21,30 +28,36 @@
                 "Gofret":[
                 {
                         "id": 1,
+                        "marka": "Afia",
                         "name": "Tatlı Dost 5 Çeşit",
                         "fiyat": 18.53
                 }, {
                         "id": 2,
+                        "marka": "Afia",
                         "name": "Tatlı Dost Vanilya Kremalı Gofret 150 Gr (5 Adet)",
                         "gr": 150,
                         "fiyat": 18.53
                 }, {
                         "id": 3,
+                        "marka": "Afia",
                         "name": "Tatlı Dost Vanilya Kremalı Gofret 150 Gr",
                         "gr": 150,
                         "fiyat": 3.90
                 }, {
                         "id": 4,
+                        "marka": "Afia",
                         "name": "Tatlı Dost Muzlu Kremalı Gofret 150 Gr (5 Adet)",
                         "gr": 150 ,
                         "fiyat": 18.53
                 }, {
                         "id": 5,
+                        "marka": "Afia",
                         "name": "Tatlı Dost Hindistan Cevizli Gofret 150 Gr (5 Adet)",
                         "gr": 150,
                         "fiyat": 18.53
                 }, {
                         "id": 6,
+                        "marka": "Afia",
                         "name": "Tatlı Dost Fındıklı Kremalı Kakaolu Gofret 150 Gr",
                         "gr":150,
                         "fiyat": 3.90
@@ -58,16 +71,19 @@
                 "KrakerCesitleri":[
                         {
                                 "id": 4,
+                                "marka": "Afia",
                                 "name": "Tuzlu Çubuk Kraker (100 Gr x 24 Adet)",
                                 "gr": 2400,
                                 "fiyat": 62.70
                         }, {
                                 "id": 5,
+                                "marka": "Afia",
                                 "name": "Tuzlu Çubuk Kraker (100 Gr)",
                                 "gr": 100,
                                 "fiyat": 2.75
                         }, {
                                 "id": 6,
+                                "marka": "Afia",
                                 "name": "Susamlı Çubuk Kraker 100 Gr",
                                 "gr": 100,
                                 "fiyat": 2.75

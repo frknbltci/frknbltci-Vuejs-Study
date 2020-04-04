@@ -2,8 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
+var cors = require('cors')
 
 const app = express();
+app.use(cors())
 
 const CONTACT_DATA_FILE = path.join(__dirname, './src/datas/server-contact-data.json');
 const BRANDS_DATA_FILE = path.join(__dirname, './src/datas/server-brands-data.json');
@@ -14,6 +16,7 @@ const MENU_DATA_FILE = path.join(__dirname, './src/datas/server-menu-data.json')
 const POS_DATA_FILE = path.join(__dirname, './src/datas/server-pos-data.json');
 const STORE_DATA_FILE = path.join(__dirname, './src/datas/server-store-data.json');
 const COMMENT_DATA_FILE = path.join(__dirname, './src/datas/server-comment-data.json');
+const PRODUCTS_DATA_FILE = path.join(__dirname, './src/datas/server-products-data.json');
 
 app.set('port',(8180));
 
@@ -68,7 +71,13 @@ app.post('/contact', (req, res) => {
   });
 
 });
+app.get('/products', (req, res) => {
+  fs.readFile(PRODUCTS_DATA_FILE, (err, data) => {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.json(JSON.parse(data));
+  });
 
+});
 
 app.get('/category', (req, res) => {
   fs.readFile(CATEGORY_DATA_FILE, (err, data) => {
