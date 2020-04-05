@@ -3,31 +3,96 @@
         "id":1,
         "brand":"Afia",
         "title":"Aficips Acılı Mısır Cipsi 50 gr",
-        "price":"2,50 TL"
+        "price":"2,50 TL",
+        "comments": [{
+            "id": 1,
+            "text": "Harika !"
+        }, {
+            "id": 2,
+            "text": "Helal Olsun Afia !"
+        }, {
+            "id": 3,
+            "text": "İlk defa böyle bir şey yedim Helal AFiA !"
+        }, {
+            "id": 4,
+            "text": "Muhteşem !"
+        }]
     },
     {
         "id":2,
         "brand":"Afia",
         "title":"Aficips Peynirli Mısır Cipsi 50 gr",
-        "price":"2,50 TL"
+        "price": "2,50 TL",
+        "comments": [{
+            "id": 1,
+            "text": "Harika !"
+        }, {
+            "id": 2,
+            "text": "Helal Olsun Afia !"
+        }, {
+            "id": 3,
+            "text": "İlk defa böyle bir şey yedim Helal AFiA !"
+        }, {
+            "id": 4,
+            "text": "Muhteşem !"
+        }]
     },
     {
         "id":3,
         "brand":"Afia",
         "title":"Starbis Bisküvi 55 GR(24 ADET)",
-        "price":"34,20 TL"
+        "price": "34,20 TL",
+        "comments": [{
+            "id": 1,
+            "text": "Harika !"
+        }, {
+            "id": 2,
+            "text": "Helal Olsun Afia !"
+        }, {
+            "id": 3,
+            "text": "İlk defa böyle bir şey yedim Helal AFiA !"
+        }, {
+            "id": 4,
+            "text": "Muhteşem !"
+        }]
     },
     {
         "id":4,
         "brand":"Afia",
         "title":"Afia Kağıt Helva 40 GR (12 Adet)r",
-        "price":"28,20 TL"
+        "price": "28,20 TL",
+        "comments": [{
+            "id": 1,
+            "text": "Harika !"
+        }, {
+            "id": 2,
+            "text": "Helal Olsun Afia !"
+        }, {
+            "id": 3,
+            "text": "İlk defa böyle bir şey yedim Helal AFiA !"
+        }, {
+            "id": 4,
+            "text": "Muhteşem !"
+        }]
     },
     {
         "id":5,
         "brand":"Afia",
         "title":"Aficips Baharatlı Mısır Cipsi 50 gr",
-        "price":"2,50 TL"
+        "price": "2,50 TL",
+        "comments": [{
+            "id": 1,
+            "text": "Harika !"
+        }, {
+            "id": 2,
+            "text": "Helal Olsun Afia !"
+        }, {
+            "id": 3,
+            "text": "İlk defa böyle bir şey yedim Helal AFiA !"
+        }, {
+            "id": 4,
+            "text": "Muhteşem !"
+        }]
     },
     {
         "id":6,
@@ -45,7 +110,20 @@
         "id":9,
         "brand":"Afia",
         "title":"Susamlı Çubuk Kraker 100 Gr",
-        "price":"2,75 TL"
+        "price": "2,75 TL",
+        "comments": [{
+            "id": 1,
+            "text": "Harika !"
+        }, {
+            "id": 2,
+            "text": "Helal Olsun Afia !"
+        }, {
+            "id": 3,
+            "text": "İlk defa böyle bir şey yedim Helal AFiA !"
+        }, {
+            "id": 4,
+            "text": "Muhteşem !"
+        }]
     },
     {
         "id": 10,
@@ -58,7 +136,20 @@
         "id": 11,
         "brand": "Afia",
         "title": "Tuzlu Çubuk Kraker (100 Gr)",
-        "price": "2,75 TL"
+        "price": "2,75 TL",
+        "comments": [{
+            "id": 1,
+            "text": "Harika !"
+        }, {
+            "id": 2,
+            "text": "Helal Olsun Afia !"
+        }, {
+            "id": 3,
+            "text": "İlk defa böyle bir şey yedim Helal AFiA !"
+        }, {
+            "id": 4,
+            "text": "Muhteşem !"
+        }]
     }, 
     {
         "id": 12,
@@ -70,7 +161,20 @@
         "id": 13,
         "brand": "Afia",
         "title": "Tuzlu Çubuk Kraker (100 Gr x 24 Adet)",
-        "price": "62,70 TL"
+        "price": "62,70 TL",
+        "comments": [{
+            "id": 1,
+            "text": "Harika !"
+        }, {
+            "id": 2,
+            "text": "Helal Olsun Afia !"
+        }, {
+            "id": 3,
+            "text": "İlk defa böyle bir şey yedim Helal AFiA !"
+        }, {
+            "id": 4,
+            "text": "Muhteşem !"
+        }]
     },
      {
         "id": 14,
@@ -82,13 +186,39 @@
         "id": 15,
         "brand": "Afia",
         "title": "Tatlı Dost Vanilya Kremalı Gofret 150 Gr (5 Adet)",
-        "price": "18,53 TL"
+        "price": "18,53 TL",
+        "comments": [{
+            "id": 1,
+            "text": "Harika !"
+        }, {
+            "id": 2,
+            "text": "Helal Olsun Afia !"
+        }, {
+            "id": 3,
+            "text": "İlk defa böyle bir şey yedim Helal AFiA !"
+        }, {
+            "id": 4,
+            "text": "Muhteşem !"
+        }]
     },
      {
         "id": 16,
         "brand": "Afia",
         "title": "Tatlı Dost Muzlu Kremalı Gofret 150 Gr (5 Adet)",
-        "price": "18,53 TL"
+        "price": "18,53 TL",
+        "comments": [{
+            "id": 1,
+            "text": "Harika !"
+        }, {
+            "id": 2,
+            "text": "Helal Olsun Afia !"
+        }, {
+            "id": 3,
+            "text": "İlk defa böyle bir şey yedim Helal AFiA !"
+        }, {
+            "id": 4,
+            "text": "Muhteşem !"
+        }]
     }, 
     {
         "id": 17,
@@ -106,7 +236,20 @@
         "id": 19,
         "brand": "Afia",
         "title": "Tatbis Bisküvi 55 GR(24 Adet)",
-        "price": "34,20 TL"
+        "price": "34,20 TL",
+        "comments": [{
+            "id": 1,
+            "text": "Harika !"
+        }, {
+            "id": 2,
+            "text": "Helal Olsun Afia !"
+        }, {
+            "id": 3,
+            "text": "İlk defa böyle bir şey yedim Helal AFiA !"
+        }, {
+            "id": 4,
+            "text": "Muhteşem !"
+        }]
     }, 
     {
       
@@ -119,7 +262,20 @@
         "id": 21,
         "brand": "Afia",
         "title": "Tatbis Bisküvi 55 GR(12 Adet)",
-        "price": "17,46 TL"
+        "price": "17,46 TL",
+        "comments": [{
+            "id": 1,
+            "text": "Harika !"
+        }, {
+            "id": 2,
+            "text": "Helal Olsun Afia !"
+        }, {
+            "id": 3,
+            "text": "İlk defa böyle bir şey yedim Helal AFiA !"
+        }, {
+            "id": 4,
+            "text": "Muhteşem !"
+        }]
     }, 
     {
         "id": 22,
@@ -137,7 +293,20 @@
         "id": 24,
         "brand": "Afia",
         "title": "Albence Tuzlu Peynirli Kraker 70 Gr",
-        "price": "1,50 TL"
+        "price": "1,50 TL",
+        "comments": [{
+            "id": 1,
+            "text": "Harika !"
+        }, {
+            "id": 2,
+            "text": "Helal Olsun Afia !"
+        }, {
+            "id": 3,
+            "text": "İlk defa böyle bir şey yedim Helal AFiA !"
+        }, {
+            "id": 4,
+            "text": "Muhteşem !"
+        }]
     }, 
     {
         "id": 25,
@@ -155,6 +324,19 @@
         "id": 27,
         "brand": "Afia",
         "title": "Başakköy Yulaflı Bisküvi 120 GR",
-        "price": "2,50 TL"
+        "price": "2,50 TL",
+        "comments": [{
+            "id": 1,
+            "text": "Harika !"
+        }, {
+            "id": 2,
+            "text": "Helal Olsun Afia !"
+        }, {
+            "id": 3,
+            "text": "İlk defa böyle bir şey yedim Helal AFiA !"
+        }, {
+            "id": 4,
+            "text": "Muhteşem !"
+        }]
     }
 ]

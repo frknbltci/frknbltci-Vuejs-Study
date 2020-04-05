@@ -2,21 +2,24 @@
   
    <v-container fluid class="grey lighten-5">
      <v-row>
-       <v-col cols="1">
+       <v-col style="margin-left:3%;" cols="1">
          <a href="http://localhost:3030/">
                 <img
                     class="logo"
                     src="//www.afiagida.com/Data/EditorFiles/afia_logo_little.png"
                     alt=""
                     width="124"
-                    height="89"
+                    height="100"
                   />
                 </a>
                
          </v-col>
-         <v-spacer></v-spacer>
+         
         
-        <v-col cols="6">
+        <v-col cols="6" style="position: absolute;
+    z-index: 999;
+    background: white;
+    left:200px;">
           
           <v-row class="search">
                
@@ -26,68 +29,102 @@
                 
                 </v-text-field>
                
-                <v-btn  height="70"  class="grey white--text">ARA</v-btn>
+                <v-btn  v-on:click="seenSearch = !seenSearch"  height="70" style="position:static; background-color:grey;">ARA</v-btn>
                 
           </v-row>
-          <div  v-for="product in filterProducts" :key="product.id" class="single-blog">
+          <div    v-for="product in filterProducts" :key="product.id" class="single-blog">
 
-            <div >
-                    <div class="searchDiv">
-                        <h2 > {{product.title |to-uppercase}}</h2>
-                       <article  > {{product.brand | snippet}} </article>
-                   </div>
+           <div v-if="seenSearch"   >     
+                 <!-- Butondan kaldırıp event'a koymamız lazım görünürlüğü -->
+                <h2> {{product.title |to-uppercase}}</h2>
+              
             </div>
          
-
+     
+  
           </div>
             
         </v-col>
-        <v-spacer></v-spacer>
         
-        <v-col class="hesap" cols="2"> 
+        
+        <div class="hesap"> 
           
             <v-icon x-large >person</v-icon>
-            Hesabım
-            <v-row>
-              <v-col cols=6>
-           <a href="#" class="grey--text" >Giriş Yap</a>
-              </v-col>
-  
-            <v-col cols=6>
-           <a href="" class="grey--text" >Kayıt Ol</a>
-              </v-col>
-           </v-row>
-          
-          </v-col>
-        <v-spacer></v-spacer>
+            <p style="margin-top:-14%;margin-left:19%; font-size:20px;"> Hesabım </p>
+           
+             
+           <a href="#" id="app" v-on:click="seen = !seen" class="control" style="margin-top:5%; color:grey;text-decoration:none; margin-left:10%;"  >Giriş Yap</a>
+           
+           <a href="" style="margin-top:25%;margin-left:10%; text-decoration:none; color:grey;" >Kayıt Ol</a>
+         
 
+        
+    </div>
+
+<div class="registrationBtn">
+ 
+ <div  id="wrapper">
+ 
   
-        <v-col cols=2> 
-        <a style="text-decoration:none;" href="http://localhost:3030/sepet">
+  <div class="login" v-if="seen" id="hide">
+    <img src="../assets/exit.png" style="margin-left:95%; margin-top:-2%; "   v-on:click="seen = !seen" class="control" >
+      <h6 style="margin-bottom:4%;">Üye giriş bilgilerini giriniz.</h6> 
+      <div class="t1">
+         <img src="../assets/mail.png" style="height:60px; margin-bottom:4%;" >
+      <b-form-input v-model="text" class="texB"  placeholder="E-Mail"></b-form-input>
+      </div>
+       <div class="t1">
+         <img src="../assets/pass.png" style="height:60px; margin-bottom:4%;" >
+      <b-form-input v-model="text" class="texB"  placeholder="Şifre"></b-form-input>
+      </div>
+      <v-btn style="margin-left:2%;"  height="70" width="94%" color="gray"  class="btn"><h4>GİRİŞ YAP</h4></v-btn>
+      <p></p>
+      <input type="checkbox" id="checkbox" v-model="checked">
+<label for="checkbox" style="margin-left:10px;"> <h6>Beni Hatırla</h6></label>
+<img src="../assets/isaret.png" style="margin-left:45%; margin-top:17px; width:25px;" >
+<h5 style="float:right; margin-right:4%; margin-top:15px;">Şifremi Unuttum</h5>
+<h5 style="float:right; margin-left:60%; margin-right:5%; margin-top:15px;">Üye Ol</h5>
+<p></p>
+<img src="../assets/face.png" style="margin-top:-4%; margin-left:-4%;" >
+  </div>
+</div>
+  
+</div>
+
+
+
+    
+    <a style="text-decoration:none;" href="http://localhost:3030/sepet">
           
         <div class="sepet">
           
             <div class="sepeticYuvarlak">
              {{urunAdet}}
+             
 
            </div>
                   
                   <v-icon 
                   style="color:white;
                   margin-left:15%;
-                  margin-top:10%;
+                  margin-top:4%;
                   
-                  " x-large  >shopping_cart</v-icon> 
-                  <b style="color:white; text-decoration:none;" > 
-                    Sepetim  0,0 TL
-                    </b> 
+                  "  x-large   >shopping_cart</v-icon> 
+                 
+                    <b class="sepetim">Sepetim</b>
+                     <div class="sepetUcret">
+                  {{sepetUcret}} TL
+                    
+                      
+                    
+                      </div> 
+                   
            
            
 
         
         </div>
     </a>
-    </v-col>
   
       </v-row>    
 
@@ -122,6 +159,7 @@ Vue.use(axios);
 
 export default {
   name: "Header",
+  el:'#wrapper',
   
   data(){
     return{
@@ -130,12 +168,15 @@ export default {
        markaList:[],
        urunAdet:0,
        search:'',
-       products:[]
+       seen:false,
+       products:[],
+       sepetUcret:0,
+       seenSearch:false
       
     };
     
     }, 
-  
+
     async created() {
       try {
         const res = await axios.get("http://localhost:8180/category");
@@ -157,6 +198,9 @@ export default {
 
         });
       }
+    },
+    methods:{
+      
     }
   
 
@@ -168,25 +212,28 @@ export default {
 </script>
 
 <style>
-.searchDiv{
- 
-}
+
 
 .search {
   border: 2px solid #616161;
   border-radius: 5%;
 }
 .sepet {
-  border: 2px solid #616161;
+  border: 2px solid #7a7777;
   border-radius: 5%;
-  background-color: #616161;
-  height: 90px;
+  background-color: #645c5c;
+  height: 70%;
+  margin-left: 15%;
+  width: 250px;
+
+
+
 }
 .sepeticYuvarlak{
   position:static;
   border-radius: 50%;
   border:3px solid white;
-  background-color: #616161;
+  background-color: #757474;
   width: 15%;
   height: 40%;
   color:white;
@@ -198,10 +245,24 @@ export default {
   
 
 }
+.sepetUcret{
+  color:white;
+  font-size:20px;
+  margin-top:-9%;
+  margin-left:35%;
+}
+.sepetim{
+  color: white;
+  font-size: 18px;
+}
 .hesap {
-  border: 2px solid #616161;
+  border: 2px solid #9e9898; 
+  background-color: rgb(241, 237, 237);
   border-radius: 5%;
-  height: 90px;
+  height: 10%;
+  margin-left: 52%;
+  margin-top: 0.2%;
+  width:13%;
 }
 
 .navbar {
@@ -296,5 +357,53 @@ export default {
 .selectMarka{
   border:1px solid;
 }
+
+.btn{
+  background-color: gray;
+  color: #616161;
+}
+
+.texB{
+  width: 500px;
+  float: right;
+  height: 60px;
+  margin-right: 1.1%;
+}
+.textBox{
+  border-style:2px solid #616161;
+}
+.registrationBtn{
+ 
+  
+  position: absolute;
+
+
+}
+h6{
+  font-weight: 400;
+  margin-top: 3%;
+}
+.login{
+ background-color: white;
+ position: fixed;
+ border-radius: 1%;
+ width: 600px;
+ height: 500px;
+ margin-left: 30%;
+ margin-top: 15%;
+ z-index: 9999;
+ text-align: left;
+ padding-left: 2%;
+
+
+}
+
+.icon{
+ height:20px ;
+ width: 20px;
+ float: left;
+  
+}
+
 </style>
 

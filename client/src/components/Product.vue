@@ -20,13 +20,14 @@
     height="450px"   
       v-for="product in productsList"
       :key="product.id" >
-      <a href="http://localhost:3030/product">
+      <router-link :to="{  name: 'ProductPage', params: { id: product.id,name:product.title,price:product.price,comments:product.comments }  }"> 
+       
     <v-img
       class="white--text align-end"
       height="270px"
       src="@/assets/images/AfiaMarka.jpg" >
     </v-img>
-    </a>
+   </router-link>
   
   <v-card-subtitle style="font:bolder; font-size:22px; color:black; background-color:white; margin-top:-5%; " > {{product.brand}}</v-card-subtitle>
    <div style="font-size:17px; color:black; background-color:white; margin-top:-5%; " > {{product.title}} 
@@ -72,7 +73,7 @@ color:red;
   color:white;
   margin-top: 20%; 
   margin-left: 4%;
- 
+
 }
 .favIcon{
 
@@ -111,6 +112,9 @@ export default {
        
     };
     
+    },
+    methods:{
+     
     },
   
     async created() {

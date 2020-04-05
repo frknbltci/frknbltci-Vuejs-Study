@@ -6,12 +6,11 @@
       
         
          <Header></Header>
-    
         <div class="top-side-main">
-            <div class="top-left"><img class="prResim" src="../assets/Aci_Cips.png"></div>
+            <div class="top-left"><img class="prResim" src="../assets/images/AfiaMarka.jpg"></div>
             <div class="top-right">
-             <h2 class="yaziB" v-for="items in 1" :key="items.id">{{productList[0].title}}</h2>
-               <h1 class="price" v-for="items in 1" :key="items.id">{{productList[0].price}}</h1>
+             <h2 class="yaziB">{{productName}}</h2>
+               <h1 class="price"  >{{productPrice}}</h1>
                <hr/>
                 <v-btn  height="70" width="100"  class="grey white--text"><h3>-</h3></v-btn>
                 <input v-model="message" class="textBox"  placeholder="1" />
@@ -26,9 +25,36 @@
             </div>
         </div>
 
-<Tabs></Tabs>
+          <div class="tabs">
+    <div>
+      
+      <button v-for="(tab, index) in tabs" :key="tab.index"
+              :class="{active : currentTab === index }"
+              @click="currentTab = index">{{tab}}</button>
+    </div>
+    <div class="tab-content">
+      <div v-show="currentTab === 0"><h1>{{productName}}</h1></div>
+      <div v-show="currentTab === 1">
+        <table style="width:100%;">
+           <tr>
+    <th><b>Kredi Kartı Tek Ödeme : </b></th>
+    <th>{{productPrice}} </th> 
+    <th><b>Havale : </b></th>
+    <th>{{productPrice}} </th> 
+  </tr>
+    <tr>
+    <th><b>Kapıda Ödeme : </b></th>
+    <th>{{productPrice}}</th> 
+  </tr>
+        </table>
+      </div>
+      <div v-show="currentTab === 2"><h6 v-for="comment in comments" :key="comment.id">Anonim :{{ comment.text}} </h6></div>
+    </div>
+  </div>
+        
+
 <Footer></Footer>
-    </v-app>
+  </v-app>
 </template>
 <style scoped>
 .top-side-main{
@@ -84,7 +110,7 @@
  text-align: center;
 }
 .textBox1{
- width: 350 px;
+ width:70%;
  height: 80px;
  text-align: left;
  margin-left:2% ;
@@ -100,11 +126,48 @@
  margin-left: 3%;
 }
 
+.tabs{
+    margin-left: 5%;
+    
+}
+.active{
+   border: 1px solid white;
+}
+button{
+  padding: 10px;
+  background-color:#d5d5d5; 
+  text-align: left;
+  width: 30%;
+  
+}
+button.active{
+  background-color: white;
+  color:#ee1c24;
+  
+}
+.tab-content div{
+  padding: 30px;
+  border: 1px solid white;
+  width: 90%;
+  margin: 0 auto;
+  float: left;
+  background-color: white;
+  margin-top: -0.1%;
+}
+table, th, td {
+  border: 0.1px solid black;
+  border-collapse: collapse;
+  font-weight: 400;
+}
+th{
+  width: 30%;
+  padding: 5px;
+}
 </style>
 
 <script>
 import Header from '@/components/Header.vue';
-import Tabs from  '@/components/Tabs.vue';
+
 import Footer from  '@/components/Footer.vue';
 
 
@@ -118,8 +181,7 @@ export default {
   components:{
     
     "Header":Header,
-    "Tabs":Tabs,
-    "Footer":Footer,
+    "Footer":Footer
     
     
      
@@ -127,8 +189,12 @@ export default {
   data(){
     return{
        productList:[],
-        
-     
+      id:"",
+      productName:"",
+      comments:[],
+      productPrice:"",
+      currentTab: 0,
+      tabs: ['Ürün Özellikleri', 'Ödeme Seçenekleri', 'Yorumlar']
        
     };
     
@@ -140,7 +206,11 @@ export default {
         this.productList=resProduct.data;
       } catch (err) {
         console.log("err", err);
-      }
+      } 
+        this.id = this.$route.params.id;
+        this.productPrice = this.$route.params.price;
+        this.productName = this.$route.params.name;
+        this.comments=this.$route.params.comments;
     },
    
 };
