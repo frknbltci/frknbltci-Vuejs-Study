@@ -20,7 +20,7 @@
     height="450px"   
       v-for="product in productsList"
       :key="product.id" >
-      <a href="#">
+      <a href="http://localhost:3030/product">
     <v-img
       class="white--text align-end"
       height="270px"

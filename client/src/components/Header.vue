@@ -17,10 +17,11 @@
          <v-spacer></v-spacer>
         
         <v-col cols="6">
+          
           <v-row class="search">
                
                 <v-icon size="40" left>search</v-icon>
-                <v-text-field class="align-stretch"
+                <v-text-field class="align-stretch" v-model="search"
                 placeholder="Aradığınız Ürünü Girin.."> 
                 
                 </v-text-field>
@@ -28,6 +29,17 @@
                 <v-btn  height="70"  class="grey white--text">ARA</v-btn>
                 
           </v-row>
+          <div  v-for="product in filterProducts" :key="product.id" class="single-blog">
+
+            <div >
+                    <div class="searchDiv">
+                        <h2 > {{product.title |to-uppercase}}</h2>
+                       <article  > {{product.brand | snippet}} </article>
+                   </div>
+            </div>
+         
+
+          </div>
             
         </v-col>
         <v-spacer></v-spacer>
@@ -50,9 +62,6 @@
         <v-spacer></v-spacer>
 
   
-        <!--  <v-icon large>shopping</v-icon>
-         <b style="font-size: 20px; --white">Sepetim 0.0TL</b>
-        -->
         <v-col cols=2> 
         <a style="text-decoration:none;" href="http://localhost:3030/sepet">
           
@@ -119,7 +128,10 @@ export default {
        menuList:[],
        categoryList:[],
        markaList:[],
-       urunAdet:0
+       urunAdet:0,
+       search:'',
+       products:[]
+      
     };
     
     }, 
@@ -132,10 +144,20 @@ export default {
         this.markaList=resMarka.data;
         const resMenu =await axios.get("http://localhost:8180/menu");
         this.menuList=resMenu.data;
+        const resProduct =await axios.get("http://localhost:8180/products");
+        this.products=resProduct.data;
       } catch (err) {
         console.log("err", err);
       }
     },
+    computed:{
+      filterProducts:function(){
+        return this.products.filter((product)=>{
+          return product.title.match(this.search ); 
+
+        });
+      }
+    }
   
 
    
@@ -146,7 +168,9 @@ export default {
 </script>
 
 <style>
-
+.searchDiv{
+ 
+}
 
 .search {
   border: 2px solid #616161;
@@ -159,9 +183,9 @@ export default {
   height: 90px;
 }
 .sepeticYuvarlak{
-  position:absolute;
+  position:static;
   border-radius: 50%;
-  border:4px solid white;
+  border:3px solid white;
   background-color: #616161;
   width: 15%;
   height: 40%;
@@ -181,6 +205,7 @@ export default {
 }
 
 .navbar {
+
   overflow: hidden;
   background-color: rgb(238, 13, 13);
 

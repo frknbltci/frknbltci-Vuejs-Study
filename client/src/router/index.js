@@ -78,7 +78,13 @@ export default new Router({
             path: '/sepet',
             name: 'sepetPage',
             component: lazyLoad('sepetPage')
+        },
+        {
+            path: '/product',
+            name: 'ProductPage',
+            component: lazyLoad('ProductPage')
         }
+
     
             
         
