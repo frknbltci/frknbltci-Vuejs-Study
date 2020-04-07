@@ -19,7 +19,8 @@
     width="280" 
     height="450px"   
       v-for="product in productsList"
-      :key="product.id" >
+      :key="product.id" 
+       >
       <router-link :to="{  name: 'ProductPage', params: { id: product.id,name:product.title,price:product.price,comments:product.comments }  }"> 
        
     <v-img
@@ -33,7 +34,7 @@
    <div style="font-size:17px; color:black; background-color:white; margin-top:-5%; " > {{product.title}} 
        <v-row>
        <div class="sepetIcon">
-        <a style="text-decoration:none;"  >   <v-icon color="black" style="margin-left:10%;margin-top:10%;" large  >shopping_cart</v-icon> </a>
+        <a style="text-decoration:none;"  @click="urunEkle(product)" >   <v-icon color="black" style="margin-left:10%;margin-top:10%;" large  >shopping_cart</v-icon> </a>
     </div>      
      <div  class="favIcon">
        <a style="text-decoration:none;"  > <v-icon  color="black" style="margin-left:13%;margin-top:10%;" large  >favorite_border</v-icon></a>
@@ -97,7 +98,6 @@ color:red;
 
 </style>
 <script>
-
 import Vue from "vue";
 import axios from "axios";
 Vue.use(axios);
@@ -105,17 +105,29 @@ Vue.use(axios);
 
 export default {
     name: "Product",
+
+    computed:{
+      
+    },
   
   data(){
     return{
-       productsList:[]
-       
+       productsList:[],
+       productId:""
+ 
     };
     
     },
     methods:{
-     
-    },
+     urunEkle(product){
+      
+        this.$store.dispatch("urunEkle",product)
+        
+  
+           }  
+     },
+
+    
   
     async created() {
       try {

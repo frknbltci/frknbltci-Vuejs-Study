@@ -2,18 +2,21 @@
 <v-app>
  <Header></Header>
 <sepet />
-<div>asdasdasdasd{{sube}}</div>
-<button @click="showStore"> Click me! </button>
+
+	<div v-for="urun in sepetUrunleri" :key="urun.id"   :urunler="urun" >
+			 
+			<h4>{{urun.title}}</h4>
+
+		</div>
+
+
 </v-app>
 </template>
 
 <script>
 import Header from "@/components/Header.vue";
-import Vue from "vue";
-
 import sepet from "@/components/sepet.vue";
-import axios from "axios";
-Vue.use(axios);
+
 
 export default {
   name: "sepetPage",
@@ -22,18 +25,15 @@ export default {
     sepet: sepet,
   },
   data: () => ({
-    sube: [],
+   
   }),
+  computed:{
+    sepetUrunleri(){
+				 return this.$store.getters.getSepetUrunler
+			 }	
+  },
   methods: {
-    async showStore() {
-      try {
-        const sube = await axios.get("http://192.168.1.2:8180/store");
-        console.log("sube", sube);
-        this.sube = sube.data.subeler;
-      } catch (err) {
-        console.log("err", err);
-      }
-    },
+    
   }
 };
 </script>

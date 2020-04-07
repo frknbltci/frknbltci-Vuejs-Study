@@ -107,7 +107,7 @@
         "price":"29,90 TL"
     },
     {
-        "id":9,
+        "id":8,
         "brand":"Afia",
         "title":"Susamlı Çubuk Kraker 100 Gr",
         "price": "2,75 TL",
@@ -124,6 +124,12 @@
             "id": 4,
             "text": "Muhteşem !"
         }]
+    },
+     {
+        "id": 9,
+        "brand": "Afia",
+        "title": " Yulaflı Bisküvi 120 GR 24 Adet",
+        "price": "27,00 TL"
     },
     {
         "id": 10,

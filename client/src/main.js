@@ -8,6 +8,7 @@ import vuetify from './plugins/vuetify';
 import '@mdi/font/css/materialdesignicons.css'
 import TreeView from "vue-json-tree-view"
 import axios from 'axios'
+import { store }  from './store'
 
 Vue.prototype.$http = axios
 
@@ -22,6 +23,8 @@ Vue.use(BootstrapVue, {
 Vue.use(IconsPlugin)
 
 new Vue({
+  store,
   vuetify,
-  render: h => h(App),router
+  router,
+  render: h => h(App),
 }).$mount('#app')
