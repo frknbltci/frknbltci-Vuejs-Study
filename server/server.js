@@ -86,6 +86,14 @@ app.get('/category', (req, res) => {
   });
 });
 
+app.get('/login', (req, res) => {
+  fs.readFile(LOGIN_DATA_FILE, (err, data) => {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.json(JSON.parse(data));
+  });
+});
+
+
 app.post('/signup', (req, res) => {
   fs.readFile(SIGNUP_DATA_FILE, (err, data) => {
     const users = JSON.parse(data);

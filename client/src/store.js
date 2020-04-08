@@ -7,7 +7,7 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
     state: {
         sepetUrunleri: [],
-        currentUser: { }
+        currentUser:""
     },
     mutations: {
         urunEkle(state, product) {
@@ -18,12 +18,15 @@ export const store = new Vuex.Store({
         },
         GIRISYAP(state, user) {
             state.currentUser = user;
+        },
+        CURRENTEYAZ(state, email) {
+            state.currentUser = email;    
         }
     },
     actions: {
-        urunEkle(context, product) {
+        urunEkle({commit}, product) {
             
-            context.commit('urunEkle', product)
+            commit('urunEkle', product)
         },/*
         urunSil(context,urunId){
             
@@ -34,7 +37,9 @@ export const store = new Vuex.Store({
         girisYap({ commit },user) {
             commit('GIRISYAP', user);
         },
-
+        currentUseraYaz({ commit }, email) {
+            commit('CURRENTEYAZ', email);
+        }
         
     },
     getters: {

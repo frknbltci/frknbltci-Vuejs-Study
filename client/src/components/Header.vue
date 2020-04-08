@@ -36,7 +36,7 @@
           <div    v-for="product in filterProducts" :key="product.id" class="single-blog">
 
            <div v-if="seenSearch"   >     
-                 <!-- Butondan kaldırıp event'a koymamız lazım görünürlüğü -->
+                 
                 <h2> {{product.title |to-uppercase}}</h2>
               
             </div>
@@ -53,7 +53,8 @@
             <v-icon x-large >person</v-icon>
             <p style="margin-top:-14%;margin-left:19%; font-size:20px;"> Hesabım </p>
             
-           <div v-if="currentUser.name" > <a href="" @click="cikisYap" style="margin-top:25%;margin-left:10%; text-decoration:none; color:grey;" >Çıkış Yap</a>     </div>
+           <div v-if="currentUser" > <a href="" @click="cikisYap" style="margin-top:25%;margin-left:10%; text-decoration:none; color:grey;" >Çıkış Yap</a>     </div>
+         
            <div v-else>  
        <a href="#" id="app" v-on:click="seen = !seen"  class="control" style="margin-top:5%; color:grey;text-decoration:none; margin-left:10%;"  >Giriş Yap</a> 
            
@@ -132,7 +133,7 @@
   </v-col>
       </v-row>    
 
-<div>{{currentUser.name}}</div>
+<div>{{currentUser}}</div>
   <br /><br />
 <div class="navbar">
  <div class="dropdown">
@@ -179,7 +180,8 @@ export default {
        sepetUcret:0,
        seenSearch:false,
        email:"",
-       sifre:""
+       sifre:"",
+       users:[]
       
     };
     
@@ -195,6 +197,8 @@ export default {
         this.menuList=resMenu.data;
         const resProduct =await axios.get("http://localhost:8180/products");
         this.products=resProduct.data;
+         const resUsers =await axios.get("http://localhost:8180/login");
+        this.users=resUsers.data;
       } catch (err) {
         console.log("err", err);
       }
@@ -220,7 +224,17 @@ export default {
          this.$store.dispatch("cikisYap");
        },
        girisYap:function(email,sifre){
-         return  console.log(email+sifre);
+            
+            for(var i=0;i<this.users.length;i++){
+              if(this.users[i].email==email){
+                 for(var k=0;i<this.users.length;i++){
+                   if(this.users[k].password==sifre){
+                     this.$store.dispatch("currentUseraYaz",email);
+                     this.seen=false;
+                   }
+                 }
+              }
+            }
        }
     }
 };

@@ -122,7 +122,7 @@ export default {
      urunEkle(product){
       
         this.$store.dispatch("urunEkle",product)
-        
+                
   
            }  
      },

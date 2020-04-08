@@ -30,7 +30,9 @@ export default {
   computed:{
     sepetUrunleri(){
 				 return this.$store.getters.getSepetUrunler
-			 }	
+       },
+       
+       	
   },
   methods: {
     
