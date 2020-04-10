@@ -3,9 +3,16 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 var cors = require('cors')
+const jwt = require("jsonwebtoken");
+
+
 
 const app = express();
 app.use(cors())
+
+app.set("api_secret_key", require("./config").api_secret_key);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const CONTACT_DATA_FILE = path.join(__dirname, './src/datas/server-contact-data.json');
 const BRANDS_DATA_FILE = path.join(__dirname, './src/datas/server-brands-data.json');
@@ -20,8 +27,7 @@ const PRODUCTS_DATA_FILE = path.join(__dirname, './src/datas/server-products-dat
 
 app.set('port',(8180));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
 
 app.use((req, res, next) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
@@ -91,6 +97,58 @@ app.get('/login', (req, res) => {
     res.setHeader('Cache-Control', 'no-cache');
     res.json(JSON.parse(data));
   });
+});
+
+app.post('/login', (req, res) => {
+  fs.readFile(LOGIN_DATA_FILE, (err, data) => {
+    const users = JSON.parse(data);
+   
+//SERVER DAN GELEN İSTEKLERİ DÜZENLEYİP ÖN TARAFTA İŞLEM YAPTIRICAZ 
+    //SEPETİ DE LOCAL STORAGE YAPICAZ
+    var email = req.body.email;
+    var sifre = req.body.password;
+    if (!email || !sifre) {
+      console.log('!!!!!!');
+      return res.status(500).json({
+        title: 'server error',
+        error: 'user giriş hatası'
+      })
+}
+
+    const gelenUser = {
+      password:sifre,
+      mail:email
+    };
+    
+    
+    var user=users.filter(function (user) {
+      if (user.email === email) {
+        return user;
+      }
+    });
+    if (!user) {
+      console.log("!!!!ab!")
+       return status(500).json({
+        title: 'server error',
+        error:'user giriş hatası'
+      })
+    };
+    console.log(user[0].password);
+    if (user[0].password != sifre) {
+      console.log("Şifre Hatası");
+      return false;
+      }  
+    else {
+      
+      const token = jwt.sign(gelenUser, 'secretkey');
+      console.log(token);
+      return res.status(200).json({
+        title: 'Login Başarılı',
+        token: token
+      });
+    }
+  })
+
 });
 
 

@@ -53,7 +53,14 @@
             <v-icon x-large >person</v-icon>
             <p style="margin-top:-14%;margin-left:19%; font-size:20px;"> Hesabım </p>
             
-           <div v-if="currentUser" > <a href="" @click="cikisYap" style="margin-top:25%;margin-left:10%; text-decoration:none; color:grey;" >Çıkış Yap</a>     </div>
+           <div v-if="currentUser" >
+             <v-row>
+              <a href="" @click="cikisYap" style="position:relative; margin-left:50%; text-decoration:none; color:grey;" >Çıkış Yap</a>  
+              <div style=" position:relative; margin-top:-20%;  text-decoration:none; color:grey;">{{currentUser}}</div>
+             
+             </v-row>
+              </div>
+              
          
            <div v-else>  
        <a href="#" id="app" v-on:click="seen = !seen"  class="control" style="margin-top:5%; color:grey;text-decoration:none; margin-left:10%;"  >Giriş Yap</a> 
@@ -72,7 +79,7 @@
  
   <div class="login" v-if="seen" id="hide">
     <img src="../assets/exit.png" style="margin-left:95%; margin-top:-2%; "   v-on:click="seen = !seen" class="control" >
-      <h6 style="margin-bottom:4%;">Üye giriş bilgilerini giriniz.</h6> 
+      <h6 style="margin-bottom:4%;">Üye giriş bilgilerini giriniz.</h6> <h6 style="color:red;" v-if="errorseen">{{error}}</h6>
       <div class="t1">
          <img src="../assets/mail.png" style="height:60px; margin-bottom:4%;" >
       <b-form-input v-model="email" class="texB"  placeholder="E-Mail"></b-form-input>
@@ -81,7 +88,7 @@
          <img src="../assets/pass.png" style="height:60px; margin-bottom:4%;" >
       <b-form-input v-model="sifre" class="texB"  placeholder="Şifre"></b-form-input>
       </div>
-      <v-btn style="margin-left:2%;"  height="70" width="94%" color="gray" @click="girisYap(email,sifre)"  class="btn"><h4>GİRİŞ YAP</h4></v-btn>
+      <v-btn style="margin-left:2%;"  height="70" width="94%" color="gray" @click="login()"  class="btn"><h4>GİRİŞ YAP</h4></v-btn>
       <p></p>
       <input type="checkbox" id="checkbox" v-model="checked">
 <label for="checkbox" style="margin-left:10px;"> <h6>Beni Hatırla</h6></label>
@@ -133,7 +140,7 @@
   </v-col>
       </v-row>    
 
-<div>{{currentUser}}</div>
+
   <br /><br />
 <div class="navbar">
  <div class="dropdown">
@@ -156,7 +163,7 @@
 
 <script>
 
-import { mapState } from 'vuex';
+
 import Vue from "vue";
 import axios from "axios";
 Vue.use(axios);
@@ -181,7 +188,10 @@ export default {
        seenSearch:false,
        email:"",
        sifre:"",
-       users:[]
+       users:[],
+       error:"",
+       errorseen:false,
+       currentUser:''
       
     };
     
@@ -199,6 +209,13 @@ export default {
         this.products=resProduct.data;
          const resUsers =await axios.get("http://localhost:8180/login");
         this.users=resUsers.data;
+        if(localStorage.getItem('token') ===null){
+              this.$router.push('/');     
+        }
+        if(localStorage.getItem('currentUser')){
+              this.currentUser=localStorage.getItem('currentUser');
+         }
+      
       } catch (err) {
         console.log("err", err);
       }
@@ -211,8 +228,7 @@ export default {
           }
           return product.title.match(this.search ); 
         });
-      },
-      ...mapState(['currentUser'])
+      }
     },
     methods:{
        otherClick:function(){
@@ -221,20 +237,36 @@ export default {
     }
        },
        cikisYap:function(){
-         this.$store.dispatch("cikisYap");
+         localStorage.clear('currentUser');
+         localStorage.clear('token');
        },
-       girisYap:function(email,sifre){
-            
-            for(var i=0;i<this.users.length;i++){
-              if(this.users[i].email==email){
-                 for(var k=0;i<this.users.length;i++){
-                   if(this.users[k].password==sifre){
-                     this.$store.dispatch("currentUseraYaz",email);
-                     this.seen=false;
-                   }
-                 }
+       login:function(){
+           let gelenUser={
+             email:this.email,
+             password:this.sifre,
+           };
+            axios.post('http://localhost:8180/login',gelenUser).then(res=>{
+              if(res.status===200){
+                localStorage.setItem('token',res.data.token);
+                localStorage.setItem('currentUser',this.email);
+                this.seen=false;
+                location.reload();
+               // this.$router.push('/');
               }
             }
+              
+            ).then(res=>{
+                  if (res.status===500){
+                console.log("sdadasd");
+                this.error="Hatalı Giriş";
+                this.errorseen=true;
+              }
+            },err=>{
+              console.log(err.response);
+              this.error=err.response.data.error;
+            })
+          
+              
        }
     }
 };
@@ -295,7 +327,7 @@ export default {
   background-color: rgb(241, 237, 237);
   border-radius: 5%;
   height: 20%;
-  margin-left:52%;
+  margin-left:780px;
   margin-top:3%;
   
   
