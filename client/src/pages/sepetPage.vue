@@ -3,12 +3,6 @@
  <Header></Header>
 <sepet />
 
-	<div v-for="urun in sepetUrunleri" :key="urun.id"   :urunler="urun" >
-			 
-			<h4>{{urun.title}}</h4>
-
-		</div>
-
 
 </v-app>
 </template>

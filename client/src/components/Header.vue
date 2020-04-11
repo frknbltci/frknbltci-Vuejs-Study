@@ -17,10 +17,12 @@
          </v-col>
          
         
-        <v-col cols="5" style="position: absolute;
+        <v-col cols="5" 
+        style=
+    "position: absolute;
     z-index: 999;
     background: white;
-    left:200px;">
+    left:180px;">
           
           <v-row class="search">
                
@@ -35,7 +37,7 @@
           </v-row>
           <div    v-for="product in filterProducts" :key="product.id" class="single-blog">
 
-           <div v-if="seenSearch"   >     
+           <div   v-if="seenSearch"   >     
                  
                 <h2> {{product.title |to-uppercase}}</h2>
               
@@ -50,8 +52,8 @@
         
         <v-col  class="hesap" cols="2" > 
           
-            <v-icon x-large >person</v-icon>
-            <p style="margin-top:-14%;margin-left:19%; font-size:20px;"> Hesabım </p>
+            <v-icon large >person</v-icon>
+            <p style="margin-top:-14%;margin-left:19%; font-size:18px;"> Hesabım </p>
             
            <div v-if="currentUser" >
              <v-row>
@@ -111,7 +113,7 @@
           
             <div class="sepeticYuvarlak">
             
-             <b style="justify-content:center;">{{urunAdet}}</b>
+             <b style="justify-content:center;">{{sepetCount}}</b>
              
 
            </div>
@@ -191,7 +193,10 @@ export default {
        users:[],
        error:"",
        errorseen:false,
-       currentUser:''
+       currentUser:'',
+       sepetUrunleri:[]
+   
+       
       
     };
     
@@ -199,6 +204,7 @@ export default {
  
     async created() {
       try {
+
         const res = await axios.get("http://localhost:8180/category");
         this.categoryList = res.data;
         const resMarka=await axios.get("http://localhost:8180/markalar");
@@ -209,9 +215,7 @@ export default {
         this.products=resProduct.data;
          const resUsers =await axios.get("http://localhost:8180/login");
         this.users=resUsers.data;
-        if(localStorage.getItem('token') ===null){
-              this.$router.push('/');     
-        }
+        this.sepetUrunleri=localStorage.getItem('sepetUrunleri');
         if(localStorage.getItem('currentUser')){
               this.currentUser=localStorage.getItem('currentUser');
          }
@@ -228,7 +232,16 @@ export default {
           }
           return product.title.match(this.search ); 
         });
+      },
+     sepetCount:function (){
+        console.log('sepetCount');
+       var count=localStorage.getItem('sepetCount');
+       //olmazsa yukarıda bir değişken daha tanımla
+       console.log(count);
+       return count;
       }
+     
+        
     },
     methods:{
        otherClick:function(){
@@ -268,6 +281,7 @@ export default {
           
               
        }
+      
     }
 };
 
@@ -287,10 +301,10 @@ export default {
   border: 2px solid #7a7777;
   border-radius: 5%;
   background-color: #645c5c;
-  height: 70%;
-  margin-left: 16%;
-  width: 250px;
-  margin-top: 14%;
+  height: 56%;
+  margin-left: 7%;
+  width: 200px;
+  margin-top: 18%;
 
 
 
@@ -327,10 +341,9 @@ export default {
   background-color: rgb(241, 237, 237);
   border-radius: 5%;
   height: 20%;
-  margin-left:780px;
+  margin-left:765px;
   margin-top:3%;
-  
-  
+
 }
 
 .navbar {

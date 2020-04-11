@@ -34,7 +34,7 @@
    <div style="font-size:17px; color:black; background-color:white; margin-top:-5%; " > {{product.title}} 
        <v-row>
        <div class="sepetIcon">
-        <a style="text-decoration:none;"  @click="urunEkle(product)" >   <v-icon color="black" style="margin-left:10%;margin-top:10%;" large  >shopping_cart</v-icon> </a>
+        <a style="text-decoration:none;"  @click="sepeteEkle(product)" >   <v-icon color="black" style="margin-left:10%;margin-top:10%;" large  >shopping_cart</v-icon> </a>
     </div>      
      <div  class="favIcon">
        <a style="text-decoration:none;"  > <v-icon  color="black" style="margin-left:13%;margin-top:10%;" large  >favorite_border</v-icon></a>
@@ -105,35 +105,57 @@ Vue.use(axios);
 
 export default {
     name: "Product",
-
-    computed:{
-      
-    },
+    
   
   data(){
     return{
        productsList:[],
-       productId:""
+       productId:"",
+       sepetUrunleri:[],
+       sepetCount:0
+
  
     };
     
     },
-    methods:{
-     urunEkle(product){
-      
-        this.$store.dispatch("urunEkle",product)
-                
-  
-           }  
-     },
-
     
-  
+    watch:{
+      sepetUrunleri:{
+      handler(){
+        console.log("Sepet Ürünleri Değişti");
+        localStorage.setItem('sepetUrunleri',JSON.stringify(this.sepetUrunleri));
+      },
+      deep:true,
+      },
+      sepetCount:{
+        handler(){
+          console.log("countda değişti");
+          localStorage.setItem('sepetCount',this.sepetCount);
+        },
+        deep:true,
+      }
+    },
+    mounted(){
+       console.log('App mpunted !');
+       if (localStorage.getItem('sepetUrunleri'))  
+       this.sepetUrunleri=JSON.parse(localStorage.getItem('sepetUrunleri'));
+       if(localStorage.getItem('sepetCount'))
+       this.sepetCount=localStorage.getItem('sepetCount');
+    } ,
+    
+    methods:{
+     sepeteEkle(product){
+       console.log('Sepete Eklendi');
+        this.sepetUrunleri.push(product);    
+        console.log(this.sepetUrunleri); 
+        this.sepetCount++;
+        }
+     },
     async created() {
       try {
         const res = await axios.get("http://localhost:8180/products");
         this.productsList = res.data;
-
+        
       } catch (err) {
         console.log("err", err);
       }
