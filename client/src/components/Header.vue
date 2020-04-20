@@ -17,34 +17,42 @@
          </v-col>
          
         
-        <v-col cols="5" 
-        style=
-    "position: absolute;
-    z-index: 999;
-    background: white;
-    left:180px;">
+        <v-col cols="4" >
           
-          <v-row class="search">
+          <div class="search">
                
-                <v-icon  size="40" left>search</v-icon>
-                <v-text-field  class="align-stretch" v-model="search"
+                <v-icon style="position:absolute; margin-top:12px; " size="40" left>search</v-icon>
+                <v-text-field style="border:2px solid grey; border-radius:5%; padding-left:10%;" class="align-stretch" v-model="search"
                 placeholder="Aradığınız Ürünü Girin.."> 
                 
                 </v-text-field>
                
-                <v-btn    height="70" style="position:static; background-color:grey;">ARA</v-btn>
+                <v-btn    height="70" style="margin-top:-100px; margin-left:95%; position:sticky; background-color:grey;">ARA</v-btn>
                 
-          </v-row>
-          <div    v-for="product in filterProducts" :key="product.id" class="single-blog">
+          </div>
+          <div style=
+          "position: absolute;
+          background-color:white;
+          z-index: 999;
+          left:120px;
+          width:100%;"
+          >
+          <div    v-for="product in filterProducts" :key="product.id"  >
 
            <div   v-if="seenSearch"   >     
-                 
-                <h2> {{product.title |to-uppercase}}</h2>
-              
+              <router-link style="text-decoration:none; color:black;" :to="{  name: 'ProductPage', params: { id: product.id,name:product.title,price:product.price,comments:product.comments }  }"> 
+               <v-img
+                  
+                  height="100px"
+                  src="@/assets/images/AfiaMarka.jpg" >
+                   </v-img>
+                <h3> {{product.title |to-uppercase}}</h3>
+              </router-link>
             </div>
          
      
   
+          </div>
           </div>
             
         </v-col>
@@ -127,7 +135,7 @@
                  
                     <b class="sepetim">Sepetim</b>
                      <div class="sepetUcret">
-                  {{sepetUcret}} TL
+                 <b> {{sepetToplami}} TL </b>
                     
                       
                     
@@ -194,8 +202,9 @@ export default {
        error:"",
        errorseen:false,
        currentUser:'',
-       sepetUrunleri:[]
-   
+       sepetUrunleri:[],
+       sepetToplami:0,
+       sepetCount:0
        
       
     };
@@ -219,7 +228,13 @@ export default {
         if(localStorage.getItem('currentUser')){
               this.currentUser=localStorage.getItem('currentUser');
          }
-      
+        if(localStorage.getItem('sepetToplami')){
+          this.sepetToplami=localStorage.getItem('sepetToplami');
+        }
+        if(localStorage.getItem('sepetCount')){
+          this.sepetCount=localStorage.getItem('sepetCount');
+        }
+       
       } catch (err) {
         console.log("err", err);
       }
@@ -232,15 +247,14 @@ export default {
           }
           return product.title.match(this.search ); 
         });
-      },
-     sepetCount:function (){
+      }   /*  sepetCount:function (){
         console.log('sepetCount');
        var count=localStorage.getItem('sepetCount');
        //olmazsa yukarıda bir değişken daha tanımla
        console.log(count);
        return count;
       }
-     
+     */
         
     },
     methods:{
@@ -291,11 +305,12 @@ export default {
 
 
 .search {
-  border: 2px solid #616161;
-  border-radius: 5%;
+ 
+ 
   width: 100%;
   margin-left:20%;
   margin-top:8%;
+  
 }
 .sepet {
   border: 2px solid #7a7777;
@@ -341,7 +356,7 @@ export default {
   background-color: rgb(241, 237, 237);
   border-radius: 5%;
   height: 20%;
-  margin-left:765px;
+ margin-left: 15%;
   margin-top:3%;
 
 }

@@ -3,7 +3,7 @@
         "id":1,
         "brand":"Afia",
         "title":"Aficips Acılı Mısır Cipsi 50 gr",
-        "price":"2,50 TL",
+        "price":2.50,
         "comments": [{
             "id": 1,
             "text": "Harika !"
@@ -22,7 +22,7 @@
         "id":2,
         "brand":"Afia",
         "title":"Aficips Peynirli Mısır Cipsi 50 gr",
-        "price": "2,50 TL",
+        "price": 2.50,
         "comments": [{
             "id": 1,
             "text": "Harika !"
@@ -41,7 +41,7 @@
         "id":3,
         "brand":"Afia",
         "title":"Starbis Bisküvi 55 GR(24 ADET)",
-        "price": "34,20 TL",
+        "price": 34.20,
         "comments": [{
             "id": 1,
             "text": "Harika !"
@@ -60,7 +60,7 @@
         "id":4,
         "brand":"Afia",
         "title":"Afia Kağıt Helva 40 GR (12 Adet)r",
-        "price": "28,20 TL",
+        "price": 28.20,
         "comments": [{
             "id": 1,
             "text": "Harika !"
@@ -79,7 +79,7 @@
         "id":5,
         "brand":"Afia",
         "title":"Aficips Baharatlı Mısır Cipsi 50 gr",
-        "price": "2,50 TL",
+        "price": 2.50, 
         "comments": [{
             "id": 1,
             "text": "Harika !"
@@ -98,19 +98,19 @@
         "id":6,
         "brand":"Millat Çikolata",
         "title":"Milat Prime Life Madlen Çikolata 200 GR",
-        "price":"19,90 TL"
+        "price":19.90 
     },
     {
         "id":7,
         "brand":"Poloxin",
         "title":"Paloxin Wipe Mendil (30 Adet)",
-        "price":"29,90 TL"
+        "price":29.90
     },
     {
         "id":8,
         "brand":"Afia",
         "title":"Susamlı Çubuk Kraker 100 Gr",
-        "price": "2,75 TL",
+        "price": 2.75,
         "comments": [{
             "id": 1,
             "text": "Harika !"
@@ -129,20 +129,20 @@
         "id": 9,
         "brand": "Afia",
         "title": " Yulaflı Bisküvi 120 GR 24 Adet",
-        "price": "27,00 TL"
+        "price": 27.00
     },
     {
         "id": 10,
         "brand": "Afia",
         "title": "Susamlı Çubuk Kraker 100 Gr x 10 Adet",
-        "price": "26,67  TL"
+        "price": 26.67
 
     }, 
     {
         "id": 11,
         "brand": "Afia",
         "title": "Tuzlu Çubuk Kraker (100 Gr)",
-        "price": "2,75 TL",
+        "price": 2.75,
         "comments": [{
             "id": 1,
             "text": "Harika !"
@@ -161,13 +161,13 @@
         "id": 12,
         "brand": "Afia",
         "title": "Tuzlu Çubuk Kraker (100 Gr x 12 Adet)",
-        "price": "32,01 TL"
+        "price": 32.01
     },
      {
         "id": 13,
         "brand": "Afia",
         "title": "Tuzlu Çubuk Kraker (100 Gr x 24 Adet)",
-        "price": "62,70 TL",
+        "price": 62.70,
         "comments": [{
             "id": 1,
             "text": "Harika !"
@@ -186,13 +186,13 @@
         "id": 14,
         "brand": "Afia",
         "title": "Tatlı Dost 5 Çeşit",
-        "price": "18,53 TL"
+        "price": 18.53
     }, 
     {
         "id": 15,
         "brand": "Afia",
         "title": "Tatlı Dost Vanilya Kremalı Gofret 150 Gr (5 Adet)",
-        "price": "18,53 TL",
+        "price": 18.53,
         "comments": [{
             "id": 1,
             "text": "Harika !"
@@ -211,7 +211,7 @@
         "id": 16,
         "brand": "Afia",
         "title": "Tatlı Dost Muzlu Kremalı Gofret 150 Gr (5 Adet)",
-        "price": "18,53 TL",
+        "price": 18.53,
         "comments": [{
             "id": 1,
             "text": "Harika !"
@@ -230,19 +230,19 @@
         "id": 17,
         "brand": "Afia",
         "title": "Tatlı Dost Fındıklı Kremalı Kakaolu Gofret 150 Gr (5 Adet)",
-        "price": "18,53 TL"
+        "price": 18.53
     }, 
     {
         "id": 18,
         "brand": "Afia",
         "title": "Tatlı Dost Fındıklı Kremalı Kakaolu Gofret 150 Gr",
-        "price": "3,90 TL"
+        "price": 3.90 
     }, 
     {
         "id": 19,
         "brand": "Afia",
         "title": "Tatbis Bisküvi 55 GR(24 Adet)",
-        "price": "34,20 TL",
+        "price": 34.20,
         "comments": [{
             "id": 1,
             "text": "Harika !"
@@ -262,13 +262,13 @@
         "id": 20,
         "brand": "Afia",
         "title": "Albence Tuzlu Peynirli Kraker 70 Gr*24 Adet",
-        "price": "34,20 TL"
+        "price": 34.20
     }, 
     {
         "id": 21,
         "brand": "Afia",
         "title": "Tatbis Bisküvi 55 GR(12 Adet)",
-        "price": "17,46 TL",
+        "price": 17.46,
         "comments": [{
             "id": 1,
             "text": "Harika !"
@@ -287,19 +287,19 @@
         "id": 22,
         "brand": "Afia",
         "title": "Petibör Bisküvi 160GR",
-        "price": "2,50 TL"
+        "price": 2.50
     }, 
     {
         "id": 23,
         "brand": "Afia",
         "title": "Bebe Bisküvisi 150 GR x 12 Adet",
-        "price": "33,76 TL"
+        "price": 33.76
     }, 
     {
         "id": 24,
         "brand": "Afia",
         "title": "Albence Tuzlu Peynirli Kraker 70 Gr",
-        "price": "1,50 TL",
+        "price": 1.50 ,
         "comments": [{
             "id": 1,
             "text": "Harika !"
@@ -318,19 +318,19 @@
         "id": 25,
         "brand": "Afia",
         "title": "Starbis Bisküvi 55 GR",
-        "price": "1,50 TL"
+        "price": 1.50
     }, 
     {
         "id": 26,
         "brand": "Afia",
         "title": "Başakköy Yulaflı Bisküvi 120 GR 24 Adet",
-        "price": "57,00 TL"
+        "price": 57.00
     },
      {
         "id": 27,
         "brand": "Afia",
         "title": "Başakköy Yulaflı Bisküvi 120 GR",
-        "price": "2,50 TL",
+        "price": 2.50,
         "comments": [{
             "id": 1,
             "text": "Harika !"

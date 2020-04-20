@@ -1,7 +1,7 @@
 <template>
     <v-app>
-        <Header></Header>
-        <side></side>
+        <Header></Header>    
+        <side></side>        
         <fo></fo>
     </v-app>
 </template>
@@ -12,10 +12,10 @@ import Header from '@/components/Header.vue';
 import side  from '@/components/sideBarBrandAfia.vue';
 import footer from '@/components/Footer.vue';
 
+
 export default {
   name :'MainPage',
   components:{
-    
     "Header":Header,
     "side":side,
     "fo":footer

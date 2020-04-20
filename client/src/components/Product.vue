@@ -1,17 +1,7 @@
 <template>
 <v-app class="app">
 
-<!--   
-<v-row  class="boyut" >
-     <v-col class="" cols="2" >
-    <img class="prResim" src="../assets/Aci_Cips.png" > 
-    <b><a class="yaziB" href="#"  v-for="items in 1" :key="items.id"><p>{{productList[0].brand}}</p></a></b>
-    <a class="yaziB" href="#"  v-for="items in 1" :key="items.id"><p>{{productList[0].title}}</p></a>
-    <p class="bosluk" > <img class="buton" src="../assets/Sepet.png" > <img class="buton" src="../assets/favori.png" > 
-    <b class="fiyat" href="#"  v-for="items in 1" :key="items.id">{{productList[0].price}}</b></p>
-     </v-col>
-</v-row>
--->
+
 
 <v-row>
   
@@ -40,13 +30,131 @@
        <a style="text-decoration:none;"  > <v-icon  color="black" style="margin-left:13%;margin-top:10%;" large  >favorite_border</v-icon></a>
      </div>
      <div class="CardPrice">
-         {{product.price}}
+         {{product.price}} TL
      </div> 
        </v-row>
         </div>
    
 </v-card>
 </v-row>
+    <template>
+      <v-row justify="center">
+      
+        <v-dialog
+          v-model="sepetAddPopUp"
+          max-width="1200"
+         
+        >
+          <v-card>
+            <v-card-title class="headline">Ürün Sepetinize Eklendi</v-card-title>
+          
+  <v-row style="width:100%; background-color:rgb(230, 227, 227);" > 
+          <v-col style="border-right:1px solid rgb(216, 212, 212);" cols=2>
+          <b class="sepetDivfont">Ürün</b>
+
+          </v-col>
+          <v-col style="border-right:1px solid rgb(216, 212, 212);" cols=3>
+          <b class="sepetDivfont">Ürün Adı</b>
+
+          </v-col>
+          <v-col style="border-right:1px solid rgb(216, 212, 212);" cols=2>
+          <b class="sepetDivfont">Miktar Birim</b>
+
+          </v-col>
+
+          <v-col style="border-right:1px solid rgb(216, 212, 212);" cols=2>
+          <b class="sepetDivfont">Birim Fiyat</b>
+
+          </v-col>
+          <v-col style="border-right:1px solid rgb(216, 212, 212);" cols=1>
+          <b class="sepetDivfont">Toplam Tutar</b>
+
+          </v-col>
+          <v-col style="border-right:1px solid rgb(216, 212, 212);" cols=2>
+          <b class="sepetDivfont">Sil</b>
+
+          </v-col>
+  </v-row>
+  <v-row v-for="urun in sepetUrunleri" :key="urun.id"  >
+        <v-col style="border-bottom:1px solid rgb(216, 212, 212);" cols=2>
+          <div  >
+          <img style="margin-left:4%; border:1px solid rgb(216, 212, 212);; height:40%; width:70%;" 
+          src="../assets/images/AfiaMarka.jpg"/>
+
+                      
+          </div>
+          
+
+          </v-col>
+          <v-col style="border-bottom:1px solid rgb(216, 212, 212);" cols=3  >
+            
+              <b>{{urun.brand}}</b>
+              <p style="font-size:18px;">{{urun.title}}</p>
+              
+                        
+
+          </v-col>
+          <v-col style="margin-left:2%; border-bottom:1px solid rgb(216, 212, 212);" cols=2>
+            <v-row style="border:1px solid rgb(216, 212, 212); width:80%; height:30%; text-align:center;">
+
+                  <p style="text-align:left; margin-top:3%; margin-left:1%;" >ADET:</p>
+                  
+                  <button style="width:18%; height:75%; margin-top:3%; margin-left:4%; border:1px solid rgb(216, 212, 212) ;"> -</button>
+                                  <p style="margin-top:6%; margin-left:5%; " >  {{miktar}} </p>
+                  <button style="width:18%; height:75%; margin-top:3%; margin-left:9%; border:1px solid rgb(216, 212, 212) ;"> +</button>
+            </v-row>
+
+          </v-col>
+
+          <v-col style="border-bottom:1px solid rgb(216, 212, 212);" cols=2>
+            <b> {{urun.price}} </b>
+          </v-col>
+          <v-col style="border-bottom:1px solid rgb(216, 212, 212);" cols=1>
+          
+          <p>{{toplamTutar=urun.price}}</p>
+
+          </v-col>
+          <v-col style="border-bottom:1px solid rgb(216, 212, 212);" cols=1>
+          
+                <button @click="urunSil(urun.id)" class="silBtn">X</button>
+
+          </v-col>
+</v-row>
+            
+
+            <v-card-actions>
+             <v-row>
+                  <v-col cols=3>
+                  <v-btn style=" margin-top:25px;background-color:green; color:white;"
+                
+                    block
+                    
+                    
+                    text
+                    @click="()=>{sepetAddPopUp=false;}"
+                  >
+                    Alışverişe Devam
+                  </v-btn>
+                  </v-col>
+                  <v-spacer></v-spacer>
+
+                <v-col cols=3>
+                  <div style=" border: 1px solid grey; text-align:center; margin-top:-19px;"> <b>Sepet Toplamı: </b> {{sepetToplami}} TL </div>
+                  <v-btn  style=" margin-top:10px; background-color:green; color:white;"
+                
+                    block
+                    text
+                    @click="()=>{this.$router.push('/sepet')}"
+                  >
+                    Sepete Git
+                  </v-btn>
+                </v-col>
+              </v-row>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-row>
+    </template> 
 </v-app>
 </template>
 
@@ -94,6 +202,21 @@ color:red;
     background-color: rgb(235, 13, 13);
     color:black;
 }
+.sepetDivfont{
+  text-align: center;
+  margin-left:10%;
+}
+.silBtn{
+	border: 1px solid black;
+	width: 25px;
+	font-size:20px;
+	color: white;
+	background-color: grey;
+
+}
+.silBtn:hover{
+	background-color: black;
+}
 
 
 </style>
@@ -112,7 +235,10 @@ export default {
        productsList:[],
        productId:"",
        sepetUrunleri:[],
-       sepetCount:0
+       sepetCount:0,
+       sepetToplami:0,
+       sepetAddPopUp:false,
+       miktar:1
 
  
     };
@@ -123,7 +249,13 @@ export default {
       sepetUrunleri:{
       handler(){
         console.log("Sepet Ürünleri Değişti");
-        localStorage.setItem('sepetUrunleri',JSON.stringify(this.sepetUrunleri));
+        localStorage.setItem('sepetUrunleri',JSON.stringify(this.sepetUrunleri)); 
+        var toplam=0;
+        for(var i=0;i<this.sepetUrunleri.length;i++){
+           toplam=toplam+this.sepetUrunleri[i].price;
+        }
+        this.sepetToplami=toplam;
+        localStorage.setItem('sepetToplami',this.sepetToplami);
       },
       deep:true,
       },
@@ -141,6 +273,8 @@ export default {
        this.sepetUrunleri=JSON.parse(localStorage.getItem('sepetUrunleri'));
        if(localStorage.getItem('sepetCount'))
        this.sepetCount=localStorage.getItem('sepetCount');
+         if(localStorage.getItem('sepetToplami'))
+       this.sepetToplami=localStorage.getItem('sepetToplami');
     } ,
     
     methods:{
@@ -149,7 +283,34 @@ export default {
         this.sepetUrunleri.push(product);    
         console.log(this.sepetUrunleri); 
         this.sepetCount++;
-        }
+        this.sepetAddPopUp=true;
+        
+        },
+        urunSil(id){
+	
+				 for(var i=0;i<this.sepetUrunleri.length;i++){
+					if( this.sepetUrunleri[i].id ==id){
+						console.log(this.sepetUrunleri[i]);
+						this.sepetUrunleri.splice(i,1);
+						console.log(this.sepetUrunleri);
+						 localStorage.setItem('sepetUrunleri',JSON.stringify(this.sepetUrunleri)); 
+						 this.sepetCount--;
+						localStorage.setItem('sepetCount',this.sepetCount);
+					
+						var toplam=0;
+						for(var k=0;k<this.sepetUrunleri.length;k++){
+							toplam=toplam+this.sepetUrunleri[k].price;
+							
+						}
+						this.sepetToplami=toplam;
+						localStorage.setItem('sepetToplami',this.sepetToplami);
+
+						}
+					
+					
+				}
+
+			}
      },
     async created() {
       try {

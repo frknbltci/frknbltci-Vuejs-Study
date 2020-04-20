@@ -3,7 +3,7 @@
 		<div style="
 		border-right:1px solid rgb(216, 212, 212);
 		border-left:1px solid rgb(216, 212, 212);
-		border-bottom:1px solid rgb(216, 212, 212);
+		
 		
 		
 		" id="app">
@@ -136,12 +136,12 @@
 			</v-col>
 			<v-col style="border-bottom:1px solid rgb(216, 212, 212);" cols=1>
 			
-			<p>{{toplamTutar}}</p>
+			<p>{{toplamTutar=urun.price}}</p>
 
 			</v-col>
 			<v-col style="border-bottom:1px solid rgb(216, 212, 212);" cols=1>
 			
-            <button class="silBtn">X</button>
+            <button @click="urunSil(urun.id)" class="silBtn">X</button>
 
 			</v-col>
 			
@@ -151,13 +151,13 @@
 
 </v-row>
 
-	<v-row style="margin-left:1px;">
+	<v-row style="margin-left:3px;">
 	<v-col cols=8>
 		
 			<button class="besliButon" >Yazdır</button>
-			<button class="besliButon" >Sepeti Güncelle</button>
-			<button class="besliButon" >Sepeti Temizle</button>
-			<button class="besliButon" >Alışverişe Devam</button>
+			<button @click="sepetiGuncelle()" class="besliButon" >Sepeti Güncelle</button>
+			<button @click="sepetiTemizle()" class="besliButon" >Sepeti Temizle</button>
+			<button @click="alisveriseDevam()" class="besliButon" >Alışverişe Devam</button>
 			<button class="besliButon" >Alışveriş Listeme Ekle</button>
 		
 			<div style="background-color:rgb(230, 227, 227); width:100%; height:100px;">
@@ -180,8 +180,8 @@
 	</v-col>
 		<v-col  cols=2>
 	   
-	   <div style=" margin-top:-4%;margin-left:-11%;  border:1px solid black; width:100%; height:30%; font-size:18px; text-align:end; overflow:auto;" >'{{}}'</div>
-	   <div style="margin-left:-11%; border:1px solid black; width:100%; height:30%; font-size:18px; text-align:end ;">'{{}}'</div>
+	   <div style=" margin-top:-4%;margin-left:-11%;  border:1px solid black; width:100%; height:30%; font-size:18px; text-align:end; overflow:auto;" ><b>{{sepetToplami}} TL </b></div>
+	   <div style="margin-left:-11%; border:1px solid black; width:100%; height:30%; font-size:18px; text-align:end ;"><b>{{sepetToplami}} TL </b></div>
 	</v-col>
 </v-row> 
 
@@ -192,7 +192,7 @@
 
 	<v-col>
  
-			<button @click.prevent="next()" class="stnAlBtn" >Satın Al</button>
+			<button @click.prevent="SatınAl()" class="stnAlBtn" >Satın Al</button>
 			<v-icon  style=
 			"margin-left:-20%;
 			 position:absolute;
@@ -209,8 +209,6 @@
 
 </v-row>
 
-<br><br><br>
-    <button @click.prevent="next()">Next</button>
     </v-container>
 
   </div>
@@ -261,7 +259,7 @@
 						text-overflow:ellipsis;
 						font-size:20px;
 						
-						"> ARA TOPLAM  :  {{toplamTutar}} </div>
+						"> ARA TOPLAM  :  {{sepetToplami}} </div>
 						<div style="border:1px solid rgb(230, 227, 227); 
 						margin-left:1px; 
 						text-overflow:ellipsis;
@@ -274,7 +272,7 @@
 						text-overflow:ellipsis;
 						font-size:20px;
 						
-						"> <b>GENEL TOPLAM : {{TOPLAM}} </b></div>
+						"> <b>GENEL TOPLAM : {{parseFloat(sepetToplami)+10 }} TL </b></div>
 							
 							
 							</div>
@@ -322,61 +320,206 @@
 </v-col>
 
 
-    <button @click.prevent="next()" class="devamBtn" >Devam</button>
+    <button @click="odemeyeDevam()" class="devamBtn" >Devam</button>
 
 
     
 
   </div>
    <v-container fluid=true>
-  <div class="odemeDiv" v-show="step === 3">
+	   
+	   
+<div class="odemeDiv" v-show="step === 3">
+	<v-row>
+	<v-col cols=8>
 	  <v-row style="border-bottom:1px solid rgb(230, 227, 227);">
+		  
    			<v-icon  style=" margin-left:4%;  " x-large   >shopping_cart</v-icon>
             <p style="font-size:25px; color:grey; margin-left:2%; margin-top:1%;">ÖDEME SEÇENEKLERİ</p>
 
 	 </v-row>
     <v-row style="margin-left: 1%; border-bottom:1px solid rgb(230, 227, 227);">
-		<button @click="()=>{this.subStep=1}" class="substeps">KREDİ KARTI</button>
-		<button @click="()=>{this.subStep=2}" class="substeps">HAVALE/EFT</button>
-		<button @click="()=>{this.subStep=3}" class="substeps">KAPIDA ÖDEME</button>
+		<button v-bind:class="{subSelectedKrediKarti:subSelectedKrediKarti}"
+		 @click="()=>{this.subStep=1,this.subSelectedHavale=false,this.subSelectedKapida=false,this.subSelectedKrediKarti=true,this.kapidaOdemeHizmetBedeli=false;}" class="substeps">KREDİ KARTI</button>
+		<button v-bind:class="{subSelectedHavale:subSelectedHavale}"
+		 @click="()=>{this.subStep=2,this.subSelectedHavale=true,this.subSelectedKapida=false,this.subSelectedKrediKarti=false,this.kapidaOdemeHizmetBedeli=false;}" class="substeps">HAVALE/EFT</button>
+		<button v-bind:class="{subSelectedKapida:subSelectedKapida}"
+		 @click="()=>{this.subStep=3,this.subSelectedHavale=false,this.subSelectedKrediKarti=false,this.subSelectedKapida=true,this.kapidaOdemeHizmetBedeli=true;}" class="substeps">KAPIDA ÖDEME</button>
 	</v-row>
+	
+
+
 
 	 <div v-show="subStep === 1">
-    	<h1>Step 1</h1>
-    
+	<v-row>
+		<v-icon style="margin-left:4%; margin-top:2%;" x-large> shopping_cart  </v-icon> <h6 style="font-size:18px; margin-left:2%; margin-top:3%;">  Kart Bilgileri</h6>
+	</v-row>
+
+	<v-row>	
+
+		<h4 style="margin-left:1%;">Kart Üzerindeki Ad Soyad <p><input  style="padding:2%; width:170%; height:50px; border:1px solid black; margin-top:2%; margin-left:2%;" type="text" placeholder="Ad Soyad" /> </p> </h4>
+          
+		<img style="border-radius:2%; position:absolute; height:50%; width:40%; margin-left:60%;" 
+								src="../assets/images/kredikartı.jpg"/>
+
+				
+    </v-row>
+         
+    	<h4>Kart Numarası<p><input  style="padding:1%; width:48.1%; height:50px; border:1px solid black; margin-top:2%;" type="text" placeholder="Kart Numarası " /> </p> </h4>
+	<v-row>	<b class="bfont" >Ay</b>  <b class="bfont">Yıl</b> <b class="bfont">CVC</b> </v-row>
+		<select style=" margin-left:2%; border:1px solid black; width:10%; height:40px; padding-left:1%;" name="DOBMonth">
+			<option>- Ay -  </option>
+			<option value="Ocak">Ocak</option>
+			<option value="Şubat">Şubat</option>
+			<option value="Mart">Mart</option>
+			<option value="Nisan">Nisan</option>
+			<option value="Mayıs">Mayıs</option>
+			<option value="Haziran">Haziran</option>
+			<option value="Temmuz">Temmuz</option>
+			<option value="Ağustos">Ağustos</option>
+			<option value="Eylül">Eylül</option>
+			<option value="Ekim">Ekim</option>
+			<option value="Kasım">Kasım</option>
+			<option value="Aralık">Aralık</option>
+       </select>
+      
+	  	<select style="margin-left:2%; border:1px solid black; width:10%; height:40px; padding-left:1%;" name="DOBMonth">
+					<option>- Yıl -</option>
+					<option value="2020">2020</option>
+					<option value="2019">2019</option>
+					<option value="2018">2018</option>
+					<option value="2017">2017</option>
+					<option value="2016">2016</option>
+					<option value="2015">2015</option>
+					<option value="2014">2014</option>
+       </select>
   
+
+		<input  style="margin-left:3%; padding:1%; width:10%; height:40px; border:1px solid black; margin-top:2%;" type="text" placeholder=" " /> 
     </div>
-	<div v-show="subStep === 2">
-    	<h1>2</h1>
+	<div style="margin-left:2%;" v-show="subStep === 2">
+    	<h6>Havale Fiyatı: {{sepetToplami}} TL + 10,00 TL Kargo ücreti = {{parseFloat(sepetToplami)+10}} TL (0 indirimli) idir.
+Havalenizi yaparken gönderen bölümünde mutlaka " <b>{{currentUser}}</b> " adını kullanınız.
+Aşağıdaki menüden havale göndermek istediğiniz banka hesap numarasını seçip "Devam et" tuşuna basınız.
+Havale yaparken alıcı olarak mutlaka ********************  belirtiniz.
+Sipariş onaylandıktan sonra oluşacak "SP..." ile başlayan Sipariş Numaranızı havalenizin açıklama bölümünde belirtiniz.</h6>
+
+     <h4 style="color:grey; margin-top:5%; font-size:170%;">BANKA HESAPLARIMIZ </h4>
     
-  
-    </div>
-	<div v-show="subStep === 3">
-    	<h1>3</h1>
-    
-  
-    </div>
+
+<form action="">
+
+  <input type="radio"  name="gender" value="1">
+  <label class="radioButtons" for="male">Türkiye Finans, Aydın/Merkez - Hesap No: 700215 - Nafia Gıda Ltd Şti (IBAN: TR81-0020-6001-9900-7002-1500-01)</label><br>
+  <input  type="radio"  name="gender" value="2">
+  <label class="radioButtons" for="female">Kuveyt Türk Bankası, Afyonkarahisar/Merkez - Hesap No: 871916 - Nafia Gıda Ltd Şti (IBAN: TR76-0020-5000-0008-7191-6000-08)</label><br>
+  <input  type="radio"  name="gender" value="3">
+  <label class="radioButtons" for="other">Albaraka Türk, Aydın/Merkez - Hesap No: 4756051 - Nafia Gıda Ltd Şti (IBAN: TR77-0020-3000-0047-5605-0000-01)</label>
+
+</form>
 
 
-  
+    </div>
+	<div style="margin-top:1%; margin-left:1%; font-size:20px;" v-show="subStep === 3">
+    	Kapıda ödeme sisteminde kargo şirketleri kapıda ödeme hizmetine karşılık olarak 6,00 TL hizmet bedeli almaktadırlar. Bu bedel kargo ücreti haricinde alınan bir bedeldir.
+	Ürün bedeli {{AraToplam }} TL 'dir.
 
-    <button @click.prevent="prev()">Previous</button>
+    Toplam ödeyeceğiniz tutar aşağıda belirtilmiştir.   
+
+	{{AraToplam }} TL Ürün Fiyatı + 6,00 TL Kapıda Ödeme Hizmet Bedeli + 10,00 TL Kargo Ücreti
+
+	<p>Toplam : <b> {{parseFloat(sepetToplami)+10+6 }} TL</b> </p>
+
+	<form action="">
+
+  <input type="radio"  name="gender" value="4">
+  <label style="width:80%;" class="radioButtons" for="male">Nakit</label><br>
+
+
+</form>
+
     
-    
-  </div>
+    </div>
+	</v-col>
+	<v-col style=" position:absolute; margin-top:0%;  margin-left:70%; width:100%;" cols=3>
+			
+		
+				
+					<div @click="goster=!goster" style="background-color:rgb(230, 227, 227);">
+						<v-row>
+							<v-icon  style=" margin-left:35px;  " x-large   >shopping_cart</v-icon> 
+							<p style="text-overflow:ellipsis;">SİPARİŞ ÖZETİ</p>
+							<button @click="goster=!goster"  style=" text-overflow:ellipsis;  text-align:end; margin-left:30px;" dark> <v-icon>person</v-icon>  </button>
+						</v-row>
+					</div>
+			   		 <div   v-if="goster" 
+							style="border:1px solid rgb(230, 227, 227); 
+							margin-left:1px; 
+							text-overflow:ellipsis;
+							position:absolute;
+						
+						">
+							
+							<v-row   v-for="urun in sepetUrunleri" :key="urun.id">
+								<img style="height:10%; width:20%; margin-left:10%;" 
+								src="../assets/images/AfiaMarka.jpg"/>
+								<b>{{urun.title}} <p>{{urun.price}} </p></b>
+								
+							</v-row>
+							<div style="border:1px solid rgb(230, 227, 227); 
+						margin-left:1px; 
+						text-overflow:ellipsis;
+						font-size:20px;
+						
+						"> ARA TOPLAM  :  {{sepetToplami}} </div>
+						<div style="border:1px solid rgb(230, 227, 227); 
+						margin-left:1px; 
+						text-overflow:ellipsis;
+						font-size:20px;
+						
+						"> KARGO :   10 TL</div>
+
+						<div v-if="kapidaOdemeHizmetBedeli" style="border:1px solid rgb(230, 227, 227); 
+						margin-left:1px; 
+						text-overflow:ellipsis;
+						font-size:20px;
+						
+						"> K.Ö.H.B: 6 TL</div>
+							
+					   	<div style="border:1px solid rgb(230, 227, 227); 
+						margin-left:1px; 
+						text-overflow:ellipsis;
+						font-size:20px;
+						
+						"> 
+						<b v-if="kapidaOdemeHizmetBedeli" >
+							
+							 GENEL TOPLAM : {{parseFloat(sepetToplami)+10+6  }}
+							 
+						 </b>
+						 <b v-if="!kapidaOdemeHizmetBedeli" >
+							  GENEL TOPLAM : {{parseFloat(sepetToplami)+10  }}
+							  
+						 </b>
+						
+						
+						
+						
+						
+						</div>
+							
+							
+						</div>
+				
+			<v-btn @click="siparisiTamamla()" style="margin-right:0%; position:absolute; margin-top:110%;" x-large color="success" dark>SİPARİŞİ TAMAMLA</v-btn>
+			
+		</v-col>	
+
+	
+	 </v-row>
+</div>
   </v-container>
-  <div class="onayDiv" v-show="step === 4">
-    <h1>Step Four</h1>
-    
-    
 
-  
-
-    <button @click.prevent="next()">Previous</button>
-    <input type="submit" value="Save">
-    
-  </div>
-  
 
   <br/><br/>
 
@@ -444,7 +587,7 @@
 				value: 25,
 				sepetUrunleri:[],
 				dialog: false,
-				miktar:0,
+				miktar:1,
 				toplamTutar:0,
 				goster:false,
 				currentUser:'',
@@ -457,16 +600,123 @@
 				cardFontonay:false,
 				cardFontodeme:false,
 				cardFontadres:false,
+				subSelectedKrediKarti:true,
+				subSelectedHavale:false,
+				subSelectedKapida:false,
+				sepetCount:0,
+				sepetToplami:0,
+				kapidaOdemeHizmetBedeli:false
 				
+
 			
 			};
 		},
 		methods:{
-			next() {
-			this.step++;
-			this.value+=25;
-			this.selectedSepet=false;
+			arrayRemove(arr, value) {
+
+				return arr.filter(function(ele){
+					return ele != value;
+				});
+
+},
+
+			urunSil(id){
+	
+				 for(var i=0;i<this.sepetUrunleri.length;i++){
+					if( this.sepetUrunleri[i].id ==id){
+						console.log(this.sepetUrunleri[i]);
+						this.sepetUrunleri.splice(i,1);
+						console.log(this.sepetUrunleri);
+						 localStorage.setItem('sepetUrunleri',JSON.stringify(this.sepetUrunleri)); 
+						 this.sepetCount--;
+						localStorage.setItem('sepetCount',this.sepetCount);
+						this.$router.go();
+						var toplam=0;
+						for(var k=0;k<this.sepetUrunleri.length;k++){
+							toplam=toplam+this.sepetUrunleri[k].price;
+							
+						}
+						this.sepetToplami=toplam;
+						localStorage.setItem('sepetToplami',this.sepetToplami);
+
+						}
+					
+					
+				}
+
 			},
+
+			sepetiGuncelle(){
+			 this.$router.go();
+			},
+			sepetiTemizle(){
+				localStorage.removeItem('sepetUrunleri');
+				localStorage.removeItem('sepetCount');
+				localStorage.removeItem('sepetToplami');
+				this.$router.go();
+
+			},
+			alisveriseDevam(){
+				this.$router.push('/');
+			},
+			odemeyeDevam(){
+		    if(!this.currentUser){
+				window.alert('Giriş yapıp adres belirlemelisiniz.');
+				this.step=2;
+			}else{
+			this.step=3;
+			this.value=75;
+			this.selectedSepet=false;
+			this.cardFontsepet=false;
+			this.selectedAdres=false;
+			this.selectedOdeme=true;
+			this.selectedOnay=false;
+			this.cardFontadres=false;
+			this.cardFontodeme=true;
+			this.cardFontonay=false;
+				}
+			},
+			SatınAl(){
+			if( this.sepetUrunleri == null || this.sepetUrunleri.length==0){
+				console.log(this.sepetUrunleri);
+			  this.step=1;
+			  window.alert('Ürün seçmeden bu aşamayı geçemezsiniz.');
+			 }
+			 else
+			 {
+				 console.log(this.sepetUrunleri);
+			 this.step=2;
+			this.value=50;
+			this.selectedSepet=false;
+			this.cardFontsepet=false;
+			this.selectedAdres=true;
+			this.selectedOdeme=false;
+			this.selectedOnay=false;
+			this.cardFontadres=true;
+			this.cardFontodeme=false;
+			this.cardFontonay=false;
+			 }
+
+			},
+			siparisiTamamla(){
+
+				this.step=4;
+				this.value=100;
+				this.selectedSepet=false;
+				this.cardFontsepet=false;
+				this.selectedAdres=false;
+				this.selectedOdeme=false;
+				this.selectedOnay=true;
+				this.cardFontadres=false;
+				this.cardFontodeme=false;
+				this.cardFontonay=true;
+				window.alert("SİPARİŞİNİZ ALINDI.ANASAYFAYA YÖNLENDİRİLİYORSUNUZ.");
+				this.$router.push('/');
+				localStorage.removeItem('sepetUrunleri');
+				localStorage.removeItem('sepetCount');
+				localStorage.removeItem('sepetToplami');
+			}
+			,
 			sepetIslemleri(){
 			this.step=1;
 			this.value=25;
@@ -480,9 +730,10 @@
 			this.cardFontonay=false;
 			},
 			adresIslemleri(){
-			 if( this.sepetUrunleri.length == 0 || this.sepetUrunleri==null  ){
+			 if( this.sepetUrunleri == null){
 			  this.step=1;
 			  window.alert('Ürün seçmeden bu aşamayı geçemezsiniz.');
+			  console.log(this.sepetUrunleri.length);
 			 }
 			 else if(this.step==1){
 				 this.step=1;
@@ -501,6 +752,14 @@
 			 }
 			},
 			odemeIslemleri(){
+				if(this.step==1){
+			      this.step=1;
+                
+			 }
+			 else if(this.step==2){
+				 this.step=2;
+			 }
+			 else{		
 			this.step=3;
 			this.value=75;
 			this.selectedSepet=false;
@@ -511,8 +770,19 @@
 			this.cardFontadres=false;
 			this.cardFontodeme=true;
 			this.cardFontonay=false;
+			}
 			},
 			onayIslemleri(){
+			if(this.step==1){
+			 this.step=1;
+                
+			 }
+			 else if(this.step==2){
+				 this.step=2;
+			 }else if(this.step==3){
+				 this.step=3;
+			 }
+			 else{
 			this.step=4;
 			this.value=100;
 			this.selectedSepet=false;
@@ -523,13 +793,18 @@
 			this.cardFontadres=false;
 			this.cardFontodeme=false;
 			this.cardFontonay=true;
+				}
 			}
 			
 	  },
 	  created(){
 		  this.sepetUrunleri=JSON.parse(localStorage.getItem('sepetUrunleri'));
-			  console.log(typeof(this.sepetUrunleri));
-		  
+		  this.sepetCount=localStorage.getItem('sepetCount');
+		  this.sepetToplami=localStorage.getItem('sepetToplami');
+		  if(localStorage.getItem('currentUser')){
+			  this.currentUser=localStorage.getItem('currentUser');
+		  }
+		
 	  }
 		
 		
@@ -679,6 +954,30 @@
 }
 .cardFontonay{
     color: white;
+}
+.subSelectedKrediKarti{
+	background-color: rgb(80, 76, 76);
+	color: white;
+}
+.subSelectedHavale{
+	background-color: rgb(80, 76, 76);
+	color: white;
+}
+.subSelectedKapida{
+	background-color: rgb(80, 76, 76);
+	color: white;
+	
+}
+.bfont{
+  font-size: 125%;
+  margin-left: 8%;
+}
+.radioButtons{
+	border: 1px solid grey;
+	height:20%;
+	padding: 1%;
+	background-color:  rgb(212, 209, 209);
+
 }
 
 
