@@ -8,11 +8,13 @@ import vuetify from './plugins/vuetify';
 import '@mdi/font/css/materialdesignicons.css'
 import TreeView from "vue-json-tree-view"
 import axios from 'axios'
-import { store }  from './store'
+import { store } from './store'
+import vSelect from "vue-select";
+import "vue-select/dist/vue-select.css";
 
 Vue.prototype.$http = axios
 
-
+Vue.component("v-select", vSelect);
 
 Vue.use(TreeView)
 Vue.config.productionTip = false

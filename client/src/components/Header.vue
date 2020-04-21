@@ -75,7 +75,7 @@
            <div v-else>  
        <a href="#" id="app" v-on:click="seen = !seen"  class="control" style="margin-top:5%; color:grey;text-decoration:none; margin-left:10%;"  >Giriş Yap</a> 
            
-           <a href="" style="margin-top:25%;margin-left:10%; text-decoration:none; color:grey;" >Kayıt Ol</a>
+           <a href="http://localhost:3030/registration" style="margin-top:25%;margin-left:10%; text-decoration:none; color:grey;" >Kayıt Ol</a>
         </div>
 
 

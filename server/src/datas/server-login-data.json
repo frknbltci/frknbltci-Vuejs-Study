@@ -32,6 +32,14 @@
     {
         "id": 13,
         "email": "a",
-        "password":1
+        "password": 1
+    },
+    {
+        "email": "b"
+    },
+    {
+        "id": 9,
+        "email": "furkan",
+        "password": "1"
     }
 ]

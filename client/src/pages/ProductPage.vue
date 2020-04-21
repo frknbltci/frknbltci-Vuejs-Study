@@ -48,8 +48,9 @@
   </tr>
         </table>
       </div>
-      <div id="yorumlar" v-show="currentTab === 2">
-    <v-row>
+<div id="yorumlar" v-show="currentTab === 2">
+  Bu ürün için toplam <b> {{comments.length}} </b> yorum yapılmıştır. <a style="color:black;" @click='()=>{yorumGoster=!yorumGoster;}'> <b > Yorum Yaz </b> </a>
+    <v-row v-if='yorumGoster'>
         <v-col>
           <v-icon style="background-color:grey; margin-top:-2px; position:sticky;"  color="white" >home</v-icon>        	
           <select style=" border:1px solid black; width:80%; height:25px; padding-left:2%;" name="DOBMonth">
@@ -63,16 +64,16 @@
           </select>
           <p>
           <v-icon style="background-color:grey; margin-top:-2px; position:sticky;"  color="white" >home</v-icon>    
-          <input style=" margin-top:5%; border:1px solid black; width:80%; height:25px; padding-left:2%;" type="text" placeholder="Yorum Başlığı"> </input>
+          <input v-model="yorumBasligi" style=" margin-top:5%; border:1px solid black; width:80%; height:25px; padding-left:2%;" type="text" placeholder="Yorum Başlığı">
           </p>
 
 
 <form action="">
   <b>Yorumda isminiz Görünsün mü ?</b>
     <p>
-      <input type="radio"  name="isim" value="1">
+      <input v-model="deger" type="radio"  name="isim" value="1">
         <label  >Hayır</label>
-      <input style="margin-left:3%;" type="radio"  name="isim" value="2">
+      <input v-model="deger" style="margin-left:3%;" type="radio"  name="isim" value="2">
        <label >Evet</label>
     </p>
 
@@ -80,14 +81,14 @@
         </v-col>
         <v-col >
           
-          <input style="
+          <input v-model="yorum" style="
            margin-top:0%;
            border:1px solid black;
            width:150%;
            height:85px;
            padding-left:1%;
                " type="text" placeholder="Yorum">
-               <v-btn color="grey" style="width:150%;" block>GÖNDER</v-btn>
+               <v-btn @click="yorumGonder()" color="grey" style="width:150%;" block>GÖNDER</v-btn>
         </v-col>
       </v-row>
 
@@ -95,8 +96,46 @@
  
       </div>
 
+      <v-row style="border-top:1px solid rgb(216, 212, 212);
+      border-bottom:1px solid rgb(216, 212, 212); 
+      height:245px; " v-for="comment in comments" :key="comment.id">
+        
+         <v-col style="margin-top:-2%;">
+              
+         
+              <p style=" margin-top:-2%;"> <b> {{comment.kullanici}} </b>    </p>  Evet: 0 Hayır: 0 
+              
+             <p> <b style="font-size:13px;">Yorumu Onaylıyormusunuz ?</b> </p>
+               <v-row> 
+                 <v-btn color="success" small >Evet </v-btn> 
+                 <v-btn style="margin-left:2px;" color="primary" small >Hayır </v-btn>
+                 
+                  </v-row>    
+              
+             
+               </v-col>
+         <v-col style="margin-right:50%;">
+                <div style="
+                      
+                     
+                     
+                      border-left:1px solid rgb(216, 212, 212); 
+                      margin-left:40%; width:200px;"> 
+                          <p><b>{{comment.baslik}}</b></p>
+               <p style=
+                      "text-align:start;">      
+                      {{ comment.text}}
+                   
+                          </p>
+                   </div>
+                  
+          </v-col>
+            
+       
+       
+    </v-row>
     </div>
-    <h6 v-for="comment in comments" :key="comment.id">Anonim :{{ comment.text}} </h6>
+    
   </div>
 
 
@@ -365,7 +404,12 @@ export default {
       sepetCount:0,
       sepetUrunleri:[],
       miktar:1,
-      sepetAddPopUp:false
+      sepetAddPopUp:false,
+      yorumGoster:false,
+      currentUser:'',
+      yorumBasligi:'',
+      yorum:'',
+      deger:0,
        
     };
     
@@ -400,20 +444,49 @@ export default {
         if(localStorage.getItem('sepetUrunleri') || localStorage.getItem('sepetCount')){
       	   this.sepetUrunleri=JSON.parse(localStorage.getItem('sepetUrunleri'));
 		       this.sepetCount=localStorage.getItem('sepetCount');
-		       this.sepetToplami=localStorage.getItem('sepetToplami');
+           this.sepetToplami=localStorage.getItem('sepetToplami');
+           
          }
        if(localStorage.getItem('currentUser')){
 			     this.currentUser=localStorage.getItem('currentUser');
-		  }
-       
-      } catch (err) {
-        console.log("err", err);
-      } 
+      }
+/*
+       if(!this.id){
+          this.id = localStorage.getItem('id');
+          this.productPrice =localStorage.getItem('productPrice');
+          this.productName = JSON.parse(localStorage.getItem('productName'));
+          this.comments=JSON.parse(localStorage.getItem('comments'));
+        
+        }*/
+  //SAYFA YENİLENİNCE ID VE BİLGİLERİ TEKRAR KORUMAK LAZIM
         this.id = this.$route.params.id;
         this.productPrice = this.$route.params.price;
         this.productName = this.$route.params.name;
         this.comments=this.$route.params.comments;
+    /*   
+       if(this.id){
+          
+          localStorage.setItem('id',this.id);
+          localStorage.setItem('productPrice',this.productPrice);
+          localStorage.setItem('productName',this.productName);
+          localStorage.setItem('comments',JSON.stringify(this.comments)); 
+        
+        }
+*/
+       
+       
+      } catch (err) {
+        console.log("err", err);
+      } 
+        /*this.id = this.$route.params.id;
+        this.productPrice = this.$route.params.price;
+        this.productName = this.$route.params.name;
+        this.comments=this.$route.params.comments;*/
     },
+    mounted:{
+     
+    }
+    ,
     methods:{
      async sepeteEkle(id){
        console.log(id);
@@ -432,6 +505,26 @@ export default {
         this.sepetCount++;
         console.log('braka');
         this.sepetAddPopUp=true;
+        },
+        //2 KEZ EKLİYOR API DE SORUN VAR
+       yorumGonder(){
+        console.log('tıklandı.');
+            axios.post('http://localhost:8180/comment', {
+            id:this.id,
+            yorum:this.yorum,
+            yorumBasligi:this.yorumBasligi,
+            deger:this.deger,
+            kullanici:this.currentUser         
+          })
+          .then(function (response) {
+            console.log("Buradaki response ne ?");
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+         
+
         },
       urunSil(id){
 	

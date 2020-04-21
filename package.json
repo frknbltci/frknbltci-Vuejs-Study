@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "vue-select": "^3.10.1"
+  }
+}

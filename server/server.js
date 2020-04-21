@@ -103,8 +103,6 @@ app.post('/login', (req, res) => {
   fs.readFile(LOGIN_DATA_FILE, (err, data) => {
     const users = JSON.parse(data);
    
-//SERVER DAN GELEN İSTEKLERİ DÜZENLEYİP ÖN TARAFTA İŞLEM YAPTIRICAZ 
-    //SEPETİ DE LOCAL STORAGE YAPICAZ
     var email = req.body.email;
     var sifre = req.body.password;
     if (!email || !sifre) {
@@ -155,23 +153,24 @@ app.post('/login', (req, res) => {
 app.post('/signup', (req, res) => {
   fs.readFile(SIGNUP_DATA_FILE, (err, data) => {
     const users = JSON.parse(data);
+    
     const newUser = {
-      id: req.body.id,
-      name: req.body.name,
-      surname: req.body.surname,
+      id: users.length+1,
+      isim: req.body.ad,
+      soyad: req.body.soyad,
+      firma: req.body.firma,
+      vergiDairesi: req.body.vergiDairesi,
+      vergiNumarasi: req.body.vergiNumarasi,
+      tcno: req.body.tcno,
+      tel: req.body.tel,
       email: req.body.email,
-      phoneNumber: req.body.phoneNumber,
-      company: req.body.company,
-      taxAdmin: req.body.taxAdmin,
-      taxNumber: req.body.taxNumber,
-      ıdNumber: req.body.ıdNumber,
-      password: req.body.password,
-      password2: req.body.password2
+      password: req.body.sifre,
+      password2: req.body.sifreTekrar
     };
   
     let userExist = false;
     users.map((users) => {
-      if (users.id === newUser.id) {
+      if (users.email === newUser.email) {
         userExist = true;
       }
     });
@@ -185,10 +184,15 @@ app.post('/signup', (req, res) => {
   fs.readFile(LOGIN_DATA_FILE, (err, dataLogin) => {
     const loginUsers = JSON.parse(dataLogin);
     const forLoginNewUser = {
-      id: req.body.id,
+      id: loginUsers.length + 1,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.sifre
     };
+    for (var i = 0; i < loginUsers.length; i++){
+      if (loginUsers[i].email == req.body.email) {
+        return res.status(404).json();
+       }
+    }
     loginUsers.push(forLoginNewUser);
     fs.writeFile(LOGIN_DATA_FILE, JSON.stringify(loginUsers, null, 4), () => {
       res.setHeader('Cache-Control', 'no-cache');
@@ -261,21 +265,62 @@ app.post('/store/delete', (req, res) => {
   });
 });
 
-app.post('/comment', (req, res) => {
-  fs.readFile(COMMENT_DATA_FILE, (err, data) => {
-    let Comments = JSON.parse(data);
-    let newComment = {
-      productId: req.body.productId,
-      productVote: req.body.productVote,
-      commentId: req.body.commentId,
-      comment: req.body.comment,
-      isFavor: req.body.isFavor,
-    };
-    Comments.push(newComment);
-    fs.writeFile(COMMENT_DATA_FILE, JSON.stringify(Comments, null, 4), () => {
-      res.setHeader('Cache-Control', 'no-cache');
-      console.log("Yorum Eklendi.");
-    });
+ app.post('/comment', (req, res) => {
+  fs.readFile(PRODUCTS_DATA_FILE, (err, data) => {
+    let comments = JSON.parse(data);
+    var k ='';
+    for (var i = 0; i < comments.length; i++){ if (comments[i].id == req.body.id) {  k = i;} }   
+       if (req.body.deger == 2) {
+        var newComment = {
+          id: comments[k].comments.length + 1,
+          text: req.body.yorum,
+          kullanici: req.body.kullanici,
+          baslik: req.body.yorumBasligi,
+
+        };
+        comments[k].comments.push(newComment);
+
+           fs.writeFile(PRODUCTS_DATA_FILE, JSON.stringify(comments, null, 4), () => {
+          res.setHeader('Cache-Control', 'no-cache');
+          console.log("Yorum Eklendi.");
+        });
+      }
+     if (req.body.deger == 1) {
+        var newComment = {
+          id: comments[k].comments.length + 1,
+          text: req.body.yorum,
+          kullanici: 'Anonim',
+          baslik: req.body.yorumBasligi,
+
+        };
+
+       comments[k].comments.push(newComment);
+
+        fs.writeFile(PRODUCTS_DATA_FILE, JSON.stringify(comments, null, 4), () => {
+         res.setHeader('Cache-Control', 'no-cache');
+         console.log("Yorum Eklendi.");
+       });
+       
+      }
+    if (req.body.deger == 0) {
+        var newComment = {
+          id: comments[k].comments.length + 1,
+          text: req.body.yorum,
+          kullanici: req.body.kullanici,
+          baslik: req.body.yorumBasligi,
+
+        };
+      comments[k].comments.push(newComment);
+
+        fs.writeFile(PRODUCTS_DATA_FILE, JSON.stringify(comments, null, 4), () => {
+        res.setHeader('Cache-Control', 'no-cache');
+        console.log("Yorum Eklendi.");
+      });
+    
+      }
+
+
+   
   });
 });
 

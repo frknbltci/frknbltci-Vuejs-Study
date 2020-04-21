@@ -36,20 +36,7 @@ export default new Router({
             name: 'markalarPage',
             component: lazyLoad('markalarPage')
             
-        }
-        , 
-        {
-            path: '/Markalar',
-            name: 'markalarPage',
-            component: lazyLoad('markalarPage')
-
-        },
-        {
-            path: '/satisnoktasianketi',
-            name: 'SatisNoktasiPage',
-            component: lazyLoad('SatisNoktasiPage')
-
-        },
+        }, 
         {
             path: '/sertifikalarimiz',
             name: 'SertifikalarimizPage',
@@ -83,8 +70,22 @@ export default new Router({
             path: '/product',
             name: 'ProductPage',
             component: lazyLoad('ProductPage')
+        },
+        {
+            path: '/registration',
+            name: 'RegistrationPage',
+            component: lazyLoad('RegistrationPage')
+        },
+        {
+            path: '/satisnoktasianketi',
+            name: 'SatisNoktaPage',
+            component: lazyLoad('SatisNoktaPage')
         }
+        
 
+
+
+       
     
             
         
