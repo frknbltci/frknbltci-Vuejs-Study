@@ -1,5 +1,4 @@
-{
-"subeler":
+
         [
             {
                 "id": 1,
@@ -20,7 +19,7 @@
             {
                 "id": 3,
                 "Sube": "Gaziosmanpaşa Beşyüzevler Şubesi",
-                "Adres": "YENİ MAHALLE PAŞA ÇAYIRI CADDESİ NO:96/A GAZİOSMANPAŞA/İSTANBULBeşyüzevler / Gaziosmanpaşa / İstanbul / Türkiye",
+              "Adres": "YENİ MAHALLE PAŞA ÇAYIRI CADDESİ NO:96/A GAZİOSMANPAŞA / Gaziosmanpaşa / İstanbul / Türkiye",
                 "Telefon": "0212 479 15 80",
                 "Faks": "",
                 "E-posta": ""
@@ -58,4 +57,3 @@
                 "E-posta": ""
             }
         ]
-}

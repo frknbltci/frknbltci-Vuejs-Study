@@ -410,7 +410,32 @@
         "brand": "Millat Çikolata",
         "title": "Milat Prime Life Madlen Çikolata 200 GR",
         "price": 19.9,
-        "comments": []
+        "comments": [
+            {
+                "id": 1,
+                "text": "GÜZEL ÜRÜN",
+                "kullanici": "Anonim",
+                "baslik": "BEĞENDİM"
+            },
+            {
+                "id": 2,
+                "text": "Ürün Geç ulaştı",
+                "kullanici": "a",
+                "baslik": "Çok iyi Değil"
+            },
+            {
+                "id": 3,
+                "text": "Ürün Geç ulaştı",
+                "kullanici": "a",
+                "baslik": "Çok iyi Değil"
+            },
+            {
+                "id": 4,
+                "text": "asdada",
+                "kullanici": "a",
+                "baslik": "dasd"
+            }
+        ]
     },
     {
         "id": 7,

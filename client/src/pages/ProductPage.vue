@@ -509,6 +509,8 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
+
+      this.$router.push("/");
     },
     urunSil(id) {
       for (var i = 0; i < this.sepetUrunleri.length; i++) {

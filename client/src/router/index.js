@@ -18,7 +18,7 @@ export default new Router({
             name: 'AfiaPage',
             component: lazyLoad('AfiaPage')
         },
-       
+
         {
 
             path: '/LoginPage',
@@ -35,30 +35,30 @@ export default new Router({
             path: '/Markalar',
             name: 'markalarPage',
             component: lazyLoad('markalarPage')
-            
-        }, 
+
+        },
         {
             path: '/sertifikalarimiz',
-            name: 'SertifikalarimizPage',
-            component: lazyLoad('SertifikalarimizPage')
+            name: 'SertifikaPage',
+            component: lazyLoad('SertifikaPage')
 
         },
         {
             path: '/hesapno',
-            name: 'hesapnoPage',
-            component: lazyLoad('hesapnoPage')
+            name: 'HesapPage',
+            component: lazyLoad('HesapPage')
 
         },
         {
             path: '/magazalar',
-            name: 'magazalarPage',
-            component: lazyLoad('magazalarPage')
+            name: 'StorePage',
+            component: lazyLoad('StorePage')
 
         },
         {
             path: '/iletisim',
-            name: 'iletisimPage',
-            component: lazyLoad('iletisimPage')
+            name: 'ContactPage',
+            component: lazyLoad('ContactPage')
 
         },
         {
@@ -81,16 +81,8 @@ export default new Router({
             name: 'SatisNoktaPage',
             component: lazyLoad('SatisNoktaPage')
         }
-        
 
-
-
-       
-    
-            
-        
-      
 
     ],
-    mode:'history'
+    mode: 'history'
 });
