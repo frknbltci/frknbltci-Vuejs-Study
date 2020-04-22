@@ -263,95 +263,87 @@
   </v-app>
 </template>
 <style scoped>
-.top-side-main{
-    border-style: ridge;
-    width: 98%;
-    height: 900px;
-    align-self:center;
-    margin-top: 2%;
-    margin-bottom: 5%;
+.top-side-main {
+  border-style: ridge;
+  width: 98%;
+  height: 900px;
+  align-self: center;
+  margin-top: 2%;
+  margin-bottom: 5%;
 }
-.top-left{
- border-style: ridge;
- width: 47%;
- height: 840px;
- margin-top:1.8%;
- margin-left:2%;
- float: left;
+.top-left {
+  border-style: ridge;
+  width: 47%;
+  height: 840px;
+  margin-top: 1.8%;
+  margin-left: 2%;
+  float: left;
+}
+.top-right {
+  width: 47%;
+  margin-left: 2%;
 
+  float: right;
+  margin-right: 2%;
+  margin-top: 1.8%;
+  height: auto;
+  text-align: left;
 }
-.top-right{
- width: 47%;
- margin-left:2%;
- 
- float:right;
- margin-right: 2%;
- margin-top: 1.8%;
- height: auto;
- text-align: left;
- 
- 
+.prResim {
+  width: 80%;
+  height: 90%;
+  margin-left: 9%;
+  margin-top: 4%;
 }
-.prResim{
- width: 80%;
- height: 90%;
- margin-left: 9%;
- margin-top: 4%;
-   
+.yaziB {
+  margin-top: 4%;
+  font-weight: 300;
 }
-.yaziB
-{
- margin-top: 4%;
- font-weight:300;
+.price {
+  margin-top: 4%;
+  font-weight: 700;
+  color: red;
+  font-size: 50px;
 }
-.price{
- margin-top: 4%;
- font-weight:700;
- color: red;
- font-size: 50px;
+.textBox {
+  width: 90px;
+  height: 68px;
+  text-align: center;
 }
-.textBox{
- width: 90px;
- height: 68px;
- text-align: center;
+.textBox1 {
+  width: 70%;
+  height: 80px;
+  text-align: left;
+  margin-left: 2%;
 }
-.textBox1{
- width:70%;
- height: 80px;
- text-align: left;
- margin-left:2% ;
+.top-picture {
+  width: 20%;
+  margin-left: 3%;
+  height: 20%;
 }
-.top-picture{
- width: 20%;
- margin-left: 3%;
- height: 20%;
-}
-.bottom-picture{
- width: 30%;
- height: 20%;
- margin-left: 3%;
+.bottom-picture {
+  width: 30%;
+  height: 20%;
+  margin-left: 3%;
 }
 
-.tabs{
-    margin-left: 5%;
-    
+.tabs {
+  margin-left: 5%;
 }
-.active{
-   border: 1px solid white;
+.active {
+  border: 1px solid white;
 }
-button{
+button {
   padding: 10px;
-  background-color:#d5d5d5; 
+  background-color: #d5d5d5;
   text-align: left;
   width: 30%;
-  
 }
-button.active{
+button.active {
   background-color: white;
-  color:#ee1c24;
-  
+  color: #ee1c24;
 }
-.tab-content div{
+.tab-content div {
   padding: 30px;
   border: 1px solid white;
   width: 90%;
@@ -360,97 +352,96 @@ button.active{
   background-color: white;
   margin-top: -0.1%;
 }
-table, th, td {
+table,
+th,
+td {
   border: 0.1px solid black;
   border-collapse: collapse;
   font-weight: 400;
 }
-th{
+th {
   width: 30%;
   padding: 5px;
 }
 </style>
 
 <script>
-import Header from '@/components/Header.vue';
+import Header from "@/components/Header.vue";
 
-import Footer from  '@/components/Footer.vue';
-
+import Footer from "@/components/Footer.vue";
 
 import Vue from "vue";
 import axios from "axios";
 Vue.use(axios);
 
 export default {
-  name :'MainPage',
-   el: '#app',
-  components:{
-    
-    "Header":Header,
-    "Footer":Footer
-    
-    
-     
+  name: "MainPage",
+  el: "#app",
+  components: {
+    Header: Header,
+    Footer: Footer,
   },
-  data(){
-    return{
-      
-      id:"",
-      productName:"",
-      comments:[],
-      productPrice:"",
+  data() {
+    return {
+      id: "",
+      productName: "",
+      comments: [],
+      productPrice: "",
       currentTab: 2,
-      tabs: ['Ürün Özellikleri', 'Ödeme Seçenekleri', `Yorumlar`],
-      sepetCount:0,
-      sepetUrunleri:[],
-      miktar:1,
-      sepetAddPopUp:false,
-      yorumGoster:false,
-      currentUser:'',
-      yorumBasligi:'',
-      yorum:'',
-      deger:0,
-       
+      tabs: ["Ürün Özellikleri", "Ödeme Seçenekleri", `Yorumlar`],
+      sepetCount: 0,
+      sepetUrunleri: [],
+      miktar: 1,
+      sepetAddPopUp: false,
+      yorumGoster: false,
+      currentUser: "",
+      yorumBasligi: "",
+      yorum: "",
+      deger: 0,
     };
-    
-    },
-    watch:{
-      sepetUrunleri:{
-      handler(){
+  },
+  watch: {
+    sepetUrunleri: {
+      handler() {
         console.log("Sepet Ürünleri Değişti");
-        localStorage.setItem('sepetUrunleri',JSON.stringify(this.sepetUrunleri)); 
+        localStorage.setItem(
+          "sepetUrunleri",
+          JSON.stringify(this.sepetUrunleri)
+        );
         console.log(this.sepetUrunleri);
-        console.log('!!!!!!');
-        var toplam=0;
-        for(var i=0;i<this.sepetUrunleri.length;i++){
-           toplam=toplam+this.sepetUrunleri[i].price;
+        console.log("!!!!!!");
+        var toplam = 0;
+        for (var i = 0; i < this.sepetUrunleri.length; i++) {
+          toplam = toplam + this.sepetUrunleri[i].price;
         }
-        this.sepetToplami=toplam;
-        localStorage.setItem('sepetToplami',this.sepetToplami);
+        this.sepetToplami = toplam;
+        localStorage.setItem("sepetToplami", this.sepetToplami);
       },
-      deep:true,
-      },
-      sepetCount:{
-        handler(){
-          console.log("countda değişti");
-          localStorage.setItem('sepetCount',this.sepetCount);
-        },
-        deep:true,
-      }
+      deep: true,
     },
-    
-    async created() {
-      try {
-        if(localStorage.getItem('sepetUrunleri') || localStorage.getItem('sepetCount')){
-      	   this.sepetUrunleri=JSON.parse(localStorage.getItem('sepetUrunleri'));
-		       this.sepetCount=localStorage.getItem('sepetCount');
-           this.sepetToplami=localStorage.getItem('sepetToplami');
-           
-         }
-       if(localStorage.getItem('currentUser')){
-			     this.currentUser=localStorage.getItem('currentUser');
+    sepetCount: {
+      handler() {
+        console.log("countda değişti");
+        localStorage.setItem("sepetCount", this.sepetCount);
+      },
+      deep: true,
+    },
+  },
+
+  async created() {
+    try {
+      if (
+        localStorage.getItem("sepetUrunleri") ||
+        localStorage.getItem("sepetCount")
+      ) {
+        this.sepetUrunleri = JSON.parse(localStorage.getItem("sepetUrunleri"));
+        this.sepetCount = localStorage.getItem("sepetCount");
+        this.sepetToplami = localStorage.getItem("sepetToplami");
       }
-/*
+      if (localStorage.getItem("currentUser")) {
+        this.currentUser = localStorage.getItem("currentUser");
+      }
+      /*
        if(!this.id){
           this.id = localStorage.getItem('id');
           this.productPrice =localStorage.getItem('productPrice');
@@ -458,12 +449,12 @@ export default {
           this.comments=JSON.parse(localStorage.getItem('comments'));
         
         }*/
-  //SAYFA YENİLENİNCE ID VE BİLGİLERİ TEKRAR KORUMAK LAZIM
-        this.id = this.$route.params.id;
-        this.productPrice = this.$route.params.price;
-        this.productName = this.$route.params.name;
-        this.comments=this.$route.params.comments;
-    /*   
+      //SAYFA YENİLENİNCE ID VE BİLGİLERİ TEKRAR KORUMAK LAZIM
+      this.id = this.$route.params.id;
+      this.productPrice = this.$route.params.price;
+      this.productName = this.$route.params.name;
+      this.comments = this.$route.params.comments;
+      /*   
        if(this.id){
           
           localStorage.setItem('id',this.id);
@@ -473,83 +464,71 @@ export default {
         
         }
 */
-       
-       
-      } catch (err) {
-        console.log("err", err);
-      } 
-        /*this.id = this.$route.params.id;
+    } catch (err) {
+      console.log("err", err);
+    }
+    /*this.id = this.$route.params.id;
         this.productPrice = this.$route.params.price;
         this.productName = this.$route.params.name;
         this.comments=this.$route.params.comments;*/
+  },
+  mounted: {},
+  methods: {
+    async sepeteEkle(id) {
+      console.log(id);
+      const urunler = await axios.get("http://localhost:8180/products");
+      var urunBulListesi = urunler.data;
+      for (var i = 0; i < urunBulListesi.length; i++) {
+        if ((urunBulListesi[i].id = id)) {
+          var addProduct = urunBulListesi[i];
+          this.sepetUrunleri.push(addProduct);
+          break;
+        }
+      }
+
+      this.sepetCount++;
+      console.log("braka");
+      this.sepetAddPopUp = true;
     },
-    mounted:{
-     
-    }
-    ,
-    methods:{
-     async sepeteEkle(id){
-       console.log(id);
-       const urunler = await axios.get("http://localhost:8180/products");
-       var  urunBulListesi=urunler.data;
-          for(var i=0;i<urunBulListesi.length;i++){
-              if (urunBulListesi[i].id=id){
-                 var addProduct=urunBulListesi[i];
-                this.sepetUrunleri.push(addProduct);
-                break;
-              }
-              
-          } 
-       
-       
-        this.sepetCount++;
-        console.log('braka');
-        this.sepetAddPopUp=true;
-        },
-        //2 KEZ EKLİYOR API DE SORUN VAR
-       yorumGonder(){
-        console.log('tıklandı.');
-            axios.post('http://localhost:8180/comment', {
-            id:this.id,
-            yorum:this.yorum,
-            yorumBasligi:this.yorumBasligi,
-            deger:this.deger,
-            kullanici:this.currentUser         
-          })
-          .then(function (response) {
-            console.log("Buradaki response ne ?");
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-         
 
-        },
-      urunSil(id){
-	
-			 for(var i=0;i<this.sepetUrunleri.length;i++){
-					if( this.sepetUrunleri[i].id ==id){
-                this.sepetUrunleri.splice(i,1);
-                localStorage.setItem('sepetUrunleri',JSON.stringify(this.sepetUrunleri)); 
-                this.sepetCount--;
-                localStorage.setItem('sepetCount',this.sepetCount);
-                var toplam=0;
-                    for(var k=0;k<this.sepetUrunleri.length;k++){
-                        toplam=toplam+this.sepetUrunleri[k].price;	
-                    }
-                this.sepetToplami=toplam;
-                localStorage.setItem('sepetToplami',this.sepetToplami);
-
-					}
-					
-					
-				}
-
-			}
-
-    }
-   
+    yorumGonder() {
+      var token = localStorage.getItem("token");
+      axios
+        .post("http://localhost:8180/comment", {
+          id: this.id,
+          yorum: this.yorum,
+          yorumBasligi: this.yorumBasligi,
+          deger: this.deger,
+          kullanici: this.currentUser,
+          token: token,
+        })
+        .then(function(response) {
+          console.log("Buradaki response ne ?");
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    urunSil(id) {
+      for (var i = 0; i < this.sepetUrunleri.length; i++) {
+        if (this.sepetUrunleri[i].id == id) {
+          this.sepetUrunleri.splice(i, 1);
+          localStorage.setItem(
+            "sepetUrunleri",
+            JSON.stringify(this.sepetUrunleri)
+          );
+          this.sepetCount--;
+          localStorage.setItem("sepetCount", this.sepetCount);
+          var toplam = 0;
+          for (var k = 0; k < this.sepetUrunleri.length; k++) {
+            toplam = toplam + this.sepetUrunleri[k].price;
+          }
+          this.sepetToplami = toplam;
+          localStorage.setItem("sepetToplami", this.sepetToplami);
+        }
+      }
+    },
+  },
 };
-
 </script>

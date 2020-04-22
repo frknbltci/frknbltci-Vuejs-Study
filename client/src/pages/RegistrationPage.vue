@@ -2,17 +2,18 @@
 
     <v-app>
       <Header ></Header>
-         
+          <h6   v-if="hataGoster" style="color:red; font-size:16px; margin-left:40%; "> Kayıtlı Mail Girdiniz </h6>
             <div class="top">
                 <img src="../assets/reg1.png" style="float:left; margin-left:2%; width:4%;">
                 <p></p>
+                
                  <h5 style="margin-top:1.7%; margin-left:8%; font-weight:350;" >  ÜYE KAYIT/DÜZENLEME </h5>
              
               </div>
         <div class="main">
            
           <div class="left">
-              
+           
           <h6 style="margin-bottom:15px;" >ÜYELİK BİLGİLERİ</h6>    
 <table style="width:90%">
  
@@ -193,166 +194,148 @@
 </template>
 
 <style scoped>
-
-
-.main{
-    width: 84%;
-    border-style: dashed 0.1px;
-    height: auto;
-    align-self: center;
-   border: 2px solid #ececec;
+.main {
+  width: 84%;
+  border-style: dashed 0.1px;
+  height: auto;
+  align-self: center;
+  border: 2px solid #ececec;
 }
-.top{
+.top {
   margin-top: 2%;
   width: 84%;
   height: 60px;
   background-color: #ececec;
   align-self: center;
- 
 }
-.left{
-    float: left;
-    width:50% ;
-    height:720px ;
-    padding-top: 10px;
-    padding-left: 2%;
+.left {
+  float: left;
+  width: 50%;
+  height: 720px;
+  padding-top: 10px;
+  padding-left: 2%;
 }
-.right{
-    float: right;
-   
-    width:50% ;
-    height:400px ;
-    padding-top: 10px;
-    padding-left: 2%;
+.right {
+  float: right;
+
+  width: 50%;
+  height: 400px;
+  padding-top: 10px;
+  padding-left: 2%;
 }
-.select{
-    width: 90%;
-  
+.select {
+  width: 90%;
 }
-.td1{
-    width: 5%;
-    vertical-align: middle;
+.td1 {
+  width: 5%;
+  vertical-align: middle;
 }
-.td2{
-    vertical-align: middle;
-     border: 1px solid#cccccc;
-     width: 85%;
-     height: 100%;
-     
+.td2 {
+  vertical-align: middle;
+  border: 1px solid#cccccc;
+  width: 85%;
+  height: 100%;
 }
-.icon{
-  
-    width: 60px;
-    height: 50px;
+.icon {
+  width: 60px;
+  height: 50px;
 }
-.input{
-    width: 100%;
-    background-color: white;
-    margin-top: -5%;
-       
+.input {
+  width: 100%;
+  background-color: white;
+  margin-top: -5%;
 }
 .user-input-wrp {
-	position: relative;
-	width: 100%;
-    border-style: dotted 1px;
-    border-color: black;
-    margin-left: 2%;
+  position: relative;
+  width: 100%;
+  border-style: dotted 1px;
+  border-color: black;
+  margin-left: 2%;
 }
-.user-input-wrp .inputText{
-	width: 100%;
-	outline: none;
-	border:none;
-    box-shadow: none !important;
+.user-input-wrp .inputText {
+  width: 100%;
+  outline: none;
+  border: none;
+  box-shadow: none !important;
 }
-.user-input-wrp .inputText:focus{
-	border-color: blue;
-	border-width: medium medium 2px;
+.user-input-wrp .inputText:focus {
+  border-color: blue;
+  border-width: medium medium 2px;
 }
 .user-input-wrp .floating-label {
-	position: absolute;
-	pointer-events: none;
-	top: 18px;
-	left: 10px;
-	transition: 0.2s ease all;
+  position: absolute;
+  pointer-events: none;
+  top: 18px;
+  left: 10px;
+  transition: 0.2s ease all;
 }
 .user-input-wrp input:focus ~ .floating-label,
-.user-input-wrp input:not(:focus):valid ~ .floating-label{
-	top: 0px;
-	left: 10px;
-	font-size: 13px;
-	opacity: 1;
+.user-input-wrp input:not(:focus):valid ~ .floating-label {
+  top: 0px;
+  left: 10px;
+  font-size: 13px;
+  opacity: 1;
 }
-
 </style>
 
 
 <script>
-import Header from '@/components/Header.vue';
-import footer from '@/components/Footer.vue';
-import VSelect from '@alfsnd/vue-bootstrap-select'
+import Header from "@/components/Header.vue";
+import footer from "@/components/Footer.vue";
+import VSelect from "@alfsnd/vue-bootstrap-select";
 import Vue from "vue";
 import axios from "axios";
 Vue.use(axios);
 
 export default {
-
-  name: 'regisPage',
-  components:{
-    
-    "Header":Header,
-    "fo":footer,
-     VSelect,
-    
+  name: "regisPage",
+  components: {
+    Header: Header,
+    fo: footer,
+    VSelect,
   },
   data() {
     return {
-      selectedValue: 'AFİA GIDA YI NEREDEN TANIDINIZ ?',
-      ad:'',
-      soyad:'',
-      firma:'',
-      vergiDairesi:'',
-      vergiNumarasi:'',
-      tcno:'',
-      tel:'',
-      email:'',
-      sifre:'',
-      sifreTekrar:''
-
+      selectedValue: "AFİA GIDA YI NEREDEN TANIDINIZ ?",
+      ad: "",
+      soyad: "",
+      firma: "",
+      vergiDairesi: "",
+      vergiNumarasi: "",
+      tcno: "",
+      tel: "",
+      email: "",
+      sifre: "",
+      sifreTekrar: "",
+      hataGoster: false,
     };
   },
-  methods:{
-
-    //kayıt ol yapıyor ama eşleşme sıkıntısı oluyor 
-     kayitOl(){
-       axios.post('http://localhost:8180/signup', {
-            ad:this.ad,
-            soyad:this.soyad,
-            firma:this.firma,
-            vergiDairesi:this.vergiDairesi,
-            vergiNumarasi:this.vergiNumarasi,
-            tcno:this.tcno,
-            tel:this.tel,
-            email:this.email,
-            sifre:this.sifre,
-            sifreTekrar:this.sifreTekrar           
-          })
-          .then(res=>{
-             if(res.status===404){
-              window.alert('kayıtlı e mail girdiniz !');
-             this.$router.push('/registration');
-            }
-          })
-          .catch(function (error) {
-            window.alert(error);
-             this.$router.push('/registration');
-          });
-
-      this.$router.push('/');
-    }
-  }
-
-    
- 
+  methods: {
+    //kayıt ol yapıyor ama eşleşme sıkıntısı oluyor
+    async kayitOl() {
+      try {
+        this.hataGoster = false;
+        let res = await axios.post("http://localhost:8180/signup", {
+          ad: this.ad,
+          soyad: this.soyad,
+          firma: this.firma,
+          vergiDairesi: this.vergiDairesi,
+          vergiNumarasi: this.vergiNumarasi,
+          tcno: this.tcno,
+          tel: this.tel,
+          email: this.email,
+          sifre: this.sifre,
+          sifreTekrar: this.sifreTekrar,
+        });
+        console.log("res", res);
+        if (res.data.err) throw new Error("KAYITLI EMA");
+        else {
+          this.$router.push("/");
+        }
+      } catch (err) {
+        this.hataGoster = true;
+      }
+    },
+  },
 };
-
 </script>
