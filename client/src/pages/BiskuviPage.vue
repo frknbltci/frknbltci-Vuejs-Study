@@ -20,7 +20,7 @@
     </div>
   </ul>
   </div>
-  <v-col>
+  <v-col> 
     <slideCheck/>
      <div class="rangSlide" >
  <b class="slideBaslik">Fiyat</b>
@@ -34,110 +34,91 @@
     <a href="https://wa.me/+90-(850)3026555" target="_blank" rel="noopener noreferrer">
      <img style="margin-left:1%;" src="@/assets/images/kargoBedava.jpg" alt="112d6.jpg (1.06 MB)" width="200" height="300" caption="false"></a>
     </v-col>
-        
-
+          <v-col style="margin-top:-60%; margin-left:50%;" cols=6>
+              <product />
+          </v-col>
       <fo />  
     </v-app>
 </template>
 
 <style>
-.sideBar{
+.sideBar {
   background-color: white;
   width: 14.6%;
   margin-left: 2%;
   border: 0.2px solid rgb(221, 213, 213);
   border-top: none;
-  
-
 }
-.textSide{
- color: red;
-  font-size:20px;
+.textSide {
+  color: red;
+  font-size: 20px;
   text-align: left;
   font-size: 30px;
   margin-left: 8%;
 }
 
-.tumGorTexts{
+.tumGorTexts {
   color: black;
-   font-weight: bold;
-   text-align: center;
+  font-weight: bold;
+  text-align: center;
 }
-.sideBar a{
+.sideBar a {
   color: grey;
   text-align: center;
   position: static;
 }
-.sideBarTitles{
+.sideBarTitles {
   font-size: 15px;
   text-decoration: none;
-  
 }
-.slideBaslik{
-  color:red;
-   font-size:25px; 
-   margin-left:15%;
-   
+.slideBaslik {
+  color: red;
+  font-size: 25px;
+  margin-left: 15%;
 }
-.fiyatText{
-    margin-left: 15%;
-    font-size: 13px;
-  
+.fiyatText {
+  margin-left: 15%;
+  font-size: 13px;
 }
-.rangSlide{
-   background-color: white;
+.rangSlide {
+  background-color: white;
   width: 15%;
   margin-left: 20px;
   border: 0.2px solid rgb(221, 213, 213);
   margin-top: 0%;
-  
 }
-
-    
-   
-   
-
- 
 </style>
 
 <script>
-
-
-
 import Vue from "vue";
 import axios from "axios";
 Vue.use(axios);
-import Header from '@/components/Header.vue';
-import slideCheck   from '@/components/slideCheckBoxMarka.vue';
-import slider from '@/components/rangeSlider.vue';
-import footer from '@/components/Footer.vue';
+import Header from "@/components/Header.vue";
+import slideCheck from "@/components/slideCheckBoxMarka.vue";
+import slider from "@/components/rangeSlider.vue";
+import footer from "@/components/Footer.vue";
+import product from "@/components/Product.vue";
 
 export default {
-  name :'BiskuviPage',
-  components:{
-    
-    "Header":Header,
-    "slideCheck":slideCheck,
-    rangeSlider:slider,
-    "fo":footer
-    
-    
-    
+  name: "BiskuviPage",
+  components: {
+    Header: Header,
+    slideCheck: slideCheck,
+    rangeSlider: slider,
+    fo: footer,
+    product: product,
   },
-  data:()=>({
-    categoryList:[]
-  }), 
-  
-    async created() {
-      try {
-        const res = await axios.get("http://localhost:8180/category");
-        this.categoryList = res.data;
-      } catch (err) {
-        console.log("err", err);
-      }
-    },
-  
+  data: () => ({
+    categoryList: [],
+  }),
 
+  async created() {
+    try {
+      const res = await axios.get("http://localhost:8180/category");
+      this.categoryList = res.data;
+    } catch (err) {
+      console.log("err", err);
+    }
+  },
 };
-
 </script>

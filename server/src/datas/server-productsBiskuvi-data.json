@@ -1,0 +1,286 @@
+[{
+        "id": 3,
+        "brand": "Afia",
+        "title": "Starbis Bisküvi 55 GR(24 ADET)",
+        "name": "Bisküvi",
+        "price": 34.2,
+        "comments": [{
+                "id": 1,
+                "text": "Harika !",
+                "baslik": "SÜPER",
+                "kullanici": "xyz4@gmail.com"
+            },
+            {
+                "id": 2,
+                "text": "Helal Olsun Afia !",
+                "baslik": "SÜPER",
+                "kullanici": "xyz4@gmail.com"
+            },
+            {
+                "id": 3,
+                "text": "İlk defa böyle bir şey yedim Helal AFiA !",
+                "baslik": "SÜPER",
+                "kullanici": "xyz3@gmail.com"
+            },
+            {
+                "id": 4,
+                "text": "Muhteşem !",
+                "baslik": "SÜPER",
+                "kullanici": "a"
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "brand": "Afia",
+        "title": " Yulaflı Bisküvi 120 GR 24 Adet",
+        "price": 27,
+        "name": "Bisküvi",
+        "comments": []
+    },
+    {
+        "id": 15,
+        "brand": "Afia",
+        "title": "Tatlı Dost Vanilya Kremalı Gofret 150 Gr (5 Adet)",
+        "price": 18.53,
+        "name": "Gofret",
+        "comments": [{
+                "id": 1,
+                "text": "Harika !",
+                "baslik": "SÜPER",
+                "kullanici": "xyz4@gmail.com"
+            },
+            {
+                "id": 2,
+                "text": "Helal Olsun Afia !",
+                "baslik": "ÇOK İYİ",
+                "kullanici": "xyz4@gmail.com"
+            },
+            {
+                "id": 3,
+                "text": "İlk defa böyle bir şey yedim Helal AFiA !",
+                "baslik": "SÜPER",
+                "kullanici": "xyz3@gmail.com"
+            },
+            {
+                "id": 4,
+                "text": "Muhteşem !",
+                "baslik": "İYİ",
+                "kullanici": "a"
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "brand": "Afia",
+        "title": "Tatlı Dost Muzlu Kremalı Gofret 150 Gr (5 Adet)",
+        "price": 18.53,
+        "name": "Gofret",
+        "comments": [{
+                "id": 1,
+                "text": "Harika !",
+                "baslik": "HARİKA",
+                "kullanici": "xyz4@gmail.com"
+            },
+            {
+                "id": 2,
+                "text": "Helal Olsun Afia !",
+                "baslik": "BEĞENDİM",
+                "kullanici": "xyz4@gmail.com"
+            },
+            {
+                "id": 3,
+                "text": "İlk defa böyle bir şey yedim Helal AFiA !",
+                "baslik": "SÜPER",
+                "kullanici": "xyz3@gmail.com"
+            },
+            {
+                "id": 4,
+                "text": "Muhteşem !",
+                "baslik": "DEĞERLİ",
+                "kullanici": "a"
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "brand": "Afia",
+        "title": "Tatlı Dost Fındıklı Kremalı Kakaolu Gofret 150 Gr (5 Adet)",
+        "price": 18.53,
+        "name": "Gofret",
+        "comments": [{
+                "id": 1,
+                "text": "sdadasd",
+                "kullanici": "a",
+                "baslik": "dasdad"
+            },
+            {
+                "id": 2,
+                "text": "sdadasd",
+                "kullanici": "a",
+                "baslik": "dasdad"
+            },
+            {
+                "id": 3,
+                "text": "sdadasd",
+                "kullanici": "a",
+                "baslik": "dasdad"
+            },
+            {
+                "id": 4,
+                "text": "sdadasd",
+                "kullanici": "a",
+                "baslik": "dasdad"
+            },
+            {
+                "id": 5,
+                "text": "sadasd",
+                "kullanici": "a",
+                "baslik": "asdasd"
+            },
+            {
+                "id": 6,
+                "text": "sadasd",
+                "kullanici": "a",
+                "baslik": "asdasd"
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "brand": "Afia",
+        "title": "Tatlı Dost Fındıklı Kremalı Kakaolu Gofret 150 Gr",
+        "name": "Gofret",
+        "price": 3.9,
+        "comments": []
+    },
+    {
+        "id": 19,
+        "brand": "Afia",
+        "title": "Tatbis Bisküvi 55 GR(24 Adet)",
+        "name": "Bisküvi",
+        "price": 34.2,
+        "comments": [{
+                "id": 1,
+                "text": "Harika !",
+                "baslik": "SÜPER",
+                "kullanici": "xyz4@gmail.com"
+            },
+            {
+                "id": 2,
+                "text": "Helal Olsun Afia !",
+                "baslik": "KALİTELİ",
+                "kullanici": "xyz4@gmail.com"
+            },
+            {
+                "id": 3,
+                "baslik": "SÜPER",
+                "text": "İlk defa böyle bir şey yedim Helal AFiA !",
+                "kullanici": "xyz3@gmail.com"
+            },
+            {
+                "id": 4,
+                "baslik": "SÜPER",
+                "text": "Muhteşem !",
+                "kullanici": "a"
+            }
+        ]
+    },
+    {
+        "id": 21,
+        "brand": "Afia",
+        "baslik": "SÜPER",
+        "title": "Tatbis Bisküvi 55 GR(12 Adet)",
+        "price": 17.46,
+        "name": "Bisküvi",
+        "comments": [{
+                "id": 1,
+                "text": "Harika !",
+                "baslik": "İŞTE BU ",
+                "kullanici": "xyz4@gmail.com"
+            },
+            {
+                "id": 2,
+                "text": "Helal Olsun Afia !",
+                "baslik": "SÜPER",
+                "kullanici": "xyz4@gmail.com"
+            },
+            {
+                "id": 3,
+                "text": "İlk defa böyle bir şey yedim Helal AFiA !",
+                "baslik": "HOŞUMA GİTTİ",
+                "kullanici": "xyz3@gmail.com"
+            },
+            {
+                "id": 4,
+                "text": "Muhteşem !",
+                "baslik": "SÜPER",
+                "kullanici": "a"
+            }
+        ]
+    },
+    {
+        "id": 22,
+        "brand": "Afia",
+        "title": "Petibör Bisküvi 160GR",
+        "price": 2.5,
+        "comments": [],
+        "name": "Bisküvi"
+    },
+    {
+        "id": 23,
+        "brand": "Afia",
+        "title": "Bebe Bisküvisi 150 GR x 12 Adet",
+        "price": 33.76,
+        "comments": [],
+        "name": "Bisküvi"
+    },
+    {
+        "id": 25,
+        "brand": "Afia",
+        "title": "Starbis Bisküvi 55 GR",
+        "price": 1.5,
+        "comments": [],
+        "name": "Bisküvi"
+    },
+    {
+        "id": 26,
+        "brand": "Afia",
+        "title": "Başakköy Yulaflı Bisküvi 120 GR 24 Adet",
+        "price": 57,
+        "comments": [],
+        "name": "Bisküvi"
+    },
+    {
+        "id": 27,
+        "brand": "Afia",
+        "title": "Başakköy Yulaflı Bisküvi 120 GR",
+        "price": 2.5,
+        "comments": [],
+        "name": "Bisküvi"
+    },
+    {
+        "id": 28,
+        "brand": "Afia",
+        "title": "Başakköy Yulaflı Kraker GR",
+        "price": 2.5,
+        "comments": [],
+        "name": "Kraker"
+    },
+    {
+        "id": 29,
+        "brand": "Afia",
+        "title": " Afia Kraker 3 Adet",
+        "price": 2.5,
+        "comments": [],
+        "name": "Kraker"
+    },
+    {
+        "id": 230,
+        "brand": "Afia",
+        "title": "Vanilyalı Gofret 50 GR",
+        "price": 2.5,
+        "comments": [],
+        "name": "Gofret"
+    }
+]

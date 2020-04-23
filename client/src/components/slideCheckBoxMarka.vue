@@ -14,13 +14,11 @@
 </template>
 
 <style>
-
-.fiyatText{
+.fiyatText {
   margin-left: 15%;
   font-size: 13px;
-  
 }
-  .sideBarCombo{
+.sideBarCombo {
   background-color: white;
   width: 15%;
   margin-left: 0.6%;
@@ -28,42 +26,34 @@
   margin-top: -24px;
   margin-bottom: -11px;
 }
-.textSide{
+.textSide {
   color: red;
-  font-size:20px;
+  font-size: 20px;
   text-align: center;
 }
-
-
-
-
 </style>
 
 
 
 <script>
-
 import Vue from "vue";
 import axios from "axios";
 Vue.use(axios);
 
-
-  export default {
-    data () {
-      return {
-        categoryList:[],
-        checkbox:""
-        
-      }
-    },
-    async created() {
-      try {
-        const res = await axios.get("http://localhost:8180/category");
-        this.categoryList = res.data;
-       
-      } catch (err) {
-        console.log("err", err);
-      }
-    },
-  }
+export default {
+  data() {
+    return {
+      categoryList: [],
+      checkbox: "",
+    };
+  },
+  async created() {
+    try {
+      const res = await axios.get("http://localhost:8180/category");
+      this.categoryList = res.data;
+    } catch (err) {
+      console.log("err", err);
+    }
+  },
+};
 </script>

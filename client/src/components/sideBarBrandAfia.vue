@@ -9,7 +9,7 @@
   <p class="textSide">Kategori</p>
   <hr/>
   <ul>
-    <div v-for="item in 4" :key="item.id" >
+    <div v-for="item in 1" :key="item.id" >
   <b-link class="sideBarTitles" v-b-toggle.collapse-1 variant="primary">{{categoryList[0].title + `(${categoryList[0].subtitle[0].Biskuvi.length})`}}<b-icon class="icons" icon="arrow-right"></b-icon></b-link>
   <hr/>
       <ul href="#" class="card-text">
@@ -50,106 +50,93 @@
 </template>
 
 <script>
-
 import Vue from "vue";
 import axios from "axios";
 Vue.use(axios);
 
-
-
-import slider from '@/components/rangeSlider.vue'
+import slider from "@/components/rangeSlider.vue";
 
 export default {
   name: "sideBar",
-  
 
-  data(){
-    return{
-       categoryList:[],
-       subtitles:[],
-       errors:[]
+  data() {
+    return {
+      categoryList: [],
+      subtitles: [],
+      errors: [],
     };
-    
-    },
-    async created() {
-      try {
-        const res = await axios.get("http://localhost:8180/category");
-        this.categoryList = res.data;
-      } catch (err) {
-        console.log("err", err);
-      }
-    },
-      components:{
-        rangeSlider:slider
-      }
-    
-      
+  },
+  async created() {
+    try {
+      const res = await axios.get("http://localhost:8180/category");
+      this.categoryList = res.data;
+    } catch (err) {
+      console.log("err", err);
+    }
+  },
+  components: {
+    rangeSlider: slider,
+  },
 };
 </script>
 
 <style >
-
-.navAlti{
-   
+.navAlti {
   border: 0.2px solid rgb(221, 213, 213);
   height: 40%;
   width: 85%;
   margin-left: 1%;
-  
 }
-.navAltic{
-background-color:grey; 
-color:rgb(116, 114, 114); 
-margin: 1%;  
-font-family: 'Courier New', Courier, monospace;
-font-size: 20.5px;
+.navAltic {
+  background-color: grey;
+  color: rgb(116, 114, 114);
+  margin: 1%;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20.5px;
 }
 
- .navAltic:hover{
- background-color: black;
+.navAltic:hover {
+  background-color: black;
   opacity: 0.8;
   text-decoration-color: black;
   color: white;
 }
 
-.sideBar{
+.sideBar {
   background-color: white;
   width: 13%;
   margin-left: 2%;
   border: 0.2px solid rgb(221, 213, 213);
   border-top: none;
-  margin-top:0%;
+  margin-top: 0%;
   height: auto;
-
 }
-.textSide{
+.textSide {
   color: red;
-  font-size:20px;
+  font-size: 20px;
   text-align: center;
 }
 
-.tumGorTexts{
+.tumGorTexts {
   color: black;
-   font-weight: bold;
-   text-align: center;
+  font-weight: bold;
+  text-align: center;
 }
-.sideBar a{
+.sideBar a {
   color: grey;
   text-align: center;
   position: static;
 }
-.sideBarTitles{
+.sideBarTitles {
   font-size: 15px;
   text-decoration: none;
-  
 }
-.slideBaslik{
-  color:red;
-   font-size:25px; 
-   margin-left:15%;
-   
+.slideBaslik {
+  color: red;
+  font-size: 25px;
+  margin-left: 15%;
 }
-.rangSlide{
+.rangSlide {
   background-color: white;
   width: 13.2%;
   margin-left: 1.3%;
@@ -157,9 +144,5 @@ font-size: 20.5px;
   border-top: none;
   height: 200px;
 }
-
-
-
-
 </style>
 

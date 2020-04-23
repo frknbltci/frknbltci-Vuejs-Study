@@ -156,7 +156,8 @@
  <div class="dropdown">
     <button class="dropbtn">KATEGORİLER </button>
     <div class="dropdown-content">
-      <a  href="" v-for="title of categoryList" :key="title.id">{{title.title}}</a>
+
+      <a  v-bind:href="title.path" v-for="title of categoryList" :key="title.id">{{title.title}}</a>
     </div>
   </div>
  
@@ -172,145 +173,129 @@
 </template>
 
 <script>
-
-
 import Vue from "vue";
 import axios from "axios";
 Vue.use(axios);
- 
- 
 
 export default {
   name: "Header",
-  el:'#wrapper',
-  
-  
-  data(){
-    return{
-       menuList:[],
-       categoryList:[],
-       markaList:[],
-       urunAdet:0,
-       search:'',
-       seen:false,
-       products:[],
-       sepetUcret:0,
-       seenSearch:false,
-       email:"",
-       sifre:"",
-       users:[],
-       error:"",
-       errorseen:false,
-       currentUser:'',
-       sepetUrunleri:[],
-       sepetToplami:0,
-       sepetCount:0
-       
-      
-    };
-    
-    }, 
- 
-    async created() {
-      try {
+  el: "#wrapper",
 
-        const res = await axios.get("http://localhost:8180/category");
-        this.categoryList = res.data;
-        const resMarka=await axios.get("http://localhost:8180/markalar");
-        this.markaList=resMarka.data;
-        const resMenu =await axios.get("http://localhost:8180/menu");
-        this.menuList=resMenu.data;
-        const resProduct =await axios.get("http://localhost:8180/products");
-        this.products=resProduct.data;
-         const resUsers =await axios.get("http://localhost:8180/login");
-        this.users=resUsers.data;
-        this.sepetUrunleri=localStorage.getItem('sepetUrunleri');
-        if(localStorage.getItem('currentUser')){
-              this.currentUser=localStorage.getItem('currentUser');
-         }
-        if(localStorage.getItem('sepetToplami')){
-          this.sepetToplami=localStorage.getItem('sepetToplami');
-        }
-        if(localStorage.getItem('sepetCount')){
-          this.sepetCount=localStorage.getItem('sepetCount');
-        }
-       
-      } catch (err) {
-        console.log("err", err);
+  data() {
+    return {
+      menuList: [],
+      categoryList: [],
+      markaList: [],
+      urunAdet: 0,
+      search: "",
+      seen: false,
+      products: [],
+      sepetUcret: 0,
+      seenSearch: false,
+      email: "",
+      sifre: "",
+      users: [],
+      error: "",
+      errorseen: false,
+      currentUser: "",
+      sepetUrunleri: [],
+      sepetToplami: 0,
+      sepetCount: 0,
+    };
+  },
+
+  async created() {
+    try {
+      const res = await axios.get("http://localhost:8180/category");
+      this.categoryList = res.data;
+      const resMarka = await axios.get("http://localhost:8180/markalar");
+      this.markaList = resMarka.data;
+      const resMenu = await axios.get("http://localhost:8180/menu");
+      this.menuList = resMenu.data;
+      const resProduct = await axios.get("http://localhost:8180/products");
+      this.products = resProduct.data;
+      const resUsers = await axios.get("http://localhost:8180/login");
+      this.users = resUsers.data;
+      this.sepetUrunleri = localStorage.getItem("sepetUrunleri");
+      if (localStorage.getItem("currentUser")) {
+        this.currentUser = localStorage.getItem("currentUser");
       }
-    },
-    computed:{
-      filterProducts:function(){
-        return this.products.filter((product)=>{
-          if(this.search.length>0){
-          this.seenSearch=true;
-          }
-          return product.title.match(this.search ); 
-        });
-      }   /*  sepetCount:function (){
+      if (localStorage.getItem("sepetToplami")) {
+        this.sepetToplami = localStorage.getItem("sepetToplami");
+      }
+      if (localStorage.getItem("sepetCount")) {
+        this.sepetCount = localStorage.getItem("sepetCount");
+      }
+    } catch (err) {
+      console.log("err", err);
+    }
+  },
+  computed: {
+    filterProducts: function() {
+      return this.products.filter(product => {
+        if (this.search.length > 0) {
+          this.seenSearch = true;
+        }
+        return product.title.match(this.search);
+      });
+    } /*  sepetCount:function (){
         console.log('sepetCount');
        var count=localStorage.getItem('sepetCount');
        //olmazsa yukarıda bir değişken daha tanımla
        console.log(count);
        return count;
       }
-     */
-        
+     */,
+  },
+  methods: {
+    otherClick: function() {
+      if (this.seenSearch == true) {
+        return (this.seenSearch = false);
+      }
     },
-    methods:{
-       otherClick:function(){
-            if (this.seenSearch==true){           
-              return this.seenSearch=false;  
-    }
-       },
-       cikisYap:function(){
-         localStorage.clear('currentUser');
-         localStorage.clear('token');
-       },
-       login:function(){
-           let gelenUser={
-             email:this.email,
-             password:this.sifre,
-           };
-            axios.post('http://localhost:8180/login',gelenUser).then(res=>{
-              if(res.status===200){
-                localStorage.setItem('token',res.data.token);
-                localStorage.setItem('currentUser',this.email);
-                this.seen=false;
-                location.reload();
-               // this.$router.push('/');
-              }
+    cikisYap: function() {
+      localStorage.clear("currentUser");
+      localStorage.clear("token");
+    },
+    login: function() {
+      let gelenUser = {
+        email: this.email,
+        password: this.sifre,
+      };
+      axios
+        .post("http://localhost:8180/login", gelenUser)
+        .then(res => {
+          if (res.status === 200) {
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("currentUser", this.email);
+            this.seen = false;
+            location.reload();
+            // this.$router.push('/');
+          }
+        })
+        .then(
+          res => {
+            if (res.status === 500) {
+              console.log("sdadasd");
+              this.error = "Hatalı Giriş";
+              this.errorseen = true;
             }
-              
-            ).then(res=>{
-                  if (res.status===500){
-                console.log("sdadasd");
-                this.error="Hatalı Giriş";
-                this.errorseen=true;
-              }
-            },err=>{
-              console.log(err.response);
-              this.error=err.response.data.error;
-            })
-          
-              
-       }
-      
-    }
+          },
+          err => {
+            console.log(err.response);
+            this.error = err.response.data.error;
+          }
+        );
+    },
+  },
 };
-
 </script>
 
 <style>
-
-
 .search {
- 
- 
   width: 100%;
-  margin-left:20%;
-  margin-top:8%;
-  
+  margin-left: 20%;
+  margin-top: 8%;
 }
 .sepet {
   border: 2px solid #7a7777;
@@ -320,52 +305,44 @@ export default {
   margin-left: 7%;
   width: 200px;
   margin-top: 18%;
-
-
-
 }
-.sepeticYuvarlak{
-  position:static;
+.sepeticYuvarlak {
+  position: static;
   border-radius: 50%;
-  border:3px solid white;
+  border: 3px solid white;
   background-color: #706f6f;
   width: 15%;
   height: 40%;
-  color:white;
+  color: white;
   font-size: 18px;
   margin-left: -5%;
   margin-top: -7%;
   text-align: center;
   font: bolder;
-  
-
 }
-.sepetUcret{
-  color:white;
-  font-size:20px;
-  margin-top:-9%;
-  margin-left:35%;
+.sepetUcret {
+  color: white;
+  font-size: 20px;
+  margin-top: -9%;
+  margin-left: 35%;
 }
-.sepetim{
+.sepetim {
   color: white;
   font-size: 18px;
 }
 .hesap {
-  border: 2px solid #9e9898; 
+  border: 2px solid #9e9898;
   position: static;
   background-color: rgb(241, 237, 237);
   border-radius: 5%;
   height: 20%;
- margin-left: 15%;
-  margin-top:3%;
-
+  margin-left: 15%;
+  margin-top: 3%;
 }
 
 .navbar {
-
   overflow: hidden;
   background-color: rgb(238, 13, 13);
-
 }
 
 .navbar a {
@@ -376,7 +353,7 @@ export default {
   text-decoration: none;
   color: white;
 }
-.v-application a{
+.v-application a {
   color: white;
 }
 .dropdown {
@@ -397,22 +374,21 @@ export default {
   margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
+.navbar a:hover,
+.dropdown:hover .dropbtn {
   background-color: white;
   opacity: 0.8;
   color: black;
 }
 
-
 .dropdown-content {
-  display:none;
-  position:fixed;
+  display: none;
+  position: fixed;
   background-color: red;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   width: 25%;
-  
 }
 .dropdown-content a {
   float: none;
@@ -429,20 +405,15 @@ export default {
 
 .dropdown:hover .dropdown-content {
   display: block;
-  
 }
-.sideBarTitles{
+.sideBarTitles {
   font-size: 120%;
   margin-left: 15%;
-  
 }
-.sideBarAltDropDown{
- 
-  
+.sideBarAltDropDown {
   border: 0.1px solid rgb(179, 176, 176);
- 
 }
-.AltDropDownTitle{
+.AltDropDownTitle {
   background-color: rgb(177, 173, 173);
   color: red;
   text-align: left;
@@ -450,56 +421,48 @@ export default {
   font-size: 18px;
   border-radius: 10px 10px;
 }
-.selectMarka{
-  border:1px solid;
+.selectMarka {
+  border: 1px solid;
 }
 
-.btn{
+.btn {
   background-color: gray;
   color: #616161;
 }
 
-.texB{
+.texB {
   width: 500px;
   float: right;
   height: 60px;
   margin-right: 1.1%;
 }
-.textBox{
-  border-style:2px solid #616161;
+.textBox {
+  border-style: 2px solid #616161;
 }
-.registrationBtn{
- 
-  
+.registrationBtn {
   position: absolute;
-
-
 }
-h6{
+h6 {
   font-weight: 400;
   margin-top: 3%;
 }
-.login{
- background-color: white;
- position: fixed;
- border-radius: 1%;
- width: 600px;
- height: 500px;
- margin-left: 30%;
- margin-top: 15%;
- z-index: 9999;
- text-align: left;
- padding-left: 2%;
-
-
+.login {
+  background-color: white;
+  position: fixed;
+  border-radius: 1%;
+  width: 600px;
+  height: 500px;
+  margin-left: 30%;
+  margin-top: 15%;
+  z-index: 9999;
+  text-align: left;
+  padding-left: 2%;
 }
 
-.icon{
- height:20px ;
- width: 20px;
- float: left;
-  
+.icon {
+  height: 20px;
+  width: 20px;
+  float: left;
 }
-
 </style>
 

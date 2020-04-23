@@ -1,202 +1,206 @@
-[
-    {
-        "id": 1,
-        "title": "Bisküvi,Gofret",
-        "subtitle":[
-            {
-                
-                "id":1,
-                "name":"Bisküvi",
-                "Biskuvi":[ 
-                      {
-                              "id": 1,
-                              "marka": "Afia",
-                              "Images": "@server/Starbis.png",
-                              "name": "Tatbis Bisküvi 55 GR(12 Adet)+Starbis Bisküvi 55 GR(12 Adet)",
-                              "gr": 55,
-                              "fiyat": 34.20
-                      },
-                      {"id":2,"marka":"Afia","name":"Bebe Bisküvisi 800 GR","gr":800,"fiyat":13.90},
-                      {"id":3,"marka":"Afia","name":"Tatbis Bisküvi 55 GR(24 Adet)","gr":55,"fiyat":34.20} 
-                         ]
-                         
+[{
+                "id": 1,
+                "path": "http://localhost:3030/biskuvi",
+                "title": "Bisküvi,Gofret",
+                "subtitle": [{
 
-            },
-            {
-                "id":2,
-                "name":"Gofret",
-                "Gofret":[
-                {
-                        "id": 1,
-                        "marka": "Afia",
-                        "name": "Tatlı Dost 5 Çeşit",
-                        "fiyat": 18.53
-                }, {
-                        "id": 2,
-                        "marka": "Afia",
-                        "name": "Tatlı Dost Vanilya Kremalı Gofret 150 Gr (5 Adet)",
-                        "gr": 150,
-                        "fiyat": 18.53
-                }, {
-                        "id": 3,
-                        "marka": "Afia",
-                        "name": "Tatlı Dost Vanilya Kremalı Gofret 150 Gr",
-                        "gr": 150,
-                        "fiyat": 3.90
-                }, {
-                        "id": 4,
-                        "marka": "Afia",
-                        "name": "Tatlı Dost Muzlu Kremalı Gofret 150 Gr (5 Adet)",
-                        "gr": 150 ,
-                        "fiyat": 18.53
-                }, {
-                        "id": 5,
-                        "marka": "Afia",
-                        "name": "Tatlı Dost Hindistan Cevizli Gofret 150 Gr (5 Adet)",
-                        "gr": 150,
-                        "fiyat": 18.53
-                }, {
-                        "id": 6,
-                        "marka": "Afia",
-                        "name": "Tatlı Dost Fındıklı Kremalı Kakaolu Gofret 150 Gr",
-                        "gr":150,
-                        "fiyat": 3.90
-                }
+                                "id": 1,
+                                "name": "Bisküvi",
+                                "Biskuvi": [{
+                                                "id": 1,
+                                                "marka": "Afia",
+                                                "Images": "@server/Starbis.png",
+                                                "name": "Tatbis Bisküvi 55 GR(12 Adet)+Starbis Bisküvi 55 GR(12 Adet)",
+                                                "gr": 55,
+                                                "fiyat": 34.20
+                                        },
+                                        {
+                                                "id": 2,
+                                                "marka": "Afia",
+                                                "name": "Bebe Bisküvisi 800 GR",
+                                                "gr": 800,
+                                                "fiyat": 13.90
+                                        },
+                                        {
+                                                "id": 3,
+                                                "marka": "Afia",
+                                                "name": "Tatbis Bisküvi 55 GR(24 Adet)",
+                                                "gr": 55,
+                                                "fiyat": 34.20
+                                        }
+                                ]
 
-                ]
-            },
-            {
-                "id":3,
-                "name":"Kraker Çeşitleri",
-                "KrakerCesitleri":[
+
+                        },
                         {
-                                "id": 4,
-                                "marka": "Afia",
-                                "name": "Tuzlu Çubuk Kraker (100 Gr x 24 Adet)",
-                                "gr": 2400,
-                                "fiyat": 62.70
-                        }, {
-                                "id": 5,
-                                "marka": "Afia",
-                                "name": "Tuzlu Çubuk Kraker (100 Gr)",
-                                "gr": 100,
-                                "fiyat": 2.75
-                        }, {
-                                "id": 6,
-                                "marka": "Afia",
-                                "name": "Susamlı Çubuk Kraker 100 Gr",
-                                "gr": 100,
-                                "fiyat": 2.75
+                                "id": 2,
+                                "name": "Gofret",
+                                "Gofret": [{
+                                                "id": 1,
+                                                "marka": "Afia",
+                                                "name": "Tatlı Dost 5 Çeşit",
+                                                "fiyat": 18.53
+                                        }, {
+                                                "id": 2,
+                                                "marka": "Afia",
+                                                "name": "Tatlı Dost Vanilya Kremalı Gofret 150 Gr (5 Adet)",
+                                                "gr": 150,
+                                                "fiyat": 18.53
+                                        }, {
+                                                "id": 3,
+                                                "marka": "Afia",
+                                                "name": "Tatlı Dost Vanilya Kremalı Gofret 150 Gr",
+                                                "gr": 150,
+                                                "fiyat": 3.90
+                                        }, {
+                                                "id": 4,
+                                                "marka": "Afia",
+                                                "name": "Tatlı Dost Muzlu Kremalı Gofret 150 Gr (5 Adet)",
+                                                "gr": 150,
+                                                "fiyat": 18.53
+                                        }, {
+                                                "id": 5,
+                                                "marka": "Afia",
+                                                "name": "Tatlı Dost Hindistan Cevizli Gofret 150 Gr (5 Adet)",
+                                                "gr": 150,
+                                                "fiyat": 18.53
+                                        }, {
+                                                "id": 6,
+                                                "marka": "Afia",
+                                                "name": "Tatlı Dost Fındıklı Kremalı Kakaolu Gofret 150 Gr",
+                                                "gr": 150,
+                                                "fiyat": 3.90
+                                        }
+
+                                ]
+                        },
+                        {
+                                "id": 3,
+                                "name": "Kraker Çeşitleri",
+                                "KrakerCesitleri": [{
+                                                "id": 4,
+                                                "marka": "Afia",
+                                                "name": "Tuzlu Çubuk Kraker (100 Gr x 24 Adet)",
+                                                "gr": 2400,
+                                                "fiyat": 62.70
+                                        }, {
+                                                "id": 5,
+                                                "marka": "Afia",
+                                                "name": "Tuzlu Çubuk Kraker (100 Gr)",
+                                                "gr": 100,
+                                                "fiyat": 2.75
+                                        }, {
+                                                "id": 6,
+                                                "marka": "Afia",
+                                                "name": "Susamlı Çubuk Kraker 100 Gr",
+                                                "gr": 100,
+                                                "fiyat": 2.75
+                                        }
+
+                                ]
                         }
 
-                ]
-            }
-        
-        
-        ]
-        
-    },
-    {
-            "id": 2,
-            "title": "Çikolata,Kek",
-            "subtitle":[]
 
-    },
-    {
-            "id": 3,
-            "title": "Temizlik",
-            "subtitle":[]
-    
-    },
-    {
-            "id": 4,
-            "title": "Sos,Baharat",
-            "subtitle":[]
-    
-    },
-    {
-            "id": 5,
-            "title": "Şeker,Hediyelik",
-            "subtitle":[]
-    
-    },
-    {
-            "id": 6,
-            "title": "Pasta Malzemeleri",
-            "subtitle":[]
-    
-    },
-    {
-            "id": 7,
-            "title": "İçecek",
-            "subtitle":[]
-    
-    },
-    {
-            "id": 8,
-            "title": "Kuru Gıda,Baharat",
-            "subtitle":[]
-    
-    },
-    {
-            "id": 9,
-            "title": "Kozmetik,Kişisel Bakım",
-            "subtitle":[]
-    
-    },
-    {
-            "id": 10,
-            "title": "Kitap",
-            "subtitle":[]
-    
-    },
-    {
-            "id": 11,
-            "title": "Kampanyalı Ürünler",
-            "subtitle":[]
-    
-    },
-    {
-            "id": 12,
-            "title": "Kahvaltılık",
-            "subtitle":[]
-    
-    },
-    {
-            "id": 13,
-            "title": "Et-Et Ürünleri",
-            "subtitle":[]
-    
-    },
-    {
-            "id": 14,
-            "title": "Cips,Atıştırmalık",
-            "subtitle":[]
-    
-    },
-    {
-            "id": 15,
-            "title": "Çay,Kahve,Şeker",
-            "subtitle":[]
-    
-    },
-    {
-            "id": 16,
-            "title": "Bal,Gıda Takviyeleri",
-            "subtitle":[]
-    
-    },
-    {
-            "id": 17,
-            "title": "Organik Sertifakalı Ürünler",
-            "subtitle":[]
-    
-    }
-           
-           
+                ]
+
+        },
+        {
+                "id": 2,
+                "title": "Çikolata,Kek",
+                "subtitle": []
+
+        },
+        {
+                "id": 3,
+                "title": "Temizlik",
+                "subtitle": []
+
+        },
+        {
+                "id": 4,
+                "title": "Sos,Baharat",
+                "subtitle": []
+
+        },
+        {
+                "id": 5,
+                "title": "Şeker,Hediyelik",
+                "subtitle": []
+
+        },
+        {
+                "id": 6,
+                "title": "Pasta Malzemeleri",
+                "subtitle": []
+
+        },
+        {
+                "id": 7,
+                "title": "İçecek",
+                "subtitle": []
+
+        },
+        {
+                "id": 8,
+                "title": "Kuru Gıda,Baharat",
+                "subtitle": []
+
+        },
+        {
+                "id": 9,
+                "title": "Kozmetik,Kişisel Bakım",
+                "subtitle": []
+
+        },
+        {
+                "id": 10,
+                "title": "Kitap",
+                "subtitle": []
+
+        },
+        {
+                "id": 11,
+                "title": "Kampanyalı Ürünler",
+                "subtitle": []
+
+        },
+        {
+                "id": 12,
+                "title": "Kahvaltılık",
+                "subtitle": []
+
+        },
+        {
+                "id": 13,
+                "title": "Et-Et Ürünleri",
+                "subtitle": []
+
+        },
+        {
+                "id": 14,
+                "title": "Cips,Atıştırmalık",
+                "subtitle": []
+
+        },
+        {
+                "id": 15,
+                "title": "Çay,Kahve,Şeker",
+                "subtitle": []
+
+        },
+        {
+                "id": 16,
+                "title": "Bal,Gıda Takviyeleri",
+                "subtitle": []
+
+        },
+        {
+                "id": 17,
+                "title": "Organik Sertifakalı Ürünler",
+                "subtitle": []
+
+        }
+
+
 
 ]
-
-    
-    
-       

@@ -24,6 +24,8 @@ const POS_DATA_FILE = path.join(__dirname, './src/datas/server-pos-data.json');
 const STORE_DATA_FILE = path.join(__dirname, './src/datas/server-store-data.json');
 const COMMENT_DATA_FILE = path.join(__dirname, './src/datas/server-comment-data.json');
 const PRODUCTS_DATA_FILE = path.join(__dirname, './src/datas/server-products-data.json');
+const PRODUCTSBISKUVI_DATA_FILE = path.join(__dirname, './src/datas/server-productsBiskuvi-data.json');
+
 
 app.set('port', (8180));
 
@@ -83,6 +85,13 @@ app.get('/products', (req, res) => {
     res.json(JSON.parse(data));
   });
 
+});
+
+app.get('/productsBiskuvi', (req, res) => {
+  fs.readFile(PRODUCTSBISKUVI_DATA_FILE, (err, data) => {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.json(JSON.parse(data));
+  })
 });
 
 app.get('/category', (req, res) => {

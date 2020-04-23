@@ -1,11 +1,9 @@
-[
-    {
+[{
         "id": 1,
         "brand": "Afia",
         "title": "Aficips Acılı Mısır Cipsi 50 gr",
         "price": 2.5,
-        "comments": [
-            {
+        "comments": [{
                 "id": 1,
                 "text": "Harika !",
                 "kullanici": "xyz2@gmail.com",
@@ -34,210 +32,6 @@
                 "text": "İDEAL ÜRÜN",
                 "kullanici": "a",
                 "baslik": "BENCE GÜZEL"
-            },
-            {
-                "id": 6,
-                "text": "İDEAL ÜRÜN",
-                "kullanici": "a",
-                "baslik": "BENCE GÜZEL"
-            },
-            {
-                "id": 7,
-                "text": "TADINI BEĞENMEDİM",
-                "kullanici": "Anonim",
-                "baslik": "İYİ DEĞİL"
-            },
-            {
-                "id": 8,
-                "text": "TADINI BEĞENMEDİM",
-                "kullanici": "Anonim",
-                "baslik": "İYİ DEĞİL"
-            },
-            {
-                "id": 9,
-                "text": "TADINI BEĞENMEDİM",
-                "kullanici": "Anonim",
-                "baslik": "İYİ DEĞİL"
-            },
-            {
-                "id": 10,
-                "text": "TADINI BEĞENMEDİM",
-                "kullanici": "Anonim",
-                "baslik": "İYİ DEĞİL"
-            },
-            {
-                "id": 11,
-                "text": "rere",
-                "kullanici": "a",
-                "baslik": "reerer"
-            },
-            {
-                "id": 12,
-                "text": "rere",
-                "kullanici": "a",
-                "baslik": "reerer"
-            },
-            {
-                "id": 13,
-                "text": "sdad",
-                "kullanici": "a",
-                "baslik": "dfsdfd"
-            },
-            {
-                "id": 14,
-                "text": "sdad",
-                "kullanici": "a",
-                "baslik": "dfsdfd"
-            },
-            {
-                "id": 15,
-                "text": "sdsad",
-                "kullanici": "",
-                "baslik": "ff"
-            },
-            {
-                "id": 16,
-                "text": "sdsad",
-                "kullanici": "",
-                "baslik": "ff"
-            },
-            {
-                "id": 17,
-                "text": "asdasds",
-                "kullanici": "",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 18,
-                "text": "asdasds",
-                "kullanici": "",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 19,
-                "text": "asdasds",
-                "kullanici": "",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 20,
-                "text": "asdasds",
-                "kullanici": "",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 21,
-                "text": "asdasds",
-                "kullanici": "",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 22,
-                "text": "asdasds",
-                "kullanici": "",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 23,
-                "text": "asdasds",
-                "kullanici": "",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 24,
-                "text": "asdasds",
-                "kullanici": "",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 25,
-                "text": "asdasds",
-                "kullanici": "",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 26,
-                "text": "asdasds",
-                "kullanici": "",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 27,
-                "text": "asdasds",
-                "kullanici": "Anonim",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 28,
-                "text": "asdasds",
-                "kullanici": "Anonim",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 29,
-                "text": "asdasds",
-                "kullanici": "Anonim",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 30,
-                "text": "asdasds",
-                "kullanici": "Anonim",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 31,
-                "text": "asdasds",
-                "kullanici": "Anonim",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 32,
-                "text": "asdasds",
-                "kullanici": "Anonim",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 33,
-                "text": "asdasds",
-                "kullanici": "Anonim",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 34,
-                "text": "asdasds",
-                "kullanici": "Anonim",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 35,
-                "text": "asdasds",
-                "kullanici": "Anonim",
-                "baslik": "sadasd"
-            },
-            {
-                "id": 36,
-                "text": "asdad",
-                "kullanici": "a",
-                "baslik": "dasdsdaad"
-            },
-            {
-                "id": 37,
-                "text": "bcgfhgf",
-                "kullanici": "a",
-                "baslik": "hfhgfgfgg"
-            },
-            {
-                "id": 38,
-                "text": "bcgfhgf",
-                "kullanici": "a",
-                "baslik": "hfhgfgfgg"
-            },
-            {
-                "id": 39,
-                "text": "bcgfhgf",
-                "kullanici": "a",
-                "baslik": "hfhgfgfgg"
             }
         ]
     },
@@ -246,8 +40,7 @@
         "brand": "Afia",
         "title": "Aficips Peynirli Mısır Cipsi 50 gr",
         "price": 2.5,
-        "comments": [
-            {
+        "comments": [{
                 "id": 1,
                 "text": "Hoşuma Gitmedi !",
                 "baslik": "BEĞENMEDİM",
@@ -314,8 +107,7 @@
         "brand": "Afia",
         "title": "Starbis Bisküvi 55 GR(24 ADET)",
         "price": 34.2,
-        "comments": [
-            {
+        "comments": [{
                 "id": 1,
                 "text": "Harika !",
                 "baslik": "SÜPER",
@@ -346,8 +138,7 @@
         "brand": "Afia",
         "title": "Afia Kağıt Helva 40 GR (12 Adet)r",
         "price": 28.2,
-        "comments": [
-            {
+        "comments": [{
                 "id": 1,
                 "text": "Harika !",
                 "baslik": "SÜPER",
@@ -378,8 +169,7 @@
         "brand": "Afia",
         "title": "Aficips Baharatlı Mısır Cipsi 50 gr",
         "price": 2.5,
-        "comments": [
-            {
+        "comments": [{
                 "id": 1,
                 "text": "Harika !",
                 "baslik": "FENA DEĞİL",
@@ -410,8 +200,7 @@
         "brand": "Millat Çikolata",
         "title": "Milat Prime Life Madlen Çikolata 200 GR",
         "price": 19.9,
-        "comments": [
-            {
+        "comments": [{
                 "id": 1,
                 "text": "GÜZEL ÜRÜN",
                 "kullanici": "Anonim",
@@ -449,8 +238,7 @@
         "brand": "Afia",
         "title": "Susamlı Çubuk Kraker 100 Gr",
         "price": 2.75,
-        "comments": [
-            {
+        "comments": [{
                 "id": 1,
                 "text": "Harika !",
                 "baslik": "SÜPER",
@@ -495,8 +283,7 @@
         "brand": "Afia",
         "title": "Tuzlu Çubuk Kraker (100 Gr)",
         "price": 2.75,
-        "comments": [
-            {
+        "comments": [{
                 "id": 1,
                 "text": "Harika !",
                 "baslik": "SÜPER",
@@ -534,8 +321,7 @@
         "brand": "Afia",
         "title": "Tuzlu Çubuk Kraker (100 Gr x 24 Adet)",
         "price": 62.7,
-        "comments": [
-            {
+        "comments": [{
                 "id": 1,
                 "text": "Harika !",
                 "baslik": "ALLAH RAZI OLSUN",
@@ -573,8 +359,7 @@
         "brand": "Afia",
         "title": "Tatlı Dost Vanilya Kremalı Gofret 150 Gr (5 Adet)",
         "price": 18.53,
-        "comments": [
-            {
+        "comments": [{
                 "id": 1,
                 "text": "Harika !",
                 "baslik": "SÜPER",
@@ -605,8 +390,7 @@
         "brand": "Afia",
         "title": "Tatlı Dost Muzlu Kremalı Gofret 150 Gr (5 Adet)",
         "price": 18.53,
-        "comments": [
-            {
+        "comments": [{
                 "id": 1,
                 "text": "Harika !",
                 "baslik": "HARİKA",
@@ -637,8 +421,7 @@
         "brand": "Afia",
         "title": "Tatlı Dost Fındıklı Kremalı Kakaolu Gofret 150 Gr (5 Adet)",
         "price": 18.53,
-        "comments": [
-            {
+        "comments": [{
                 "id": 1,
                 "text": "sdadasd",
                 "kullanici": "a",
@@ -688,8 +471,7 @@
         "brand": "Afia",
         "title": "Tatbis Bisküvi 55 GR(24 Adet)",
         "price": 34.2,
-        "comments": [
-            {
+        "comments": [{
                 "id": 1,
                 "text": "Harika !",
                 "baslik": "SÜPER",
@@ -729,8 +511,7 @@
         "baslik": "SÜPER",
         "title": "Tatbis Bisküvi 55 GR(12 Adet)",
         "price": 17.46,
-        "comments": [
-            {
+        "comments": [{
                 "id": 1,
                 "text": "Harika !",
                 "baslik": "İŞTE BU ",
@@ -775,8 +556,7 @@
         "brand": "Afia",
         "title": "Albence Tuzlu Peynirli Kraker 70 Gr",
         "price": 1.5,
-        "comments": [
-            {
+        "comments": [{
                 "id": 1,
                 "text": "Harika !",
                 "baslik": "KALİTELİ",
@@ -821,8 +601,7 @@
         "brand": "Afia",
         "title": "Başakköy Yulaflı Bisküvi 120 GR",
         "price": 2.5,
-        "comments": [
-            {
+        "comments": [{
                 "id": 1,
                 "text": "Harika !",
                 "baslik": "SÜPER",
