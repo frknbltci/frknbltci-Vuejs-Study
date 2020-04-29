@@ -39,7 +39,7 @@
    <td class="td2">     <div class="input">
              <div style="margin-top:5%;" class="user-input-wrp">
              <br/>
-             <input type="text" class="inputText" required/>
+             <input v-model="ad" type="text" class="inputText" required/>
              <span class="floating-label">Adınız</span>
              </div> </div></td>      
   </tr>
@@ -52,7 +52,7 @@
     <td class="td2">     <div class="input">
              <div style="margin-top:5%;" class="user-input-wrp">
              <br/>
-             <input type="text" class="inputText" required/>
+             <input v-model="soyad" type="text" class="inputText" required/>
              <span class="floating-label">Soyadınız</span>
              </div> </div></td>
     
@@ -64,7 +64,7 @@
    <td class="td2">     <div class="input">
              <div style="margin-top:5%;" class="user-input-wrp">
              <br/>
-             <input type="text" class="inputText" required/>
+             <input v-model="email" type="text" class="inputText" required/>
              <span class="floating-label">E-mail adresiniz</span>
              </div> </div></td>      
   </tr>
@@ -77,7 +77,7 @@
     <td class="td2">     <div class="input">
              <div style="margin-top:5%;" class="user-input-wrp">
              <br/>
-             <input type="text" class="inputText" required/>
+             <input v-model="tel" type="text" class="inputText" required/>
              <span class="floating-label">Telefonunuz</span>
              </div> </div></td>
     
@@ -101,6 +101,7 @@
     <td class="td1" style="height:0px; weight:0px; ">   </td>
     <td class="td2" >     <div>
   <b-form-textarea
+  v-model="mess"
     id="textarea-rows"
     placeholder="Mesajınız"
     rows="8"
@@ -116,7 +117,7 @@
 <input type="checkbox" id="checkbox" style="float:left; margin-top:2.5%; margin-left:3%;   vertical-align: middle;"  v-model="checked">
 <label for="checkbox" style="margin-left:10px;margin-top:0.5%; min-width:20%; "> <h6 style="font-size:12px;"><a style="color:#f1a53b">Gizlilik ve Güvenlik Politikasını </a>Okudum, Kabul Ediyorum.</h6></label>
 </div>
-<v-btn style="margin-top:10px;"  height="40" width="90%" color="#6c6c6c"  ><h6 style=" margin-top:5px; color:white; font-weight:370; vertical-align:middle; ">Gönder</h6></v-btn>
+<v-btn @click="messageGonder()" style="margin-top:10px;"  height="40" width="90%" color="#6c6c6c"  ><h6 style=" margin-top:5px; color:white; font-weight:370; vertical-align:middle; ">Gönder</h6></v-btn>
 </div>  
          
  
@@ -253,6 +254,10 @@ import Header from "@/components/Header.vue";
 import sideBar from "@/components/sideBar.vue";
 import footer from "@/components/Footer.vue";
 import VSelect from "@alfsnd/vue-bootstrap-select";
+import Vue from "vue";
+import axios from "axios";
+Vue.use(axios);
+
 
 export default {
   name: "ContactPage",
@@ -265,7 +270,35 @@ export default {
   data() {
     return {
       selectedValue: "Departman",
+      ad:'',
+      soyad:'',
+      email:'',
+      tel:'',
+      mess:''
     };
+  },
+  methods:{
+    messageGonder(){
+
+      axios.post('http://localhost:8180/contact',{
+        ad:this.ad,
+        soyad:this.soyad,
+        email:this.email,
+        tel:this.tel,
+        mess:this.mess
+
+      })
+      .then(res => {
+          if (res.status === 200) {
+            this.$router.push('/');
+          }
+        },
+          err => {
+            console.log(err.response);
+            this.error = err.response.data.error;
+          }
+      );
+    }
   },
   mounted() {
     // At this point, the child GmapMap has been mounted, but

@@ -328,12 +328,17 @@ export default {
           sifreTekrar: this.sifreTekrar,
         });
         console.log("res", res);
-        if (res.data.err) throw new Error("KAYITLI EMA");
-        else {
+        if (res.data.err2) {
+          this.hataGoster = true;
+          this.email = "";
+          console.log("ssdfsdf");
+        } else {
+          //throw new Error("KAYITLI EMAIL");
           this.$router.push("/");
         }
-      } catch (err) {
+      } catch (err1) {
         this.hataGoster = true;
+        this.email = "";
       }
     },
   },

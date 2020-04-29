@@ -1,60 +1,9 @@
 <template>
-    <v-app>
-        <Header></Header>
-        <br/>
-<div class="sideBar">
-  <p class="textSide">Kategori</p>
-  <hr>
-  <ul>
-    <div v-for="item in 1" :key="item.id" >
-<hr style="margin-top:-16px;"><b-link class="sideBarTitles" v-b-toggle.collapse-1 variant="primary">Bisküvi,Gofret ></b-link>
-  <hr>
-      <ul style="" href="#" class="card-text">
-        <ul style="  margin-left=50px; "><a @click="filterBiskuvi()">Bisküvi({{countBiskuvi}})</a></ul> 
-        <ul><a @click="filterGofret()">Gofret({{countGofret}})</a></ul>
-        <ul><a @click="filterKraker()">KrakerCesitleri({{countKraker}})</a></ul>
-        
-      </ul>
-   
-<hr/>
-    </div>
-  </ul>
-  </div>
-  <v-col> 
-      <v-col >
-   <div class="sideBarCombo" >    
-       <p class="textSide">Markalar</p>
-  <hr/>
-   
-   <v-checkbox style="margin-left:15%;"
-      v-model="checkbox"
-      :label="`Afia (${categoryList[0].subtitle[0].Biskuvi.length + categoryList[0].subtitle[2].KrakerCesitleri.length + categoryList[0].subtitle[1].Gofret.length})`"
-    ></v-checkbox>  
-   </div>
+<v-app class="app">
 
-  </v-col>
-    
-     <div class="rangSlide" >
- <b class="slideBaslik">Fiyat</b>
- <hr/>
- <v-col style >
- <div class="rangeslider"> 
- <h6 class="fiyatText">{{ `1 TL -`+ value + ` TL`}}</h6>
-<input v-model="value" type="range"  min="1" max="300"  
-				class="myslider" id="sliderRange"> 
-</div> 
 
-  </v-col>
- 
-        <v-btn @click="filterPrice()" style="width:100%; color:white;" color="red" >FİLTRELE</v-btn>
-        
-        
-   </div>
-    <a href="https://wa.me/+90-(850)3026555" target="_blank" rel="noopener noreferrer">
-     <img style="margin-left:1%;" src="@/assets/images/kargoBedava.jpg" alt="112d6.jpg (1.06 MB)" width="200" height="300" caption="false"></a>
-    </v-col>
-          <v-col style="margin-top:-53%; margin-left:20%;" cols=8>
-              <v-row>
+
+<v-row>
   
   <v-card style="margin:1%;" class="Cards"
     width="280" 
@@ -88,7 +37,7 @@
    
 </v-card>
 </v-row>
- <template>
+    <template>
       <v-row justify="center">
       
         <v-dialog
@@ -206,57 +155,10 @@
         </v-dialog>
       </v-row>
     </template> 
-          </v-col>
-      <fo />  
-    </v-app>
+</v-app>
 </template>
 
-<style>
-.sideBar {
-  background-color: white;
-  width: 14.6%;
-  margin-left: 2%;
-  border: 0.2px solid rgb(221, 213, 213);
-  border-top: none;
-}
-.textSide {
-  color: red;
-  font-size: 20px;
-  text-align: left;
-  font-size: 30px;
-  margin-left: 8%;
-}
-.tumGorTexts {
-  color: black;
-  font-weight: bold;
-  text-align: center;
-}
-.sideBar a {
-  color: grey;
-  text-align: center;
-  position: static;
-  margin-left: -15px;
-}
-.sideBarTitles {
-  font-size: 15px;
-  text-decoration: none;
-}
-.slideBaslik {
-  color: red;
-  font-size: 25px;
-  margin-left: 15%;
-}
-.fiyatText {
-  margin-left: 15%;
-  font-size: 13px;
-}
-.rangSlide {
-  background-color: white;
-  width: 15%;
-  margin-left: 20px;
-  border: 0.2px solid rgb(221, 213, 213);
-  margin-top: 0%;
-}
+<style scoped>
 .app {
   margin-left: -63%;
 }
@@ -312,69 +214,18 @@
 .silBtn:hover {
   background-color: black;
 }
-.fiyatText {
-  margin-left: 15%;
-  font-size: 13px;
-}
-.sideBarCombo {
-  background-color: white;
-  width: 15%;
-  margin-left: 0.6%;
-  border: 0.2px solid rgb(221, 213, 213);
-  margin-top: -24px;
-  margin-bottom: -11px;
-}
-.textSide {
-  color: red;
-  font-size: 20px;
-  text-align: center;
-}
-.fiyatText {
-  margin-left: 15%;
-  font-size: 13px;
-}
-.rangeslider {
-  width: 100%;
-}
-.myslider {
-  -webkit-appearance: none;
-  background: red;
-  width: 90%;
-  height: 3px;
-  opacity: 2;
-}
-.myslider:hover {
-  opacity: 1;
-}
-
-.myslider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  cursor: pointer;
-  background: red;
-  width: 5%;
-  height: 15px;
-
-  border-radius: 80%;
-}
 </style>
-
 <script>
 import Vue from "vue";
 import axios from "axios";
+
 Vue.use(axios);
-import Header from "@/components/Header.vue";
-import footer from "@/components/Footer.vue";
 
 export default {
-  name: "BiskuviPage",
-  components: {
-    Header: Header,
-    fo: footer,
-  },
+  name: "Product",
 
   data() {
     return {
-      categoryList: [],
       productsListB: [],
       productId: "",
       sepetUrunleri: [],
@@ -382,11 +233,6 @@ export default {
       sepetToplami: 0,
       sepetAddPopUp: false,
       miktar: 1,
-      countBiskuvi: 0,
-      countGofret: 0,
-      countKraker: 0,
-      checkbox: "",
-      value: "",
     };
   },
 
@@ -426,60 +272,12 @@ export default {
   },
 
   methods: {
-    async filterPrice() {
-      const res = await axios.get("http://localhost:8180/productsBGK");
-      this.productsListB = res.data;
-      var fiyatUrunler = [];
-
-      for (var i = 0; i < this.productsListB.length; i++) {
-        if (this.productsListB[i].price < this.value) {
-          fiyatUrunler.push(this.productsListB[i]);
-        }
-      }
-      this.productsListB = fiyatUrunler;
-    },
     sepeteEkle(product) {
       console.log("Sepete Eklendi");
       this.sepetUrunleri.push(product);
       console.log(this.sepetUrunleri);
       this.sepetCount++;
       this.sepetAddPopUp = true;
-    },
-    async filterBiskuvi() {
-      const res = await axios.get("http://localhost:8180/productsBGK");
-      this.productsListB = res.data;
-      var biskuviUrunler = [];
-
-      for (var i = 0; i < this.productsListB.length; i++) {
-        if (this.productsListB[i].name === "Bisküvi") {
-          biskuviUrunler.push(this.productsListB[i]);
-        }
-      }
-      this.productsListB = biskuviUrunler;
-    },
-    async filterGofret() {
-      const res = await axios.get("http://localhost:8180/productsBGK");
-      this.productsListB = res.data;
-      var gofretUrunler = [];
-      for (var i = 0; i < this.productsListB.length; i++) {
-        if (this.productsListB[i].name === "Gofret") {
-          gofretUrunler.push(this.productsListB[i]);
-        }
-      }
-      this.productsListB = gofretUrunler;
-    },
-    async filterKraker() {
-      const res = await axios.get("http://localhost:8180/productsBGK");
-      this.productsListB = res.data;
-
-      var krakerUrunler = [];
-
-      for (var i = 0; i < this.productsListB.length; i++) {
-        if (this.productsListB[i].name === "Kraker") {
-          krakerUrunler.push(this.productsListB[i]);
-        }
-      }
-      this.productsListB = krakerUrunler;
     },
     urunSil(id) {
       for (var i = 0; i < this.sepetUrunleri.length; i++) {
@@ -506,29 +304,8 @@ export default {
   },
   async created() {
     try {
-      const res = await axios.get("http://localhost:8180/productsBGK");
+      const res = await axios.get("http://localhost:8180/productsAfia");
       this.productsListB = res.data;
-      var a = 0;
-      var b = 0;
-      var c = 0;
-      for (var k = 0; k < this.productsListB.length; k++) {
-        if (this.productsListB[k].name === "Bisküvi") {
-          a++;
-        } else if (this.productsListB[k].name === "Gofret") {
-          b++;
-        } else {
-          c++;
-        }
-      }
-      this.countBiskuvi = a;
-      this.countGofret = b;
-      this.countKraker = c;
-    } catch (err) {
-      console.log("err", err);
-    }
-    try {
-      const res = await axios.get("http://localhost:8180/category");
-      this.categoryList = res.data;
     } catch (err) {
       console.log("err", err);
     }

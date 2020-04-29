@@ -232,20 +232,14 @@ export default {
   },
   computed: {
     filterProducts: function() {
+      var self = this;
       return this.products.filter(product => {
         if (this.search.length > 0) {
-          this.seenSearch = true;
+          self.seenSearch = true;
         }
         return product.title.match(this.search);
       });
-    } /*  sepetCount:function (){
-        console.log('sepetCount');
-       var count=localStorage.getItem('sepetCount');
-       //olmazsa yukarıda bir değişken daha tanımla
-       console.log(count);
-       return count;
-      }
-     */,
+    },
   },
   methods: {
     otherClick: function() {

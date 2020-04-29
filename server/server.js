@@ -24,8 +24,8 @@ const POS_DATA_FILE = path.join(__dirname, './src/datas/server-pos-data.json');
 const STORE_DATA_FILE = path.join(__dirname, './src/datas/server-store-data.json');
 const COMMENT_DATA_FILE = path.join(__dirname, './src/datas/server-comment-data.json');
 const PRODUCTS_DATA_FILE = path.join(__dirname, './src/datas/server-products-data.json');
-const PRODUCTSBISKUVI_DATA_FILE = path.join(__dirname, './src/datas/server-productsBiskuvi-data.json');
-
+const BGK_DATA_FILE = path.join(__dirname, './src/datas/server-productsBiskuvi-data.json');
+const AFIA_DATA_FILE = path.join(__dirname, './src/datas/server-afia-data.json');
 
 app.set('port', (8180));
 
@@ -59,16 +59,17 @@ app.post('/contact', (req, res) => {
   fs.readFile(CONTACT_DATA_FILE, (err, data) => {
     res.setHeader('Cache-Control', 'no-cache');
     const contactDatas = JSON.parse(data);
+    console.log(contactDatas);
     const newContact = {
-      id: req.body.id,
-      department: req.body.department,
-      name: req.body.name,
-      surname: req.body.surname,
+      id: contactDatas.length + 1,
+      department: 1,
+      name: req.body.ad,
+      surname: req.body.soyad,
       email: req.body.email,
-      phoneNumber: req.body.phoneNumber,
-      message: req.body.message
+      phoneNumber: req.body.tel,
+      message: req.body.mess
     };
-
+    console.log(newContact);
     contactDatas.push(newContact);
     fs.writeFile(CONTACT_DATA_FILE, JSON.stringify(contactDatas, null, 4), () => {
       res.setHeader('Cache-Control', 'no-cache');
@@ -79,19 +80,29 @@ app.post('/contact', (req, res) => {
   });
 
 });
-app.get('/products', (req, res) => {
-  fs.readFile(PRODUCTS_DATA_FILE, (err, data) => {
+
+app.get('/productsAfia', (req, res) => {
+  fs.readFile(AFIA_DATA_FILE, (err, data) => {
     res.setHeader('Cache-Control', 'no-cache');
     res.json(JSON.parse(data));
   });
 
 });
 
-app.get('/productsBiskuvi', (req, res) => {
-  fs.readFile(PRODUCTSBISKUVI_DATA_FILE, (err, data) => {
+app.get('/productsBGK', (req, res) => {
+  fs.readFile(BGK_DATA_FILE, (err, data) => {
     res.setHeader('Cache-Control', 'no-cache');
     res.json(JSON.parse(data));
-  })
+  });
+
+});
+
+app.get('/products', (req, res) => {
+  fs.readFile(PRODUCTS_DATA_FILE, (err, data) => {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.json(JSON.parse(data));
+  });
+
 });
 
 app.get('/category', (req, res) => {
@@ -186,7 +197,7 @@ app.post('/signup', (req, res) => {
     if (!userExist) users.push(newUser);
     fs.writeFile(SIGNUP_DATA_FILE, JSON.stringify(users, null, 4), () => {
       res.setHeader('Cache-Control', 'no-cache');
-      res.json({ err: false, users });
+      res.json({ err1: false, users });
       console.log("Kayıt Tamamlandı.")
     });
   });
@@ -200,7 +211,7 @@ app.post('/signup', (req, res) => {
     for (var i = 0; i < loginUsers.length; i++) {
       if (loginUsers[i].email == req.body.email) {
 
-        return res.json({ err: true })
+        return res.json({ err2: true })
       }
     }
     loginUsers.push(forLoginNewUser);
@@ -298,6 +309,7 @@ app.post('/comment', (req, res) => {
     });
   }
 });
+
 
 app.get('/comment', (req, res) => {
   fs.readFile(COMMENT_DATA_FILE, (err, data) => {

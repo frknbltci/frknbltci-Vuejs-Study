@@ -37,39 +37,75 @@
             },
             {
                 "id": 6,
-                "text": "SADASD",
+                "text": "asdsad",
                 "kullanici": "a",
-                "baslik": "ASDAS"
+                "baslik": "asdsad"
             },
             {
                 "id": 7,
-                "text": "DASDAD",
-                "kullanici": "Anonim",
-                "baslik": "ASDADAS"
+                "text": "asdsad",
+                "kullanici": "a",
+                "baslik": "asdsad"
             },
             {
                 "id": 8,
-                "text": "ASDASDA",
+                "text": "DASDSADASDASD",
+                "kullanici": "a",
+                "baslik": "SADSAD"
+            },
+            {
+                "id": 9,
+                "text": "DASDSADASDASD",
+                "kullanici": "a",
+                "baslik": "SADSAD"
+            },
+            {
+                "id": 10,
+                "text": "DASDASD",
                 "kullanici": "a",
                 "baslik": "SADASD"
             },
             {
-                "id": 9,
-                "text": "ASDASDASD",
-                "kullanici": "a",
-                "baslik": "BEĞENDİM"
-            },
-            {
-                "id": 10,
-                "text": "dasdad",
-                "kullanici": "a",
-                "baslik": "sadad"
-            },
-            {
                 "id": 11,
-                "text": "dasdad",
+                "text": "DASDASD",
                 "kullanici": "a",
-                "baslik": "sadad"
+                "baslik": "SADASD"
+            },
+            {
+                "id": 12,
+                "text": "DSAASDASD",
+                "kullanici": "a",
+                "baslik": "MERHABAAA"
+            },
+            {
+                "id": 13,
+                "text": "DSAASDASD",
+                "kullanici": "a",
+                "baslik": "MERHABAAA"
+            },
+            {
+                "id": 14,
+                "text": "ASDA",
+                "kullanici": "a",
+                "baslik": "ASDASD"
+            },
+            {
+                "id": 15,
+                "text": "ASDA",
+                "kullanici": "a",
+                "baslik": "ASDASD"
+            },
+            {
+                "id": 16,
+                "text": "DASDA",
+                "kullanici": "a",
+                "baslik": "DSADAD"
+            },
+            {
+                "id": 17,
+                "text": "DASDA",
+                "kullanici": "a",
+                "baslik": "DSADAD"
             }
         ]
     },
@@ -138,6 +174,36 @@
                 "text": "54564",
                 "kullanici": "a",
                 "baslik": "545"
+            },
+            {
+                "id": 11,
+                "text": "dasdsad",
+                "kullanici": "a",
+                "baslik": "sadasd"
+            },
+            {
+                "id": 12,
+                "text": "dasd",
+                "kullanici": "a",
+                "baslik": "sadad"
+            },
+            {
+                "id": 13,
+                "text": "dasd",
+                "kullanici": "a",
+                "baslik": "sadad"
+            },
+            {
+                "id": 14,
+                "text": "sadasd",
+                "kullanici": "Anonim",
+                "baslik": "ABCD"
+            },
+            {
+                "id": 15,
+                "text": "sadasd",
+                "kullanici": "Anonim",
+                "baslik": "ABCD"
             }
         ]
     },
@@ -170,30 +236,6 @@
                 "text": "Muhteşem !",
                 "baslik": "SÜPER",
                 "kullanici": "a"
-            },
-            {
-                "id": 5,
-                "text": "ffff",
-                "kullanici": "Anonim",
-                "baslik": "bura"
-            },
-            {
-                "id": 6,
-                "text": "ffff",
-                "kullanici": "Anonim",
-                "baslik": "bura"
-            },
-            {
-                "id": 7,
-                "text": "asdad",
-                "kullanici": "Anonim",
-                "baslik": "asdasd"
-            },
-            {
-                "id": 8,
-                "text": "asdad",
-                "kullanici": "Anonim",
-                "baslik": "asdasd"
             }
         ]
     },
@@ -261,50 +303,29 @@
             },
             {
                 "id": 5,
-                "text": "sadsad",
+                "text": "beğendim",
                 "kullanici": "Anonim",
-                "baslik": "dsada"
+                "baslik": "beğendim"
+            },
+            {
+                "id": 6,
+                "text": "beğendim",
+                "kullanici": "Anonim",
+                "baslik": "beğendim"
+            },
+            {
+                "id": 7,
+                "text": "ASDASD",
+                "kullanici": "a",
+                "baslik": "DSADA"
+            },
+            {
+                "id": 8,
+                "text": "ASDASD",
+                "kullanici": "a",
+                "baslik": "DSADA"
             }
         ]
-    },
-    {
-        "id": 6,
-        "brand": "Millat Çikolata",
-        "title": "Milat Prime Life Madlen Çikolata 200 GR",
-        "price": 19.9,
-        "comments": [
-            {
-                "id": 1,
-                "text": "GÜZEL ÜRÜN",
-                "kullanici": "Anonim",
-                "baslik": "BEĞENDİM"
-            },
-            {
-                "id": 2,
-                "text": "Ürün Geç ulaştı",
-                "kullanici": "a",
-                "baslik": "Çok iyi Değil"
-            },
-            {
-                "id": 3,
-                "text": "Ürün Geç ulaştı",
-                "kullanici": "a",
-                "baslik": "Çok iyi Değil"
-            },
-            {
-                "id": 4,
-                "text": "asdada",
-                "kullanici": "a",
-                "baslik": "dasd"
-            }
-        ]
-    },
-    {
-        "id": 7,
-        "brand": "Poloxin",
-        "title": "Paloxin Wipe Mendil (30 Adet)",
-        "price": 29.9,
-        "comments": []
     },
     {
         "id": 8,
@@ -707,18 +728,6 @@
                 "text": "Muhteşem !",
                 "baslik": "DEĞER",
                 "kullanici": "xyz@gmail.com"
-            },
-            {
-                "id": 5,
-                "text": "aaaaaaaaaaaaaaa",
-                "kullanici": "a",
-                "baslik": "asd"
-            },
-            {
-                "id": 6,
-                "text": "aaaaaaaaaaaaaaa",
-                "kullanici": "a",
-                "baslik": "asd"
             }
         ]
     }
