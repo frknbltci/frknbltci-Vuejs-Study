@@ -194,7 +194,6 @@ export default {
       seenSearch: false,
       email: "",
       sifre: "",
-      users: [],
       error: "",
       errorseen: false,
       currentUser: "",
@@ -214,8 +213,6 @@ export default {
       this.menuList = resMenu.data;
       const resProduct = await axios.get("http://localhost:8180/products");
       this.products = resProduct.data;
-      const resUsers = await axios.get("http://localhost:8180/login");
-      this.users = resUsers.data;
       this.sepetUrunleri = localStorage.getItem("sepetUrunleri");
       if (localStorage.getItem("currentUser")) {
         this.currentUser = localStorage.getItem("currentUser");
@@ -263,7 +260,9 @@ export default {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("currentUser", this.email);
             this.seen = false;
+            console.log("asdasd");
             location.reload();
+            console.log("asdasd");
             // this.$router.push('/');
           }
         })

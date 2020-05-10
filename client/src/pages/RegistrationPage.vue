@@ -316,16 +316,16 @@ export default {
       try {
         this.hataGoster = false;
         let res = await axios.post("http://localhost:8180/signup", {
-          ad: this.ad,
-          soyad: this.soyad,
-          firma: this.firma,
-          vergiDairesi: this.vergiDairesi,
-          vergiNumarasi: this.vergiNumarasi,
-          tcno: this.tcno,
-          tel: this.tel,
+          name: this.ad,
+          surname: this.soyad,
+          company: this.firma,
+          taxAdmin: this.vergiDairesi,
+          taxNumber: this.vergiNumarasi,
+          ıdNumber: this.tcno,
+          phoneNumber: this.tel,
           email: this.email,
-          sifre: this.sifre,
-          sifreTekrar: this.sifreTekrar,
+          password: this.sifre,
+          password2: this.sifreTekrar,
         });
         console.log("res", res);
         if (res.data.err2) {

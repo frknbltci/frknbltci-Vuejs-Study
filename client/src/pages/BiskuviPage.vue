@@ -375,7 +375,7 @@ export default {
   data() {
     return {
       categoryList: [],
-      productsListB: [],
+      productsList: [],
       productId: "",
       sepetUrunleri: [],
       sepetCount: 0,
@@ -427,16 +427,16 @@ export default {
 
   methods: {
     async filterPrice() {
-      const res = await axios.get("http://localhost:8180/productsBGK");
+      const res = await axios.get("http://localhost:8180/products/biskuvi");
       this.productsListB = res.data;
       var fiyatUrunler = [];
 
-      for (var i = 0; i < this.productsListB.length; i++) {
-        if (this.productsListB[i].price < this.value) {
-          fiyatUrunler.push(this.productsListB[i]);
+      for (var i = 0; i < this.productsList.length; i++) {
+        if (this.productsList[i].price < this.value) {
+          fiyatUrunler.push(this.productsList[i]);
         }
       }
-      this.productsListB = fiyatUrunler;
+      this.productsList = fiyatUrunler;
     },
     sepeteEkle(product) {
       console.log("Sepete Eklendi");

@@ -5,6 +5,21 @@ const path = require('path');
 var cors = require('cors')
 const jwt = require("jsonwebtoken");
 
+const mongoose = require('mongoose');
+
+const signupSchema = require('./models/signups')
+const contactsSchema = require('./models/contacts')
+const magazalarSchema = require('./models/stores')
+const markalarSchema = require('./models/brands')
+const urunlerSchema = require('./models/products')
+// ES6 use
+//import mongoose from 'mongoose';
+
+mongoose.connect('mongodb://localhost/afiaDb', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
 
 
 const app = express();
@@ -30,14 +45,12 @@ const AFIA_DATA_FILE = path.join(__dirname, './src/datas/server-afia-data.json')
 app.set('port', (8180));
 
 
-
 app.use((req, res, next) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.setHeader('Pragma', 'no-cache');
   res.setHeader('Expires', '0');
   next();
 });
-
 
 
 app.get('/menu', (req, res) => {
@@ -49,35 +62,40 @@ app.get('/menu', (req, res) => {
 });
 
 app.get('/markalar', (req, res) => {
-  fs.readFile(BRANDS_DATA_FILE, (err, data) => {
-    res.setHeader('Cache-Control', 'no-cache');
-    res.json(JSON.parse(data));
-  });
+  markalarSchema.find({}).then(a => {
+    res.json(a);
+  })
 });
 
-app.post('/contact', (req, res) => {
-  fs.readFile(CONTACT_DATA_FILE, (err, data) => {
-    res.setHeader('Cache-Control', 'no-cache');
-    const contactDatas = JSON.parse(data);
-    console.log(contactDatas);
-    const newContact = {
-      id: contactDatas.length + 1,
-      department: 1,
-      name: req.body.ad,
-      surname: req.body.soyad,
-      email: req.body.email,
-      phoneNumber: req.body.tel,
-      message: req.body.mess
-    };
-    console.log(newContact);
-    contactDatas.push(newContact);
-    fs.writeFile(CONTACT_DATA_FILE, JSON.stringify(contactDatas, null, 4), () => {
-      res.setHeader('Cache-Control', 'no-cache');
-      res.json(contactDatas);
-      console.log("Mesajınız Alındı.")
-    });
 
-  });
+//DATABASE E YÜKLEMİYOR
+app.post('/contact', (req, res) => {
+
+  console.log(req.body.name === '');
+
+
+  if (!req.body || req.body.email === '' || req.body.message === '') {
+    return res.status(400).send({
+      message: "Note content can not be empty"
+    });
+  }
+
+  const contact = new contactsSchema({
+    name: req.body.name,
+    surname: req.body.surname,
+    email: req.body.email,
+    phoneNumber: req.body.phoneNumber,
+    message: req.body.message
+  })
+
+  contact.save()
+    .then(data => {
+      res.send(data);
+    }).catch(err => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the Note."
+      });
+    });
 
 });
 
@@ -89,7 +107,7 @@ app.get('/productsAfia', (req, res) => {
 
 });
 
-app.get('/productsBGK', (req, res) => {
+app.get('/products/biskuvi', (req, res) => {
   fs.readFile(BGK_DATA_FILE, (err, data) => {
     res.setHeader('Cache-Control', 'no-cache');
     res.json(JSON.parse(data));
@@ -98,13 +116,12 @@ app.get('/productsBGK', (req, res) => {
 });
 
 app.get('/products', (req, res) => {
-  fs.readFile(PRODUCTS_DATA_FILE, (err, data) => {
-    res.setHeader('Cache-Control', 'no-cache');
-    res.json(JSON.parse(data));
-  });
-
+  urunlerSchema.find({}).then(a => {
+    res.json(a);
+  })
 });
 
+//Static daha kullanışlı olacaktır
 app.get('/category', (req, res) => {
   fs.readFile(CATEGORY_DATA_FILE, (err, data) => {
     res.setHeader('Cache-Control', 'no-cache');
@@ -112,182 +129,50 @@ app.get('/category', (req, res) => {
   });
 });
 
-app.get('/login', (req, res) => {
-  fs.readFile(LOGIN_DATA_FILE, (err, data) => {
-    res.setHeader('Cache-Control', 'no-cache');
-    res.json(JSON.parse(data));
-  });
-});
 
-app.post('/login', (req, res) => {
-  fs.readFile(LOGIN_DATA_FILE, (err, data) => {
-    const users = JSON.parse(data);
 
-    var email = req.body.email;
-    var sifre = req.body.password;
-    if (!email || !sifre) {
-      console.log('!!!!!!');
-      return res.status(500).json({
-        title: 'server error',
-        error: 'user giriş hatası'
-      })
+app.post('/login', (req, res, next) => {
+
+  var email = req.body.email;
+  var password = req.body.password;
+
+  signupSchema.findOne({ email: email, password: password }, function (err, user) {
+    if (err) {
+      return res.status(500).send();
     }
-
-    const gelenUser = {
-      password: sifre,
-      mail: email
-    };
-
-
-    var user = users.filter(function (user) {
-      if (user.email === email) {
-        return user;
-      }
-    });
     if (!user) {
-      console.log("!!!!ab!")
-      return status(500).json({
-        title: 'server error',
-        error: 'user giriş hatası'
-      })
+      return res.status(404).send();
+    }
+    const gelenUser = {
+      password: password,
+      email: email
     };
-    console.log(user[0].password);
-    if (user[0].password != sifre) {
-      console.log("Şifre Hatası");
-      return false;
-    }
-    else {
-
-      const token = jwt.sign(gelenUser, 'secretkey');
-      console.log(token);
-      return res.status(200).json({
-        title: 'Login Başarılı',
-        token: token
-      });
-    }
+    const token = jwt.sign(gelenUser, 'secretkey');
+    return res.status(200).json({
+      title: 'Login Başarılı',
+      token: token
+    });
   })
 
 });
 
 
 app.post('/signup', (req, res) => {
-  fs.readFile(SIGNUP_DATA_FILE, (err, data) => {
-    const users = JSON.parse(data);
-
-    const newUser = {
-      id: users.length + 1,
-      isim: req.body.ad,
-      soyad: req.body.soyad,
-      firma: req.body.firma,
-      vergiDairesi: req.body.vergiDairesi,
-      vergiNumarasi: req.body.vergiNumarasi,
-      tcno: req.body.tcno,
-      tel: req.body.tel,
-      email: req.body.email,
-      password: req.body.sifre,
-      password2: req.body.sifreTekrar
-    };
-
-    let userExist = false;
-    users.map((users) => {
-      if (users.email === newUser.email) {
-        userExist = true;
-      }
-    });
-    if (!userExist) users.push(newUser);
-    fs.writeFile(SIGNUP_DATA_FILE, JSON.stringify(users, null, 4), () => {
-      res.setHeader('Cache-Control', 'no-cache');
-      res.json({ err1: false, users });
-      console.log("Kayıt Tamamlandı.")
-    });
-  });
-  fs.readFile(LOGIN_DATA_FILE, (err, dataLogin) => {
-    const loginUsers = JSON.parse(dataLogin);
-    const forLoginNewUser = {
-      id: loginUsers.length + 1,
-      email: req.body.email,
-      password: req.body.sifre
-    };
-    for (var i = 0; i < loginUsers.length; i++) {
-      if (loginUsers[i].email == req.body.email) {
-
-        return res.json({ err2: true })
-      }
-    }
-    loginUsers.push(forLoginNewUser);
-    fs.writeFile(LOGIN_DATA_FILE, JSON.stringify(loginUsers, null, 4), () => {
-      res.setHeader('Cache-Control', 'no-cache');
-    });
-  });
+  signupSchema.create(req.body)
+  res.status(201).send()
 });
 
-
-app.post('/pos', (req, res) => {
-  fs.readFile(POS_DATA_FILE, (err, data) => {
-    let anketDatas = JSON.parse(data);
-    let newAnketData = {
-      id: req.body.id,
-      name: req.body.name,
-      phoneNumber: req.body.phoneNumber,
-      address: req.body.address,
-      surname: req.body.surname,
-      email: req.body.email,
-      message: req.body.message
-    };
-    anketDatas.push(newAnketData);
-    fs.writeFile(POS_DATA_FILE, JSON.stringify(anketDatas, null, 4), () => {
-      res.setHeader('Cache-Control', 'no-cache');
-      console.log("İlginiz için teşekkürler.");
-    });
-  });
-});
 
 
 app.get('/store', (req, res) => {
-  fs.readFile(STORE_DATA_FILE, (err, data) => {
-    res.setHeader('Cache-Control', 'no-cache');
-    res.json(JSON.parse(data));
-  });
+  magazalarSchema.find({}).then(a => {
+    res.json(a);
+  })
 });
 
-
-app.post('/store', (req, res) => {
-  fs.readFile(STORE_DATA_FILE, (err, data) => {
-    let storeDatas = JSON.parse(data);
-    let newStoreData = {
-      id: req.body.id,
-      Sube: req.body.Sube,
-      Adres: req.body.Adres,
-      Telefon: req.body.Telefon,
-      Faks: req.body.Faks,
-      eposta: req.body.eposta
-    };
-    storeDatas.push(newStoreData);
-    fs.writeFile(STORE_DATA_FILE, JSON.stringify(storeDatas, null, 4), () => {
-      res.setHeader('Cache-Control', 'no-cache');
-      console.log("Mağaza Eklendi.");
-    });
-  });
-});
-
-app.post('/store/delete', (req, res) => {
-  fs.readFile(STORE_DATA_FILE, (err, data) => {
-    let storeDatas = JSON.parse(data);
-    storeDatas.map((newData) => {
-      if (newData.id === req.body.id) {
-        const IndexToRemove = storeDatas.findIndex(newData => newData.id === req.body.id);
-        storeDatas.splice(IndexToRemove, 1);
-      }
-    });
-    fs.writeFile(STORE_DATA_FILE, JSON.stringify(storeDatas, null, 4), () => {
-      res.setHeader('Cache-Control', 'no-cache');
-      res.json(storeDatas);
-    });
-  });
-});
 
 app.post('/comment', (req, res) => {
-
+  console.log('Burada');
   let validate = jwt.verify(req.body.token, 'secretkey')
   if (validate) {
     fs.readFile(PRODUCTS_DATA_FILE, (err, data) => {
@@ -317,28 +202,6 @@ app.get('/comment', (req, res) => {
     res.json(JSON.parse(data));
   });
 });
-
-
-app.post('/comment/delete', (req, res) => {
-  fs.readFile(COMMENT_DATA_FILE, (err, data) => {
-    let comments = JSON.parse(data);
-    comments.map((comment) => {
-      if (comment.commentId === req.body.commentId) {
-        const commentToRemove = comments.findIndex(comment => comment.commentId === req.body.commentId);
-        comments.splice(commentToRemove, 1);
-      }
-      else {
-        console.log("Ürün bulunamadı")
-      }
-    });
-    fs.writeFile(COMMENT_DATA_FILE, JSON.stringify(comments, null, 4), () => {
-      res.setHeader('Cache-Control', 'no-cache');
-      res.json(comments);
-    });
-  });
-});
-
-
 
 
 

@@ -258,7 +258,6 @@ import Vue from "vue";
 import axios from "axios";
 Vue.use(axios);
 
-
 export default {
   name: "ContactPage",
   components: {
@@ -270,37 +269,37 @@ export default {
   data() {
     return {
       selectedValue: "Departman",
-      ad:'',
-      soyad:'',
-      email:'',
-      tel:'',
-      mess:''
+      ad: "",
+      soyad: "",
+      email: "",
+      tel: "",
+      mess: "",
     };
   },
-  methods:{
-    messageGonder(){
-
-      axios.post('http://localhost:8180/contact',{
-        ad:this.ad,
-        soyad:this.soyad,
-        email:this.email,
-        tel:this.tel,
-        mess:this.mess
-
-      })
-      .then(res => {
-          if (res.status === 200) {
-            this.$router.push('/');
-          }
-        },
+  methods: {
+    async messageGonder() {
+      await axios
+        .post("http://localhost:8180/contact", {
+          name: this.ad,
+          surname: this.soyad,
+          email: this.email,
+          phoneNumber: this.tel,
+          message: this.mess,
+        })
+        .then(
+          res => {
+            if (res.status === 200) {
+              this.$router.push("/");
+            }
+          },
           err => {
             console.log(err.response);
             this.error = err.response.data.error;
           }
-      );
-    }
+        );
+    },
   },
-  mounted() {
+  /* mounted() {
     // At this point, the child GmapMap has been mounted, but
     // its map has not been initialized.
     // Therefore we need to write mapRef.$mapPromise.then(() => ...)
@@ -308,6 +307,6 @@ export default {
     this.$refs.mapRef.$mapPromise.then(map => {
       map.panTo({ lat: 1.38, lng: 103.8 });
     });
-  },
+  },*/
 };
 </script>
