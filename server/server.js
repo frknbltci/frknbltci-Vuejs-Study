@@ -20,6 +20,11 @@ mongoose.connect('mongodb://localhost/afiaDb', {
   useUnifiedTopology: true
 });
 
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  console.log('connection successful')
+});
 
 
 const app = express();
@@ -68,51 +73,27 @@ app.get('/markalar', (req, res) => {
 });
 
 
-//DATABASE E YÜKLEMİYOR
 app.post('/contact', (req, res) => {
-
-  console.log(req.body.name === '');
-
 
   if (!req.body || req.body.email === '' || req.body.message === '') {
     return res.status(400).send({
       message: "Note content can not be empty"
     });
   }
-
-  const contact = new contactsSchema({
-    name: req.body.name,
-    surname: req.body.surname,
-    email: req.body.email,
-    phoneNumber: req.body.phoneNumber,
-    message: req.body.message
-  })
-
-  contact.save()
-    .then(data => {
-      res.send(data);
-    }).catch(err => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the Note."
-      });
-    });
-
+  contactsSchema.create(req.body)
+  res.send(200)
 });
 
 app.get('/productsAfia', (req, res) => {
-  fs.readFile(AFIA_DATA_FILE, (err, data) => {
-    res.setHeader('Cache-Control', 'no-cache');
-    res.json(JSON.parse(data));
-  });
-
+  urunlerSchema.find({ brand: 'Afia' }).then(a => {
+    res.json(a);
+  })
 });
 
-app.get('/products/biskuvi', (req, res) => {
-  fs.readFile(BGK_DATA_FILE, (err, data) => {
-    res.setHeader('Cache-Control', 'no-cache');
-    res.json(JSON.parse(data));
-  });
-
+app.get('/biskuvi', (req, res) => {
+  urunlerSchema.find({ name: 'Bisküvi' }).then(a => {
+    res.json(a);
+  })
 });
 
 app.get('/products', (req, res) => {
@@ -171,38 +152,28 @@ app.get('/store', (req, res) => {
 });
 
 
-app.post('/comment', (req, res) => {
-  console.log('Burada');
+app.post('/comment', (req, res, next) => {
+
   let validate = jwt.verify(req.body.token, 'secretkey')
   if (validate) {
-    fs.readFile(PRODUCTS_DATA_FILE, (err, data) => {
-      let comments = JSON.parse(data);
-      for (var i = 0; i < comments.length; i++) { if (comments[i].id == req.body.id) { k = i; } }
-      let commentType = req.body.deger == 1 ? "Anonim" : req.body.kullanici
-      var newComment = {
-        id: comments[k].comments.length + 1,
-        text: req.body.yorum,
-        kullanici: commentType,
-        baslik: req.body.yorumBasligi,
+    urunlerSchema.findOne({ id: req.body.id }, ((err, docs) => {
+      if (err) return next(err);
+      if (!docs) return res.send();
 
-      };
-      comments[k].comments.push(newComment);
-      console.log('newComment', newComment)
-      fs.writeFile(PRODUCTS_DATA_FILE, JSON.stringify(comments, null, 4), () => {
-        console.log("Yorum Eklendi.");
+      docs.comments.push({
+        id: docs.comments.length + 1,
+        text: req.body.text,
+        kullanici: req.body.kullanici,
+        baslik: req.body.baslik
       });
-    });
+      docs.save(function (err) {
+        if (err) return next(err);
+        return res.send();
+      })
+
+    }))
   }
 });
-
-
-app.get('/comment', (req, res) => {
-  fs.readFile(COMMENT_DATA_FILE, (err, data) => {
-    res.setHeader('Cache-Control', 'no-cache');
-    res.json(JSON.parse(data));
-  });
-});
-
 
 
 

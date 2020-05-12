@@ -59,7 +59,7 @@
   <v-card style="margin:1%;" class="Cards"
     width="280" 
     height="450px"   
-      v-for="product in productsListB"
+      v-for="product in productsList"
       :key="product.id" 
        >
       <router-link :to="{  name: 'ProductPage', params: { id: product.id,name:product.title,price:product.price,comments:product.comments }  }"> 
@@ -427,8 +427,8 @@ export default {
 
   methods: {
     async filterPrice() {
-      const res = await axios.get("http://localhost:8180/products/biskuvi");
-      this.productsListB = res.data;
+      const res = await axios.get("http://localhost:8180/biskuvi");
+      this.productsList = res.data;
       var fiyatUrunler = [];
 
       for (var i = 0; i < this.productsList.length; i++) {
@@ -446,40 +446,40 @@ export default {
       this.sepetAddPopUp = true;
     },
     async filterBiskuvi() {
-      const res = await axios.get("http://localhost:8180/productsBGK");
-      this.productsListB = res.data;
+      const res = await axios.get("http://localhost:8180/products");
+      this.productsList = res.data;
       var biskuviUrunler = [];
 
-      for (var i = 0; i < this.productsListB.length; i++) {
-        if (this.productsListB[i].name === "Bisküvi") {
-          biskuviUrunler.push(this.productsListB[i]);
+      for (var i = 0; i < this.productsList.length; i++) {
+        if (this.productsList[i].name === "Bisküvi") {
+          biskuviUrunler.push(this.productsList[i]);
         }
       }
-      this.productsListB = biskuviUrunler;
+      this.productsList = biskuviUrunler;
     },
     async filterGofret() {
-      const res = await axios.get("http://localhost:8180/productsBGK");
-      this.productsListB = res.data;
+      const res = await axios.get("http://localhost:8180/products");
+      this.productsList = res.data;
       var gofretUrunler = [];
-      for (var i = 0; i < this.productsListB.length; i++) {
-        if (this.productsListB[i].name === "Gofret") {
-          gofretUrunler.push(this.productsListB[i]);
+      for (var i = 0; i < this.productsList.length; i++) {
+        if (this.productsList[i].name === "Gofret") {
+          gofretUrunler.push(this.productsList[i]);
         }
       }
-      this.productsListB = gofretUrunler;
+      this.productsList = gofretUrunler;
     },
     async filterKraker() {
-      const res = await axios.get("http://localhost:8180/productsBGK");
-      this.productsListB = res.data;
+      const res = await axios.get("http://localhost:8180/products");
+      this.productsList = res.data;
 
       var krakerUrunler = [];
 
-      for (var i = 0; i < this.productsListB.length; i++) {
-        if (this.productsListB[i].name === "Kraker") {
-          krakerUrunler.push(this.productsListB[i]);
+      for (var i = 0; i < this.productsList.length; i++) {
+        if (this.productsList[i].name === "Kraker") {
+          krakerUrunler.push(this.productsList[i]);
         }
       }
-      this.productsListB = krakerUrunler;
+      this.productsList = krakerUrunler;
     },
     urunSil(id) {
       for (var i = 0; i < this.sepetUrunleri.length; i++) {
@@ -506,15 +506,16 @@ export default {
   },
   async created() {
     try {
-      const res = await axios.get("http://localhost:8180/productsBGK");
-      this.productsListB = res.data;
+      const res = await axios.get("http://localhost:8180/biskuvi");
+      this.productsList = res.data;
+      console.log(this.productsList);
       var a = 0;
       var b = 0;
       var c = 0;
-      for (var k = 0; k < this.productsListB.length; k++) {
-        if (this.productsListB[k].name === "Bisküvi") {
+      for (var k = 0; k < this.productsList.length; k++) {
+        if (this.productsList[k].name === "Bisküvi") {
           a++;
-        } else if (this.productsListB[k].name === "Gofret") {
+        } else if (this.productsList[k].name === "Gofret") {
           b++;
         } else {
           c++;

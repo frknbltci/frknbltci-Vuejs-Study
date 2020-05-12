@@ -8,7 +8,7 @@
   <v-card style="margin:1%;" class="Cards"
     width="280" 
     height="450px"   
-      v-for="product in productsListB"
+      v-for="product in productsList"
       :key="product.id" 
        >
       <router-link :to="{  name: 'ProductPage', params: { id: product.id,name:product.title,price:product.price,comments:product.comments }  }"> 
@@ -226,7 +226,7 @@ export default {
 
   data() {
     return {
-      productsListB: [],
+      productsList: [],
       productId: "",
       sepetUrunleri: [],
       sepetCount: 0,
@@ -305,7 +305,7 @@ export default {
   async created() {
     try {
       const res = await axios.get("http://localhost:8180/productsAfia");
-      this.productsListB = res.data;
+      this.productsList = res.data;
     } catch (err) {
       console.log("err", err);
     }

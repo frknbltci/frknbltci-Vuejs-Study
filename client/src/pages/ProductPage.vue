@@ -496,8 +496,8 @@ export default {
       axios
         .post("http://localhost:8180/comment", {
           id: this.id,
-          yorum: this.yorum,
-          yorumBasligi: this.yorumBasligi,
+          text: this.yorum,
+          baslik: this.yorumBasligi,
           deger: this.deger,
           kullanici: this.currentUser,
           token: token,
