@@ -57,76 +57,92 @@
 </template>
 
 <style>
-.markalarDis{
-    border: 0.2px solid rgb(221, 213, 213);
-    margin-left: 5%;
-    margin-right: 5%;
-    
+.markalarDis {
+  border: 0.2px solid rgb(221, 213, 213);
+  margin-left: 5%;
+  margin-right: 5%;
 }
-.markalarDis v-btn{
-    width: 25%;
+.markalarDis v-btn {
+  width: 25%;
 }
-.Cards{
-   
-   text-align:center;
-   
-   margin:1%;
-         
+.Cards {
+  text-align: center;
+
+  margin: 1%;
 }
 </style>
 
 <script>
-import Header from '@/components/Header.vue';
+import Header from "@/components/Header.vue";
 
-import footer from '@/components/Footer.vue';
+import footer from "@/components/Footer.vue";
 import Vue from "vue";
 import axios from "axios";
 Vue.use(axios);
 
-
-
 export default {
-  name :'markalarPage',
-  components:{
-    "Header":Header,
-    "fo":footer
-
-  
-  }, 
+  name: "markalarPage",
+  components: {
+    Header: Header,
+    fo: footer,
+  },
   async created() {
-      try { 
-        const resMarka=await axios.get("http://localhost:8180/markalar");
-        this.markalar=resMarka.data;
-      } catch (err) {
-        console.log("err", err);
-      }
-    },
-  
-  data:()=>({
-    markalar:[],
-    alfabe:['Tümü','A','B','C','Ç','D','E','F','G','I','İ','J','K,','L','M','N','O',
-    'Ö','P','R','S','Ş','T','U','Ü','V','Y','Z','0-9'],
-    search:''
-    
-  }),
-   computed:{
-      filterMarkalar:function(){
-        return this.markalar.filter((marka)=>{
-          return marka.title.match(this.search ); 
-        });
-      }     
-    },
-    methods:{
-      harfAl(harf){
-         this.markalar =this.markalar.filter((marka)=>{
-           return marka.title.match(harf);
-          
-         });
-       
-      }
-     
+    try {
+      const resMarka = await axios.get("http://localhost:8180/markalar");
+      this.markalar = resMarka.data;
+    } catch (err) {
+      console.log("err", err);
     }
+  },
 
+  data: () => ({
+    markalar: [],
+    alfabe: [
+      "Tümü",
+      "A",
+      "B",
+      "C",
+      "Ç",
+      "D",
+      "E",
+      "F",
+      "G",
+      "I",
+      "İ",
+      "J",
+      "K,",
+      "L",
+      "M",
+      "N",
+      "O",
+      "Ö",
+      "P",
+      "R",
+      "S",
+      "Ş",
+      "T",
+      "U",
+      "Ü",
+      "V",
+      "Y",
+      "Z",
+      "0-9",
+    ],
+    search: "",
+  }),
+  computed: {
+    filterMarkalar: function() {
+      return this.markalar.filter(marka => {
+        return marka.title.match(this.search);
+      });
+    },
+  },
+  methods: {
+    harfAl(harf) {
+      this.markalar = this.markalar.filter(marka => {
+        return marka.title.match(harf);
+      });
+    },
+  },
 };
-
 </script>

@@ -359,7 +359,7 @@
 
 		<h4 style="margin-left:1%;">Kart Üzerindeki Ad Soyad <p><input  style="padding:2%; width:170%; height:50px; border:1px solid black; margin-top:2%; margin-left:2%;" type="text" placeholder="Ad Soyad" /> </p> </h4>
           
-		<img style="border-radius:2%; position:absolute; height:50%; width:40%; margin-left:60%;" 
+		<img  class="kart" 
 								src="../assets/images/kredikartı.jpg"/>
 
 				
@@ -511,7 +511,7 @@ Sipariş onaylandıktan sonra oluşacak "SP..." ile başlayan Sipariş Numaranı
 							
 						</div>
 				
-			<v-btn @click="siparisiTamamla()" style="margin-right:0%; position:absolute; margin-top:110%;" x-large color="success" dark>SİPARİŞİ TAMAMLA</v-btn>
+			<v-btn @click="siparisiTamamla()" class="siparisiTamamlaBtn" x-large color="success" dark>SİPARİŞİ TAMAMLA</v-btn>
 			
 		</v-col>	
 
@@ -570,415 +570,392 @@ Sipariş onaylandıktan sonra oluşacak "SP..." ile başlayan Sipariş Numaranı
 </template>
 
 <script>
- 
-	export default{
+export default {
+  data() {
+    return {
+      step: 1,
+      absolute: false,
+      active: true,
+      opacity: 0,
+      buffer: 100,
+      height: 25,
+      striped: true,
+      value: 25,
+      sepetUrunleri: [],
+      dialog: false,
+      miktar: 1,
+      toplamTutar: 0,
+      goster: false,
+      currentUser: "",
+      subStep: 1,
+      selectedSepet: true,
+      selectedAdres: false,
+      selectedOdeme: false,
+      selectedOnay: false,
+      cardFontsepet: true,
+      cardFontonay: false,
+      cardFontodeme: false,
+      cardFontadres: false,
+      subSelectedKrediKarti: true,
+      subSelectedHavale: false,
+      subSelectedKapida: false,
+      sepetCount: 0,
+      sepetToplami: 0,
+      kapidaOdemeHizmetBedeli: false,
+    };
+  },
+  methods: {
+    arrayRemove(arr, value) {
+      return arr.filter(function(ele) {
+        return ele != value;
+      });
+    },
 
-	
+    urunSil(id) {
+      for (var i = 0; i < this.sepetUrunleri.length; i++) {
+        if (this.sepetUrunleri[i].id == id) {
+          console.log(this.sepetUrunleri[i]);
+          this.sepetUrunleri.splice(i, 1);
+          console.log(this.sepetUrunleri);
+          localStorage.setItem(
+            "sepetUrunleri",
+            JSON.stringify(this.sepetUrunleri)
+          );
+          this.sepetCount--;
+          localStorage.setItem("sepetCount", this.sepetCount);
+          this.$router.go();
+          var toplam = 0;
+          for (var k = 0; k < this.sepetUrunleri.length; k++) {
+            toplam = toplam + this.sepetUrunleri[k].price;
+          }
+          this.sepetToplami = toplam;
+          localStorage.setItem("sepetToplami", this.sepetToplami);
+        }
+      }
+    },
 
-		data(){
-			return{
-				step:1,
-				absolute: false,
-				active: true,
-				opacity: 0,
-				buffer: 100,
-				height: 25,
-				striped: true,
-				value: 25,
-				sepetUrunleri:[],
-				dialog: false,
-				miktar:1,
-				toplamTutar:0,
-				goster:false,
-				currentUser:'',
-				subStep:1,
-				selectedSepet:true,
-				selectedAdres:false,
-				selectedOdeme:false,
-				selectedOnay:false,
-				cardFontsepet:true,
-				cardFontonay:false,
-				cardFontodeme:false,
-				cardFontadres:false,
-				subSelectedKrediKarti:true,
-				subSelectedHavale:false,
-				subSelectedKapida:false,
-				sepetCount:0,
-				sepetToplami:0,
-				kapidaOdemeHizmetBedeli:false
-				
-
-			
-			};
-		},
-		methods:{
-			arrayRemove(arr, value) {
-
-				return arr.filter(function(ele){
-					return ele != value;
-				});
-
-},
-
-			urunSil(id){
-	
-				 for(var i=0;i<this.sepetUrunleri.length;i++){
-					if( this.sepetUrunleri[i].id ==id){
-						console.log(this.sepetUrunleri[i]);
-						this.sepetUrunleri.splice(i,1);
-						console.log(this.sepetUrunleri);
-						 localStorage.setItem('sepetUrunleri',JSON.stringify(this.sepetUrunleri)); 
-						 this.sepetCount--;
-						localStorage.setItem('sepetCount',this.sepetCount);
-						this.$router.go();
-						var toplam=0;
-						for(var k=0;k<this.sepetUrunleri.length;k++){
-							toplam=toplam+this.sepetUrunleri[k].price;
-							
-						}
-						this.sepetToplami=toplam;
-						localStorage.setItem('sepetToplami',this.sepetToplami);
-
-						}
-					
-					
-				}
-
-			},
-
-			sepetiGuncelle(){
-			 this.$router.go();
-			},
-			sepetiTemizle(){
-				localStorage.removeItem('sepetUrunleri');
-				localStorage.removeItem('sepetCount');
-				localStorage.removeItem('sepetToplami');
-				this.$router.go();
-
-			},
-			alisveriseDevam(){
-				this.$router.push('/');
-			},
-			odemeyeDevam(){
-		    if(!this.currentUser){
-				window.alert('Giriş yapıp adres belirlemelisiniz.');
-				this.step=2;
-			}else{
-			this.step=3;
-			this.value=75;
-			this.selectedSepet=false;
-			this.cardFontsepet=false;
-			this.selectedAdres=false;
-			this.selectedOdeme=true;
-			this.selectedOnay=false;
-			this.cardFontadres=false;
-			this.cardFontodeme=true;
-			this.cardFontonay=false;
-				}
-			},
-			SatınAl(){
-			if( this.sepetUrunleri == null || this.sepetUrunleri.length==0){
-				console.log(this.sepetUrunleri);
-			  this.step=1;
-			  window.alert('Ürün seçmeden bu aşamayı geçemezsiniz.');
-			 }
-			 else
-			 {
-				 console.log(this.sepetUrunleri);
-			 this.step=2;
-			this.value=50;
-			this.selectedSepet=false;
-			this.cardFontsepet=false;
-			this.selectedAdres=true;
-			this.selectedOdeme=false;
-			this.selectedOnay=false;
-			this.cardFontadres=true;
-			this.cardFontodeme=false;
-			this.cardFontonay=false;
-			 }
-
-			},
-			siparisiTamamla(){
-
-				this.step=4;
-				this.value=100;
-				this.selectedSepet=false;
-				this.cardFontsepet=false;
-				this.selectedAdres=false;
-				this.selectedOdeme=false;
-				this.selectedOnay=true;
-				this.cardFontadres=false;
-				this.cardFontodeme=false;
-				this.cardFontonay=true;
-				window.alert("SİPARİŞİNİZ ALINDI.ANASAYFAYA YÖNLENDİRİLİYORSUNUZ.");
-				this.$router.push('/');
-				localStorage.removeItem('sepetUrunleri');
-				localStorage.removeItem('sepetCount');
-				localStorage.removeItem('sepetToplami');
-			}
-			,
-			sepetIslemleri(){
-			this.step=1;
-			this.value=25;
-			this.selectedSepet=true;
-			this.cardFontsepet=true;
-			this.selectedAdres=false;
-			this.selectedOdeme=false;
-			this.selectedOnay=false;
-			this.cardFontadres=false;
-			this.cardFontodeme=false;
-			this.cardFontonay=false;
-			},
-			adresIslemleri(){
-			 if( this.sepetUrunleri == null){
-			  this.step=1;
-			  window.alert('Ürün seçmeden bu aşamayı geçemezsiniz.');
-			  console.log(this.sepetUrunleri.length);
-			 }
-			 else if(this.step==1){
-				 this.step=1;
-			 }
-			 else{
-			this.step=2;
-			this.value=50;
-			this.selectedSepet=false;
-			this.cardFontsepet=false;
-			this.selectedAdres=true;
-			this.selectedOdeme=false;
-			this.selectedOnay=false;
-			this.cardFontadres=true;
-			this.cardFontodeme=false;
-			this.cardFontonay=false;
-			 }
-			},
-			odemeIslemleri(){
-				if(this.step==1){
-			      this.step=1;
-                
-			 }
-			 else if(this.step==2){
-				 this.step=2;
-			 }
-			 else{		
-			this.step=3;
-			this.value=75;
-			this.selectedSepet=false;
-			this.cardFontsepet=false;
-			this.selectedAdres=false;
-			this.selectedOdeme=true;
-			this.selectedOnay=false;
-			this.cardFontadres=false;
-			this.cardFontodeme=true;
-			this.cardFontonay=false;
-			}
-			},
-			onayIslemleri(){
-			if(this.step==1){
-			 this.step=1;
-                
-			 }
-			 else if(this.step==2){
-				 this.step=2;
-			 }else if(this.step==3){
-				 this.step=3;
-			 }
-			 else{
-			this.step=4;
-			this.value=100;
-			this.selectedSepet=false;
-			this.cardFontsepet=false;
-			this.selectedAdres=false;
-			this.selectedOdeme=false;
-			this.selectedOnay=true;
-			this.cardFontadres=false;
-			this.cardFontodeme=false;
-			this.cardFontonay=true;
-				}
-			}
-			
-	  },
-	  created(){
-		  this.sepetUrunleri=JSON.parse(localStorage.getItem('sepetUrunleri'));
-		  this.sepetCount=localStorage.getItem('sepetCount');
-		  this.sepetToplami=localStorage.getItem('sepetToplami');
-		  if(localStorage.getItem('currentUser')){
-			  this.currentUser=localStorage.getItem('currentUser');
-		  }
-		
-	  }
-		
-		
-		
-	}
-		
-
+    sepetiGuncelle() {
+      this.$router.go();
+    },
+    sepetiTemizle() {
+      localStorage.removeItem("sepetUrunleri");
+      localStorage.removeItem("sepetCount");
+      localStorage.removeItem("sepetToplami");
+      this.$router.go();
+    },
+    alisveriseDevam() {
+      this.$router.push("/");
+    },
+    odemeyeDevam() {
+      if (!this.currentUser) {
+        window.alert("Giriş yapıp adres belirlemelisiniz.");
+        this.step = 2;
+      } else {
+        this.step = 3;
+        this.value = 75;
+        this.selectedSepet = false;
+        this.cardFontsepet = false;
+        this.selectedAdres = false;
+        this.selectedOdeme = true;
+        this.selectedOnay = false;
+        this.cardFontadres = false;
+        this.cardFontodeme = true;
+        this.cardFontonay = false;
+      }
+    },
+    SatınAl() {
+      if (this.sepetUrunleri == null || this.sepetUrunleri.length == 0) {
+        console.log(this.sepetUrunleri);
+        this.step = 1;
+        window.alert("Ürün seçmeden bu aşamayı geçemezsiniz.");
+      } else {
+        console.log(this.sepetUrunleri);
+        this.step = 2;
+        this.value = 50;
+        this.selectedSepet = false;
+        this.cardFontsepet = false;
+        this.selectedAdres = true;
+        this.selectedOdeme = false;
+        this.selectedOnay = false;
+        this.cardFontadres = true;
+        this.cardFontodeme = false;
+        this.cardFontonay = false;
+      }
+    },
+    siparisiTamamla() {
+      this.step = 4;
+      this.value = 100;
+      this.selectedSepet = false;
+      this.cardFontsepet = false;
+      this.selectedAdres = false;
+      this.selectedOdeme = false;
+      this.selectedOnay = true;
+      this.cardFontadres = false;
+      this.cardFontodeme = false;
+      this.cardFontonay = true;
+      window.alert("SİPARİŞİNİZ ALINDI.ANASAYFAYA YÖNLENDİRİLİYORSUNUZ.");
+      this.$router.push("/");
+      localStorage.removeItem("sepetUrunleri");
+      localStorage.removeItem("sepetCount");
+      localStorage.removeItem("sepetToplami");
+    },
+    sepetIslemleri() {
+      this.step = 1;
+      this.value = 25;
+      this.selectedSepet = true;
+      this.cardFontsepet = true;
+      this.selectedAdres = false;
+      this.selectedOdeme = false;
+      this.selectedOnay = false;
+      this.cardFontadres = false;
+      this.cardFontodeme = false;
+      this.cardFontonay = false;
+    },
+    adresIslemleri() {
+      if (this.sepetUrunleri == null) {
+        this.step = 1;
+        window.alert("Ürün seçmeden bu aşamayı geçemezsiniz.");
+        console.log(this.sepetUrunleri.length);
+      } else if (this.step == 1) {
+        this.step = 1;
+      } else {
+        this.step = 2;
+        this.value = 50;
+        this.selectedSepet = false;
+        this.cardFontsepet = false;
+        this.selectedAdres = true;
+        this.selectedOdeme = false;
+        this.selectedOnay = false;
+        this.cardFontadres = true;
+        this.cardFontodeme = false;
+        this.cardFontonay = false;
+      }
+    },
+    odemeIslemleri() {
+      if (this.step == 1) {
+        this.step = 1;
+      } else if (this.step == 2) {
+        this.step = 2;
+      } else {
+        this.step = 3;
+        this.value = 75;
+        this.selectedSepet = false;
+        this.cardFontsepet = false;
+        this.selectedAdres = false;
+        this.selectedOdeme = true;
+        this.selectedOnay = false;
+        this.cardFontadres = false;
+        this.cardFontodeme = true;
+        this.cardFontonay = false;
+      }
+    },
+    onayIslemleri() {
+      if (this.step == 1) {
+        this.step = 1;
+      } else if (this.step == 2) {
+        this.step = 2;
+      } else if (this.step == 3) {
+        this.step = 3;
+      } else {
+        this.step = 4;
+        this.value = 100;
+        this.selectedSepet = false;
+        this.cardFontsepet = false;
+        this.selectedAdres = false;
+        this.selectedOdeme = false;
+        this.selectedOnay = true;
+        this.cardFontadres = false;
+        this.cardFontodeme = false;
+        this.cardFontonay = true;
+      }
+    },
+  },
+  created() {
+    this.sepetUrunleri = JSON.parse(localStorage.getItem("sepetUrunleri"));
+    this.sepetCount = localStorage.getItem("sepetCount");
+    this.sepetToplami = localStorage.getItem("sepetToplami");
+    if (localStorage.getItem("currentUser")) {
+      this.currentUser = localStorage.getItem("currentUser");
+    }
+  },
+};
 </script>
 
 <style>
-
-.cardInside{
-	color: grey;
-	margin-top: 5%;
-	margin-left: 35%;
-	font-size: 24px;
-	
-	
-	
+.kart {
+  border-radius: 2%;
+  position: absolute;
+  height: 50%;
+  width: 40%;
+  margin-left: 60%;
 }
-.iconsCss{
-	
-	color:grey;
-    margin-left:15%;
-    margin-top:8%;
-    
+.cardInside {
+  color: grey;
+  margin-top: 5%;
+  margin-left: 35%;
+  font-size: 24px;
 }
-
-.cards{
-	width: 100%;
-	height: 100px;
-	margin-top: -13%;
-    background-color:rgb(230, 227, 227); 
-	
-}
-.selectedCard{
-	width: 100%;
-	height: 100px;
-	margin-top: -13%;
-    background-color:rgb(230, 227, 227); 
-	
+.iconsCss {
+  color: grey;
+  margin-left: 15%;
+  margin-top: 8%;
 }
 
-.sepetDivfont{
-	color:black;
-	font-size: 17px;
-	
+.cards {
+  width: 100%;
+  height: 100px;
+  margin-top: -13%;
+  background-color: rgb(230, 227, 227);
 }
-.siparisNotu{	
-	color:grey; 
-	background-color:rgb(230, 227, 227);
-	border:1px solid rgb(230, 227, 227);
-					 
-}
-
-
-
-
-.siparisNotu:hover{
-	color:white;
-	background-color: grey;
-}
-.silBtn{
-	border: 1px solid black;
-	width: 25px;
-	font-size:25px;
-	color: white;
-	background-color: grey;
-
-}
-.silBtn:hover{
-	background-color: black;
-}
-.besliButon{
-	color:white;
-	background-color: grey;
-	text-align: center;
-	margin-left: 1px;
-	padding: 2px; 
-}
-.besliButon:hover{
-	background-color: black;
-}
-.stnAlBtn{
-	width:100%;
-	height: 140%;
-	color: white;
-	border-radius: 5%;
-	background-color: rgb(226, 170, 65);
-	font-size: 20px;
-}
-.stnAlBtn:hover .devamBtn:hover{
-	background-color: rgb(201, 134, 10);
+.selectedCard {
+  width: 100%;
+  height: 100px;
+  margin-top: -13%;
+  background-color: rgb(230, 227, 227);
 }
 
-.devamBtn{
-	width:30%;
-	height: 60px;
-	color: white;
-	border-radius: 5%;
-	margin-left: 45%;
-	margin-top: 10%;
-	background-color: rgb(226, 170, 65);
-	font-size: 20px;
+.sepetDivfont {
+  color: black;
+  font-size: 17px;
+}
+.siparisNotu {
+  color: grey;
+  background-color: rgb(230, 227, 227);
+  border: 1px solid rgb(230, 227, 227);
 }
 
-.substeps{
-	padding: 10px;
-	font-size: 18px;
-	background-color: rgb(241, 235, 235);
-	border:1px solid rgb(218, 213, 213);
-	color: rgb(112, 107, 107);
+.siparisNotu:hover {
+  color: white;
+  background-color: grey;
+}
+.silBtn {
+  border: 1px solid black;
+  width: 25px;
+  font-size: 25px;
+  color: white;
+  background-color: grey;
+}
+.silBtn:hover {
+  background-color: black;
+}
+.besliButon {
+  color: white;
+  background-color: grey;
+  text-align: center;
+  margin-left: 1px;
+  padding: 2px;
+}
+.besliButon:hover {
+  background-color: black;
+}
+.stnAlBtn {
+  width: 100%;
+  height: 140%;
+  color: white;
+  border-radius: 5%;
+  background-color: rgb(226, 170, 65);
+  font-size: 20px;
+}
+.stnAlBtn:hover .devamBtn:hover {
+  background-color: rgb(201, 134, 10);
 }
 
-.substeps:hover{
- background-color: rgb(90, 87, 87);
- color:white;
+.devamBtn {
+  width: 30%;
+  height: 60px;
+  color: white;
+  border-radius: 5%;
+  margin-left: 45%;
+  margin-top: 10%;
+  background-color: rgb(226, 170, 65);
+  font-size: 20px;
 }
-.selectedSepet{
-	background-color: rgb(238, 13, 13);
-	
 
+.substeps {
+  padding: 10px;
+  font-size: 18px;
+  background-color: rgb(241, 235, 235);
+  border: 1px solid rgb(218, 213, 213);
+  color: rgb(112, 107, 107);
 }
-.selectedAdres{
-	background-color: rgb(80, 76, 76);
 
-
+.substeps:hover {
+  background-color: rgb(90, 87, 87);
+  color: white;
 }
-.selectedOdeme{
-	background-color:rgb(80, 76, 76);
-	
-
+.selectedSepet {
+  background-color: rgb(238, 13, 13);
 }
-.selectedOnay{
-	background-color:rgb(80, 76, 76);
-	
-
+.selectedAdres {
+  background-color: rgb(80, 76, 76);
 }
-.cardFontsepet{
-    color: white;
+.selectedOdeme {
+  background-color: rgb(80, 76, 76);
 }
-.cardFontadres{
-    color: white;
+.selectedOnay {
+  background-color: rgb(80, 76, 76);
 }
-.cardFontodeme{
-    color: white;
+.cardFontsepet {
+  color: white;
 }
-.cardFontonay{
-    color: white;
+.cardFontadres {
+  color: white;
 }
-.subSelectedKrediKarti{
-	background-color: rgb(80, 76, 76);
-	color: white;
+.cardFontodeme {
+  color: white;
 }
-.subSelectedHavale{
-	background-color: rgb(80, 76, 76);
-	color: white;
+.cardFontonay {
+  color: white;
 }
-.subSelectedKapida{
-	background-color: rgb(80, 76, 76);
-	color: white;
-	
+.subSelectedKrediKarti {
+  background-color: rgb(80, 76, 76);
+  color: white;
 }
-.bfont{
+.subSelectedHavale {
+  background-color: rgb(80, 76, 76);
+  color: white;
+}
+.subSelectedKapida {
+  background-color: rgb(80, 76, 76);
+  color: white;
+}
+.bfont {
   font-size: 125%;
   margin-left: 8%;
 }
-.radioButtons{
-	border: 1px solid grey;
-	height:20%;
-	padding: 1%;
-	background-color:  rgb(212, 209, 209);
-
+.radioButtons {
+  border: 1px solid grey;
+  height: 20%;
+  padding: 1%;
+  background-color: rgb(212, 209, 209);
 }
 
+.siparisiTamamlaBtn {
+  margin-right: 0%;
+  position: absolute;
+  margin-top: 110%;
+}
 
+@media screen and (max-width: 540px) {
+  .kart {
+    border-radius: 2%;
+    position: absolute;
+    height: 30% !important;
+    width: 54%;
+    margin-left: 84%;
+    margin-top: 55%;
+    display: none;
+  }
+  .siparisiTamamlaBtn {
+    margin-right: 23%;
+    position: absolute;
+    margin-top: 110%;
+    margin-left: -50%;
+    width: 20%;
+    font-size: 9px;
+  }
+  .cardInside {
+    display: none;
+  }
+}
 </style>
