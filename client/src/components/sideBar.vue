@@ -320,95 +320,104 @@
 </template>
 
 <script>
-
-
 import Vue from "vue";
 import axios from "axios";
 Vue.use(axios);
 
 export default {
   name: "sideBar",
-  
 
-  data(){
-    return{
-       markaList:[],
-       title:"Tüm Markalar",
-       selected:{
-         option:""
-       }
+  data() {
+    return {
+      markaList: [],
+      title: "Tüm Markalar",
+      selected: {
+        option: "",
+      },
     };
-    
+  },
+  methods: {
+    changeRoute() {
+      this.$router.push({ path: `Afia` });
     },
-    methods:{
-        changeRoute(){
-          this.$router.push({path:`Afia`})
-        }
-    },async created() {
-      try {
-        const Marka=await axios.get("http://localhost:8180/markalar");
-        this.markaList=Marka.data;
-      } catch (err) {
-        console.log("err", err);
-      }
-    },
-    
+  },
+  async created() {
+    try {
+      const Marka = await axios.get("http://localhost:8180/markalar");
+      this.markaList = Marka.data;
+    } catch (err) {
+      console.log("err", err);
+    }
+  },
 };
 </script>
 
 <style>
+/*Mobile */
+@media screen and (max-width: 540px) {
+  .sideBar {
+    background-color: white;
+    width: 32%;
+    margin-left: 2%;
+    border: 0.2px solid rgb(221, 213, 213);
+    border-top: none;
+    margin-top: -7%;
+    display: none;
+  }
+  .dropdown-title {
+    background-color: rgb(231, 228, 228) !important;
+    color: red !important;
+    width: 350% !important;
+    height: 10%;
+    margin-top: -40%;
+    font-size: 100% !important;
+    border-top-left-radius: 0% !important;
+    border-top-right-radius: 0% !important;
+    border: 1px solid rgb(177, 173, 173) !important;
+  }
+}
 
-
-.sideBar{
+.sideBar {
   background-color: white;
   width: 32%;
   margin-left: 2%;
   border: 0.2px solid rgb(221, 213, 213);
   border-top: none;
   margin-top: -7%;
-
 }
-.textSide{
+.textSide {
   color: red;
-  font-size:20px;
+  font-size: 20px;
   text-align: left;
   font-size: 30px;
   margin-left: 8%;
-  
 }
-.tumGorTexts{
+.tumGorTexts {
   color: black;
-   font-weight: bold;
-   text-align: center;
+  font-weight: bold;
+  text-align: center;
 }
-.card-text{
+.card-text {
   text-decoration: none;
-  
 }
-.sideBar a{
+.sideBar a {
   color: grey;
   text-align: center;
   position: static;
 }
-.sideBarTitles{
+.sideBarTitles {
   font-size: 120%;
   margin-left: 5%;
-  
 }
 
-.dropdown-title{
+.dropdown-title {
   background-color: rgb(231, 228, 228);
   color: red;
-  text-align: center; 
+  text-align: center;
   font-size: 100%;
   border-top-left-radius: 20%;
   border-top-right-radius: 20%;
   border: 1px solid rgb(177, 173, 173);
- 
 }
-.dropdown-title select{
-  margin-top: 20px;
-}
-
 </style>
 

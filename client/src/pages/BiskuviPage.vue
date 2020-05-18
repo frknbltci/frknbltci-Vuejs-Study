@@ -212,12 +212,24 @@
 </template>
 
 <style>
+@media screen and (max-width: 540px) {
+  .sideBar {
+    background-color: white;
+    width: 14.6%;
+    margin-left: 2%;
+    border: 0.2px solid rgb(221, 213, 213);
+    border-top: none;
+    margin-top: 3%;
+    display: none;
+  }
+}
 .sideBar {
   background-color: white;
   width: 14.6%;
   margin-left: 2%;
   border: 0.2px solid rgb(221, 213, 213);
   border-top: none;
+  margin-top: 3%;
 }
 .textSide {
   color: red;

@@ -3,11 +3,9 @@
 
 
 
-<v-row>
+<v-row >
   
-  <v-card style="margin:1%;" class="Cards"
-    width="280" 
-    height="450px"   
+  <v-card   class="Cards" 
       v-for="product in productsList"
       :key="product.id" 
        >
@@ -159,168 +157,167 @@
 </template>
 
 <style scoped>
-.app{
-    margin-left: -63%;
-    
-}
-.CardPrice{
-font-family: 'Courier New', Courier, monospace;
-margin-left:55%;  
-margin-top:20%; 
-font-size:25px; 
-font-weight: bold;
-color:red;
+@media screen and (max-width: 540px) {
+  .app {
+    margin-left: 20%;
+  }
 }
 
-.sepetIcon{
-  position:absolute;
+.app {
+  margin-left: -60%;
+}
+
+.Cards {
+  width: 280px;
+  height: 450px;
+  margin: 1%;
+}
+.CardPrice {
+  font-family: "Courier New", Courier, monospace;
+  margin-left: 55%;
+  margin-top: 20%;
+  font-size: 25px;
+  font-weight: bold;
+  color: red;
+}
+
+.sepetIcon {
+  position: absolute;
   border-radius: 50%;
-  border:1px solid rgb(184, 182, 182);
+  border: 1px solid rgb(184, 182, 182);
   background-color: white;
   width: 50px;
   height: 50px;
-  color:white;
-  margin-top: 20%; 
+  color: white;
+  margin-top: 20%;
   margin-left: 4%;
-
 }
-.favIcon{
-
- position:absolute;
+.favIcon {
+  position: absolute;
   border-radius: 50%;
-  border:1px solid rgb(184, 182, 182);
+  border: 1px solid rgb(184, 182, 182);
   background-color: white;
   width: 50px;
   height: 50px;
-  color:white;
-  margin-top: 20%; 
+  color: white;
+  margin-top: 20%;
   margin-left: 25%;
   font: bolder;
 }
 
-.favIcon:hover ,.sepetIcon:hover{
-    background-color: rgb(235, 13, 13);
-    color:black;
+.favIcon:hover,
+.sepetIcon:hover {
+  background-color: rgb(235, 13, 13);
+  color: black;
 }
-.sepetDivfont{
+.sepetDivfont {
   text-align: center;
-  margin-left:10%;
+  margin-left: 10%;
 }
-.silBtn{
-	border: 1px solid black;
-	width: 25px;
-	font-size:20px;
-	color: white;
-	background-color: grey;
-
+.silBtn {
+  border: 1px solid black;
+  width: 25px;
+  font-size: 20px;
+  color: white;
+  background-color: grey;
 }
-.silBtn:hover{
-	background-color: black;
+.silBtn:hover {
+  background-color: black;
 }
-
-
 </style>
 <script>
 import Vue from "vue";
 import axios from "axios";
 Vue.use(axios);
 
-
 export default {
-    name: "Product",
-    
-  
-  data(){
-    return{
-       productsList:[],
-       productId:"",
-       sepetUrunleri:[],
-       sepetCount:0,
-       sepetToplami:0,
-       sepetAddPopUp:false,
-       miktar:1
+  name: "Product",
 
- 
+  data() {
+    return {
+      productsList: [],
+      productId: "",
+      sepetUrunleri: [],
+      sepetCount: 0,
+      sepetToplami: 0,
+      sepetAddPopUp: false,
+      miktar: 1,
     };
-    
-    },
-    
-    watch:{
-      sepetUrunleri:{
-      handler(){
+  },
+
+  watch: {
+    sepetUrunleri: {
+      handler() {
         console.log("Sepet Ürünleri Değişti");
-        localStorage.setItem('sepetUrunleri',JSON.stringify(this.sepetUrunleri)); 
-        var toplam=0;
-        for(var i=0;i<this.sepetUrunleri.length;i++){
-           toplam=toplam+this.sepetUrunleri[i].price;
+        localStorage.setItem(
+          "sepetUrunleri",
+          JSON.stringify(this.sepetUrunleri)
+        );
+        var toplam = 0;
+        for (var i = 0; i < this.sepetUrunleri.length; i++) {
+          toplam = toplam + this.sepetUrunleri[i].price;
         }
-        this.sepetToplami=toplam;
-        localStorage.setItem('sepetToplami',this.sepetToplami);
+        this.sepetToplami = toplam;
+        localStorage.setItem("sepetToplami", this.sepetToplami);
       },
-      deep:true,
+      deep: true,
+    },
+    sepetCount: {
+      handler() {
+        console.log("countda değişti");
+        localStorage.setItem("sepetCount", this.sepetCount);
       },
-      sepetCount:{
-        handler(){
-          console.log("countda değişti");
-          localStorage.setItem('sepetCount',this.sepetCount);
-        },
-        deep:true,
+      deep: true,
+    },
+  },
+  mounted() {
+    console.log("App mpunted !");
+    if (localStorage.getItem("sepetUrunleri"))
+      this.sepetUrunleri = JSON.parse(localStorage.getItem("sepetUrunleri"));
+    if (localStorage.getItem("sepetCount"))
+      this.sepetCount = localStorage.getItem("sepetCount");
+    if (localStorage.getItem("sepetToplami"))
+      this.sepetToplami = localStorage.getItem("sepetToplami");
+  },
+
+  methods: {
+    sepeteEkle(product) {
+      console.log("Sepete Eklendi");
+      this.sepetUrunleri.push(product);
+      console.log(this.sepetUrunleri);
+      this.sepetCount++;
+      this.sepetAddPopUp = true;
+    },
+    urunSil(id) {
+      for (var i = 0; i < this.sepetUrunleri.length; i++) {
+        if (this.sepetUrunleri[i].id == id) {
+          console.log(this.sepetUrunleri[i]);
+          this.sepetUrunleri.splice(i, 1);
+          console.log(this.sepetUrunleri);
+          localStorage.setItem(
+            "sepetUrunleri",
+            JSON.stringify(this.sepetUrunleri)
+          );
+          this.sepetCount--;
+          localStorage.setItem("sepetCount", this.sepetCount);
+
+          var toplam = 0;
+          for (var k = 0; k < this.sepetUrunleri.length; k++) {
+            toplam = toplam + this.sepetUrunleri[k].price;
+          }
+          this.sepetToplami = toplam;
+          localStorage.setItem("sepetToplami", this.sepetToplami);
+        }
       }
     },
-    mounted(){
-       console.log('App mpunted !');
-       if (localStorage.getItem('sepetUrunleri'))  
-       this.sepetUrunleri=JSON.parse(localStorage.getItem('sepetUrunleri'));
-       if(localStorage.getItem('sepetCount'))
-       this.sepetCount=localStorage.getItem('sepetCount');
-         if(localStorage.getItem('sepetToplami'))
-       this.sepetToplami=localStorage.getItem('sepetToplami');
-    } ,
-    
-    methods:{
-     sepeteEkle(product){
-       console.log('Sepete Eklendi');
-        this.sepetUrunleri.push(product);    
-        console.log(this.sepetUrunleri); 
-        this.sepetCount++;
-        this.sepetAddPopUp=true;
-        
-        },
-        urunSil(id){
-	
-				 for(var i=0;i<this.sepetUrunleri.length;i++){
-					if( this.sepetUrunleri[i].id ==id){
-						console.log(this.sepetUrunleri[i]);
-						this.sepetUrunleri.splice(i,1);
-						console.log(this.sepetUrunleri);
-						 localStorage.setItem('sepetUrunleri',JSON.stringify(this.sepetUrunleri)); 
-						 this.sepetCount--;
-						localStorage.setItem('sepetCount',this.sepetCount);
-					
-						var toplam=0;
-						for(var k=0;k<this.sepetUrunleri.length;k++){
-							toplam=toplam+this.sepetUrunleri[k].price;
-							
-						}
-						this.sepetToplami=toplam;
-						localStorage.setItem('sepetToplami',this.sepetToplami);
-
-						}
-					
-					
-				}
-
-			}
-     },
-    async created() {
-      try {
-        const res = await axios.get("http://localhost:8180/products");
-        this.productsList = res.data;
-        
-      } catch (err) {
-        console.log("err", err);
-      }
-    },
-
+  },
+  async created() {
+    try {
+      const res = await axios.get("http://localhost:8180/products");
+      this.productsList = res.data;
+    } catch (err) {
+      console.log("err", err);
+    }
+  },
 };
 </script>

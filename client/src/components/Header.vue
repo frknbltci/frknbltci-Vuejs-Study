@@ -3,39 +3,75 @@
    <v-container fluid class="grey lighten-5">
      <div @click="otherClick" id="clickbox"> 
      <v-row>
-       <v-col style=" margin-top:2%; margin-left:3%;" cols="1">
-         <a href="http://localhost:3030/">
+
+        
+  <div id="mySidenav" class="sidenav" style="width:0px;">
+    <a  class="closebtn" @click="closeNav()"><v-icon>mdi-chevron-left</v-icon>  
+         MENÜYÜ KAPAT</a>
+    
+      <div class="sideSearch">
+          <v-icon style="position:relative; " size="30" left>search</v-icon>
+          <input style="margin-left:2%; padding:2%;" type="text" placeholder="Aradığınız Ürünü Girinüz.." />
+        <input  style="margin-left:20px; width:50px; height:40px; border-radius:2%; background-color:grey; position:relative; " type="button" value="Ara" >
+  </div>
+ <br>
+   
+
+   <sideBar2 />
+<br>
+
+  <div class="sideMenuAlt">
+
+    <ul>Dil Seçimi: Türkçe</ul>
+    <ul>  <v-icon 
+         style="color:grey;" x-large 
+         >shopping_cart</v-icon> 
+          Sepet({{sepetCount}}): {{sepetToplami}} TL </ul>
+    <ul v-if="currentUser">Hesap</ul>
+    <ul v-if="currentUser">Fav</ul>
+    <ul v-if="currentUser" @click="cikisYap()" > Çıkış Yap </ul>
+    
+    <ul v-if="!currentUser" @click="()=>{this.seen=true; closeNav();}" >Giriş Yap</ul>
+  </div>
+
+  </div>
+
+
+  <span class="iconspan" @click="openNav()">&#9776; </span>
+
+       <v-col class="logo2"  xs='1' sm='2'>
+         <a  style=" " href="http://localhost:3030/">
                 <img
                     class="logo"
                     src="//www.afiagida.com/Data/EditorFiles/afia_logo_little.png"
-                    alt=""
-                    width="140"
-                    height="120"
-                  />
+                    alt=""  
+                    
+                  />  
                 </a>
                
          </v-col>
-         
-        
-        <v-col cols="4" >
+        <v-col class="sadeSepet" cols="3">
+           <a href="http://localhost:3030/sepet">
+           <v-icon 
+                  style="color:red;" x-large >shopping_cart</v-icon> 
+          
+           </a>
+          </v-col>
+      
+        <v-col style="margin-left:auto;" cols="12" sm="4" xs='2'>
           
           <div class="search">
                
                 <v-icon style="position:absolute; margin-top:12px; " size="40" left>search</v-icon>
-                <v-text-field style="border:2px solid grey; border-radius:5%; padding-left:10%;" class="align-stretch" v-model="search"
+                <v-text-field style="position:relative; border:2px solid grey; border-radius:5%; padding-left:10%;" class="align-stretch" v-model="search"
                 placeholder="Aradığınız Ürünü Girin.."> 
                 
                 </v-text-field>
                
-                <v-btn    height="70" style="margin-top:-100px; margin-left:95%; position:sticky; background-color:grey;">ARA</v-btn>
+                <v-btn height="70" style="margin-top:-100px; margin-left:95%; position:sticky; background-color:grey;">ARA</v-btn>
                 
           </div>
-          <div style=
-          "position: absolute;
-          background-color:white;
-          z-index: 999;
-          left:120px;
-          width:100%;"
+          <div class="filtre"
           >
           <div    v-for="product in filterProducts" :key="product.id"  >
 
@@ -58,25 +94,28 @@
         </v-col>
       
         
-        <v-col  class="hesap" cols="2" > 
+        <v-col  class="hesap"  sm5> 
           
             <v-icon large >person</v-icon>
-            <p style="margin-top:-14%;margin-left:19%; font-size:18px;"> Hesabım </p>
+            <p style="position:absolute; font-size:80%;"> Hesabım </p>
             
-           <div v-if="currentUser" >
+           <div style="position:relative; margin-top:-15%;" v-if="currentUser" >
              <v-row>
-              <a href="" @click="cikisYap" style="position:relative; margin-left:50%; text-decoration:none; color:grey;" >Çıkış Yap</a>  
-              <div style=" position:relative; margin-top:-20%;  text-decoration:none; color:grey;">{{currentUser}}</div>
+               <div style=" position:relative; font-size:80%; margin-left:30%; margin-top:0%; text-decoration:none; color:grey;">{{currentUser}}</div>
+              <a href="" @click="cikisYap" style="position:relative; margin-bottom:2%; margin-top:5%; margin-left:48%; text-decoration:none; font-size:80%; color:grey;" >Çıkış Yap</a>  
+              
              
              </v-row>
               </div>
               
          
-           <div v-else>  
-       <a href="#" id="app" v-on:click="seen = !seen"  class="control" style="margin-top:5%; color:grey;text-decoration:none; margin-left:10%;"  >Giriş Yap</a> 
+           <div class="hesapIc" v-else>  
+             <v-row>
+                  <a href="#" id="app" v-on:click="seen = !seen"  class="control" style="  color:grey;text-decoration:none;"  >Giriş Yap</a> 
            
-           <a href="http://localhost:3030/registration" style="margin-top:25%;margin-left:10%; text-decoration:none; color:grey;" >Kayıt Ol</a>
-        </div>
+                  <a href="http://localhost:3030/registration" style="margin-left:5%; text-decoration:none; color:grey;" >Kayıt Ol</a>
+             </v-row> 
+           </div>
 
 
         
@@ -91,11 +130,11 @@
     <img src="../assets/exit.png" style="margin-left:95%; margin-top:-2%; "   v-on:click="seen = !seen" class="control" >
       <h6 style="margin-bottom:4%;">Üye giriş bilgilerini giriniz.</h6> <h6 style="color:red;" v-if="errorseen">{{error}}</h6>
       <div class="t1">
-         <img src="../assets/mail.png" style="height:60px; margin-bottom:4%;" >
+         <img src="../assets/mail.png" style="height:50px; margin-bottom:4%;" >
       <b-form-input v-model="email" class="texB"  placeholder="E-Mail"></b-form-input>
       </div>
        <div class="t1">
-         <img src="../assets/pass.png" style="height:60px; margin-bottom:4%;" >
+         <img src="../assets/pass.png" style="height:50px; margin-bottom:4%;" >
       <b-form-input v-model="sifre" class="texB"  placeholder="Şifre"></b-form-input>
       </div>
       <v-btn style="margin-left:2%;"  height="70" width="94%" color="gray" @click="login()"  class="btn"><h4>GİRİŞ YAP</h4></v-btn>
@@ -113,7 +152,7 @@
 </div>
 
 
- <v-col cols='2'>
+ <v-col xs5>
     
     <a style="text-decoration:none;" href="http://localhost:3030/sepet">
           
@@ -150,8 +189,16 @@
   </v-col>
       </v-row>    
 
+<div class="scrollmenu"> 
+<div class="dropdown">
+  </div>
+ 
+ <a  v-bind:href="title.path" v-for="title of menuList" :key="title.id">{{title.title}}</a>
+  
 
-  <br /><br />
+
+</div>
+  
 <div class="navbar">
  <div class="dropdown">
     <button class="dropbtn">KATEGORİLER </button>
@@ -175,11 +222,15 @@
 <script>
 import Vue from "vue";
 import axios from "axios";
+import sideBar from "@/components/sideBarForSideMenu.vue";
 Vue.use(axios);
 
 export default {
   name: "Header",
   el: "#wrapper",
+  components: {
+    sideBar2: sideBar,
+  },
 
   data() {
     return {
@@ -244,9 +295,18 @@ export default {
         return (this.seenSearch = false);
       }
     },
+    openNav: function() {
+      document.getElementById("mySidenav").style.width = "350px";
+    },
+
+    closeNav: function() {
+      document.getElementById("mySidenav").style.width = "0";
+    },
     cikisYap: function() {
       localStorage.clear("currentUser");
       localStorage.clear("token");
+      this.closeNav();
+      location.reload();
     },
     login: function() {
       let gelenUser = {
@@ -285,11 +345,27 @@ export default {
 </script>
 
 <style>
+/* CSS */
+
+.sadeSepet {
+  display: none;
+}
+.logo2 {
+  margin-top: 2%;
+  margin-left: 5%;
+  position: relative;
+}
+.logo {
+  width: 70%;
+  height: 60%;
+}
+
 .search {
   width: 100%;
   margin-left: 20%;
   margin-top: 8%;
 }
+
 .sepet {
   border: 2px solid #7a7777;
   border-radius: 5%;
@@ -325,17 +401,27 @@ export default {
 }
 .hesap {
   border: 2px solid #9e9898;
-  position: static;
+  position: relative;
   background-color: rgb(241, 237, 237);
   border-radius: 5%;
-  height: 20%;
+  height: 100px;
   margin-left: 15%;
   margin-top: 3%;
+}
+.hesapIc {
+  position: relative;
+  font-size: 100%;
+  margin-left: 25%;
 }
 
 .navbar {
   overflow: hidden;
   background-color: rgb(238, 13, 13);
+}
+.scrollmenu {
+  overflow: hidden;
+  background-color: rgb(238, 13, 13);
+  display: none;
 }
 
 .navbar a {
@@ -346,6 +432,7 @@ export default {
   text-decoration: none;
   color: white;
 }
+
 .v-application a {
   color: white;
 }
@@ -399,13 +486,7 @@ export default {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-.sideBarTitles {
-  font-size: 120%;
-  margin-left: 15%;
-}
-.sideBarAltDropDown {
-  border: 0.1px solid rgb(179, 176, 176);
-}
+
 .AltDropDownTitle {
   background-color: rgb(177, 173, 173);
   color: red;
@@ -457,5 +538,196 @@ h6 {
   width: 20px;
   float: left;
 }
+.filtre {
+  position: absolute;
+  background-color: white;
+  z-index: 999;
+  left: 120px;
+  width: 100%;
+}
+.sidenav {
+  height: 100%;
+  width: 350px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  display: none;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  font-size: 17px;
+  margin-left: 0px;
+}
+
+.iconspan {
+  font-size: 30px;
+  cursor: pointer;
+  display: none;
+}
+
+/* Phone*/
+@media screen and (max-width: 540px) {
+  .texB {
+    width: 200px;
+    height: 40px;
+    margin-left: 0% !important;
+  }
+  .login {
+    background-color: white;
+    position: fixed;
+    border-radius: 1%;
+    width: 80%;
+    height: 420px;
+    margin-left: 0;
+    margin-top: 5%;
+    z-index: 9999;
+  }
+
+  .sideMenuAlt {
+    margin-left: 3%;
+    background-color: #e7e5e5;
+  }
+  .sideMenuAlt ul {
+    border-bottom: solid 1px grey;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .sideSearch {
+    border: solid grey 2px;
+    width: 90%;
+    margin-left: 1%;
+  }
+  .logo2 {
+    margin-left: 40%;
+    position: relative;
+  }
+  .logo {
+    width: 90%;
+    height: 90%;
+  }
+  .hesap {
+    display: none;
+  }
+  .navbar {
+    display: none;
+  }
+  .scrollmenu {
+    margin-top: -11%;
+    margin-left: 1%;
+    overflow: hidden;
+    background-color: rgb(238, 13, 13);
+    display: block;
+    overflow: auto;
+    white-space: nowrap;
+  }
+  .scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+  }
+  .scrollmenu a:hover {
+    background-color: white;
+    opacity: 0.8;
+    color: black;
+  }
+
+  .search {
+    width: 100%;
+    margin-left: auto;
+    margin-top: 8%;
+    display: none;
+  }
+
+  .sepet {
+    display: none;
+  }
+
+  .sadeSepet {
+    display: flex;
+  }
+  .sadeSepet a {
+    text-decoration: none;
+  }
+  .sidenav {
+    height: 100%;
+    width: 350px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 15px;
+    display: block;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+  .iconspan {
+    font-size: 30px;
+    cursor: pointer;
+    display: block;
+    margin-left: 1%;
+  }
+}
+/*
+@media screen and (max-width: 600px) {
+  .logo {
+    margin-left: 40%;
+    width: 10px;
+    height: 40px;
+  }
+  .hesapIc {
+    position: relative;
+    font-size: 80%;
+    margin-left: 45%;
+  }
+  .hesap {
+    border: 2px solid #9e9898;
+    position: static;
+    background-color: rgb(241, 237, 237);
+    border-radius: 5%;
+    height: 80px;
+    max-width: 100%;
+    margin-left: 2%;
+    margin-top: 0%;
+  }
+  .search {
+    width: 80%;
+    margin-left: 0;
+    margin-top: 0;
+  }
+  .sepet {
+    border: 2px solid #7a7777;
+    border-radius: 5%;
+    background-color: #645c5c;
+    height: 90%;
+    margin-left: 7%;
+    width: 250px;
+    margin-top: -1%;
+  }
+}*/
 </style>
 
