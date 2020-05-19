@@ -12,17 +12,33 @@
   
   </v-col>
   <div  class="productNameMobil">
-    <v-col> {{productName}} </v-col>
+    <v-col style="font-size:15px;" > {{productName}} </v-col>
    
     <v-col> <b style="font-size:15px; color:red;"> {{productPrice}} TL </b>  </v-col>
    
   </div>
   
-  <v-btn style=" position:fixed; background-color:red;" large> SEPETE EKLE </v-btn>
+   <v-row style="margin:5%;"> 
+     
+     
+     <v-btn  color="grey" large>-</v-btn>
+    <v-input class="adetGosterim" readonly> <p style="margin-left:50px; padding:5px;" >1</p>   </v-input>
+   <v-btn color="grey"  large>+</v-btn>
+   
+   </v-row>
 
+
+  <v-btn color="red"  class="sepeteEkleBtn" @click="sepeteEkle(id)" large> SEPETE EKLE </v-btn>
+ <p 
+    style="margin-top:6%; margin-left:2%;" >
+    NOT  :
+    <input  class="not"
+    placeholder="Notunuzu Buraya Giriniz" />
+      
+ </p>
 
 </div>
-
+ 
 
 
         <div class="top-side-main">
@@ -112,34 +128,27 @@
       </v-row>
 
      
- 
+
       </div>
 
-      <v-row style="border-top:1px solid rgb(216, 212, 212);
-      border-bottom:1px solid rgb(216, 212, 212); 
-      height:245px; " v-for="comment in comments" :key="comment.id">
+      <v-row v-show="currentTab==2"  v-for="comment in comments" :key="comment.id">
         
-         <v-col style="margin-top:-2%;">
+    
               
-         
-              <p style=" margin-top:-2%;"> <b> {{comment.kullanici}} </b>    </p>  Evet: 0 Hayır: 0 
+         <v-col>
+              <p > <b> {{comment.kullanici}} </b>    </p>  Evet: 0 Hayır: 0 
               
-             <p> <b style="font-size:13px;">Yorumu Onaylıyormusunuz ?</b> </p>
+             <p> <b>Yorumu Onaylıyormusunuz ?</b> </p>
                <v-row> 
                  <v-btn color="success" small >Evet </v-btn> 
-                 <v-btn style="margin-left:2px;" color="primary" small >Hayır </v-btn>
+                 <v-btn color="primary" small >Hayır </v-btn>
                  
                   </v-row>    
               
+         </v-col>    
              
-               </v-col>
-         <v-col style="margin-right:50%;">
-                <div style="
-                      
-                     
-                     
-                      border-left:1px solid rgb(216, 212, 212); 
-                      margin-left:40%; width:200px;"> 
+       
+                <div > 
                           <p><b>{{comment.baslik}}</b></p>
                <p style=
                       "text-align:start;">      
@@ -148,7 +157,7 @@
                           </p>
                    </div>
                   
-          </v-col>
+      
             
        
        
@@ -282,47 +291,62 @@
   </v-app>
 </template>
 <style scoped>
-@media screen and (max-width: 540px){
+@media screen and (max-width: 540px) {
   .top-side-main {
-  display:none;
-  border-style: ridge;
-  width: 98%;
-  height: 900px;
-  align-self: center;
-  margin-top: 2%;
-  margin-bottom: 5%;
+    display: none;
+    border-style: ridge;
+    width: 98%;
+    height: 900px;
+    align-self: center;
+    margin-top: 2%;
+    margin-bottom: 5%;
+  }
+  .not {
+    border: 0.5px solid grey;
+    width: 70%;
+    height: 70px;
+  }
+  .sepeteEkleBtn {
+    width: 70%;
+    margin-left: 10%;
+  }
+  .mobilMain {
+    display: block !important;
+  }
+  .top-left {
+    border-style: ridge;
+    width: 90% !important;
+    height: 440px !important;
+  }
+  .productNameMobil {
+    background-color: #d5d5d5;
+    width: 85%;
+    margin-left: 4%;
+    height: 60px;
+    font-size: 16px;
+    text-align: center;
+    display: flex !important;
+  }
+  .gosterGenel {
+    display: initial !important;
+  }
+  .adetGosterim {
+    border: solid 1px grey;
+    width: 50px;
+    height: 48px;
+  }
 }
 
-.mobilMain{
-  display:block !important;
-}
-.top-left {
-  border-style: ridge;
-  width: 90% !important;
-  height: 440px !important;
-  
-}
-.productNameMobil{
-  background-color:#d5d5d5 ;
-  width:85% ;
-  margin-left: 4% ;
-  height:60px ;
-  font-size:16px ;
-  text-align:center ;
-  display:flex !important;
-  
+.gosterGenel {
+  display: none;
 }
 
-
+.productNameMobil {
+  display: none;
 }
 
-.productNameMobil{
-  display:none;
-}
-
-
-.mobilMain{
-  display:none;
+.mobilMain {
+  display: none;
 }
 
 .top-side-main {
@@ -503,36 +527,15 @@ export default {
       if (localStorage.getItem("currentUser")) {
         this.currentUser = localStorage.getItem("currentUser");
       }
-      /*
-       if(!this.id){
-          this.id = localStorage.getItem('id');
-          this.productPrice =localStorage.getItem('productPrice');
-          this.productName = JSON.parse(localStorage.getItem('productName'));
-          this.comments=JSON.parse(localStorage.getItem('comments'));
-        
-        }*/
+
       //SAYFA YENİLENİNCE ID VE BİLGİLERİ TEKRAR KORUMAK LAZIM
       this.id = this.$route.params.id;
       this.productPrice = this.$route.params.price;
       this.productName = this.$route.params.name;
       this.comments = this.$route.params.comments;
-      /*   
-       if(this.id){
-          
-          localStorage.setItem('id',this.id);
-          localStorage.setItem('productPrice',this.productPrice);
-          localStorage.setItem('productName',this.productName);
-          localStorage.setItem('comments',JSON.stringify(this.comments)); 
-        
-        }
-*/
     } catch (err) {
       console.log("err", err);
     }
-    /*this.id = this.$route.params.id;
-        this.productPrice = this.$route.params.price;
-        this.productName = this.$route.params.name;
-        this.comments=this.$route.params.comments;*/
   },
   mounted: {},
   methods: {
