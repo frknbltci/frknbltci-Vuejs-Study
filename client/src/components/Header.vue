@@ -256,13 +256,13 @@ export default {
 
   async created() {
     try {
-      const res = await axios.get("http://localhost:8180/category");
+      const res = await axios.get(`${process.env.VUE_APP_URL}/category`);
       this.categoryList = res.data;
-      const resMarka = await axios.get("http://localhost:8180/markalar");
+      const resMarka = await axios.get(`${process.env.VUE_APP_URL}/markalar`);
       this.markaList = resMarka.data;
-      const resMenu = await axios.get("http://localhost:8180/menu");
+      const resMenu = await axios.get(`${process.env.VUE_APP_URL}/menu`);
       this.menuList = resMenu.data;
-      const resProduct = await axios.get("http://localhost:8180/products");
+      const resProduct = await axios.get(`${process.env.VUE_APP_URL}/products`);
       this.products = resProduct.data;
       this.sepetUrunleri = localStorage.getItem("sepetUrunleri");
       if (localStorage.getItem("currentUser")) {
@@ -275,7 +275,7 @@ export default {
         this.sepetCount = localStorage.getItem("sepetCount");
       }
     } catch (err) {
-      console.log("err", err);
+      this.markaList = [];
     }
   },
   computed: {
@@ -296,7 +296,7 @@ export default {
       }
     },
     openNav: function() {
-      document.getElementById("mySidenav").style.width = "350px";
+      document.getElementById("mySidenav").style.width = "400px";
     },
 
     closeNav: function() {
@@ -314,28 +314,26 @@ export default {
         password: this.sifre,
       };
       axios
-        .post("http://localhost:8180/login", gelenUser)
+        .post(`${process.env.VUE_APP_URL}/login`, gelenUser)
         .then(res => {
           if (res.status === 200) {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("currentUser", this.email);
             this.seen = false;
-            console.log("asdasd");
+
             location.reload();
-            console.log("asdasd");
+
             // this.$router.push('/');
           }
         })
         .then(
           res => {
             if (res.status === 500) {
-              console.log("sdadasd");
               this.error = "Hatalı Giriş";
               this.errorseen = true;
             }
           },
           err => {
-            console.log(err.response);
             this.error = err.response.data.error;
           }
         );

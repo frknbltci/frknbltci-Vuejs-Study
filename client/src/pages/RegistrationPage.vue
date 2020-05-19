@@ -315,7 +315,7 @@ export default {
     async kayitOl() {
       try {
         this.hataGoster = false;
-        let res = await axios.post("http://localhost:8180/signup", {
+        let res = await axios.post(`${process.env.VUE_APP_URL}/signup`, {
           name: this.ad,
           surname: this.soyad,
           company: this.firma,

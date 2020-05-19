@@ -242,13 +242,14 @@ export default {
       sepetToplami: 0,
       sepetAddPopUp: false,
       miktar: 1,
+      err:[],
     };
   },
 
   watch: {
     sepetUrunleri: {
       handler() {
-        console.log("Sepet Ürünleri Değişti");
+        
         localStorage.setItem(
           "sepetUrunleri",
           JSON.stringify(this.sepetUrunleri)
@@ -264,14 +265,14 @@ export default {
     },
     sepetCount: {
       handler() {
-        console.log("countda değişti");
+       
         localStorage.setItem("sepetCount", this.sepetCount);
       },
       deep: true,
     },
   },
   mounted() {
-    console.log("App mpunted !");
+    
     if (localStorage.getItem("sepetUrunleri"))
       this.sepetUrunleri = JSON.parse(localStorage.getItem("sepetUrunleri"));
     if (localStorage.getItem("sepetCount"))
@@ -282,18 +283,18 @@ export default {
 
   methods: {
     sepeteEkle(product) {
-      console.log("Sepete Eklendi");
+      
       this.sepetUrunleri.push(product);
-      console.log(this.sepetUrunleri);
+     
       this.sepetCount++;
       this.sepetAddPopUp = true;
     },
     urunSil(id) {
       for (var i = 0; i < this.sepetUrunleri.length; i++) {
         if (this.sepetUrunleri[i].id == id) {
-          console.log(this.sepetUrunleri[i]);
+          
           this.sepetUrunleri.splice(i, 1);
-          console.log(this.sepetUrunleri);
+          
           localStorage.setItem(
             "sepetUrunleri",
             JSON.stringify(this.sepetUrunleri)
@@ -313,7 +314,7 @@ export default {
   },
   async created() {
     try {
-      const res = await axios.get("http://localhost:8180/products");
+      const res = await axios.get(`${process.env.VUE_APP_URL}/products`);
       this.productsList = res.data;
     } catch (err) {
       console.log("err", err);

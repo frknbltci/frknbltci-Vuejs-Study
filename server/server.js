@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 var cors = require('cors')
 const jwt = require("jsonwebtoken");
-
+const ngrok = require('ngrok');
 const mongoose = require('mongoose');
 
 const signupSchema = require('./models/signups')
@@ -180,3 +180,7 @@ app.post('/comment', (req, res, next) => {
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
 });
+
+ngrok.connect(8180).then(item => {
+  console.log('Sunucu dışarı url :', item)
+})

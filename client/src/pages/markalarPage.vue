@@ -88,7 +88,7 @@ export default {
   },
   async created() {
     try {
-      const resMarka = await axios.get("http://localhost:8180/markalar");
+      const resMarka = await axios.get(`${process.env.VUE_APP_URL}/markalar`);
       this.markalar = resMarka.data;
     } catch (err) {
       console.log("err", err);

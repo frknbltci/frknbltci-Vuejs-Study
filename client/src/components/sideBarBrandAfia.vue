@@ -68,7 +68,7 @@ export default {
   },
   async created() {
     try {
-      const res = await axios.get("http://localhost:8180/category");
+      const res = await axios.get(`${process.env.VUE_APP_URL}/category`);
       this.categoryList = res.data;
     } catch (err) {
       console.log("err", err);

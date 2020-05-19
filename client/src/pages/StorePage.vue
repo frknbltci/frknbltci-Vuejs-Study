@@ -71,67 +71,60 @@
 </template>
 
 <style>
- table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 1%;
-  }
-.main{
-    
-    width: 98%;
-    border-style: dashed 0.1px;
-    height: auto;
-    align-self: center;
-   border: 2px solid #ececec;
-
-   margin-left: 1%;
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 1%;
 }
-.resim{
+.main {
+  width: 98%;
+  border-style: dashed 0.1px;
+  height: auto;
+  align-self: center;
+  border: 2px solid #ececec;
+
+  margin-left: 1%;
+}
+.resim {
   width: 25%;
   height: 300px;
   float: left;
 }
-.dv1{
-    margin-bottom: 1%;
-    background-color: #ececec;
-    height: 5%;
-    width: 74%;
-    float: right;
+.dv1 {
+  margin-bottom: 1%;
+  background-color: #ececec;
+  height: 5%;
+  width: 74%;
+  float: right;
 }
 </style>
 <script>
-import Header from '@/components/Header.vue';
-import footer from '@/components/Footer.vue';
+import Header from "@/components/Header.vue";
+import footer from "@/components/Footer.vue";
 import axios from "axios";
 import Vue from "vue";
-Vue.use(axios)
+Vue.use(axios);
 
 export default {
-  name :'StorePage',
-  components:{
-    
-    "Header":Header,
-    "fo":footer,
-  
-  
+  name: "StorePage",
+  components: {
+    Header: Header,
+    fo: footer,
   },
-   data(){
-    return{
-       storeList:[],
-        
-       
+  data() {
+    return {
+      storeList: [],
     };
-    
-    },
-   async created() {
-      try {
-        const resStore =await axios.get("http://localhost:8180/store");
-        this.storeList=resStore.data;
-      } catch (err) {
-        console.log("err", err);
-      }
-    },
-
+  },
+  async created() {
+    try {
+      const resStore = await axios.get(`${process.env.VUE_APP_URL}/store`);
+      this.storeList = resStore.data;
+    } catch (err) {
+      console.log("err", err);
+    }
+  },
 };
-
 </script>

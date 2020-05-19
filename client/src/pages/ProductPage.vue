@@ -6,6 +6,25 @@
       
         
          <Header></Header>
+  <div class="gosterGenel"> 
+  <v-col class="mobilMain">
+    <div class="top-left"><img class="prResim" src="../assets/images/AfiaMarka.jpg"></div>
+  
+  </v-col>
+  <div  class="productNameMobil">
+    <v-col> {{productName}} </v-col>
+   
+    <v-col> <b style="font-size:15px; color:red;"> {{productPrice}} TL </b>  </v-col>
+   
+  </div>
+  
+  <v-btn style=" position:fixed; background-color:red;" large> SEPETE EKLE </v-btn>
+
+
+</div>
+
+
+
         <div class="top-side-main">
             <div class="top-left"><img class="prResim" src="../assets/images/AfiaMarka.jpg"></div>
             <div class="top-right">
@@ -263,6 +282,49 @@
   </v-app>
 </template>
 <style scoped>
+@media screen and (max-width: 540px){
+  .top-side-main {
+  display:none;
+  border-style: ridge;
+  width: 98%;
+  height: 900px;
+  align-self: center;
+  margin-top: 2%;
+  margin-bottom: 5%;
+}
+
+.mobilMain{
+  display:block !important;
+}
+.top-left {
+  border-style: ridge;
+  width: 90% !important;
+  height: 440px !important;
+  
+}
+.productNameMobil{
+  background-color:#d5d5d5 ;
+  width:85% ;
+  margin-left: 4% ;
+  height:60px ;
+  font-size:16px ;
+  text-align:center ;
+  display:flex !important;
+  
+}
+
+
+}
+
+.productNameMobil{
+  display:none;
+}
+
+
+.mobilMain{
+  display:none;
+}
+
 .top-side-main {
   border-style: ridge;
   width: 98%;
@@ -476,7 +538,8 @@ export default {
   methods: {
     async sepeteEkle(id) {
       console.log(id);
-      const urunler = await axios.get("http://localhost:8180/products");
+
+      const urunler = await axios.get(`${process.env.VUE_APP_URL}/products`);
       var urunBulListesi = urunler.data;
       for (var i = 0; i < urunBulListesi.length; i++) {
         if ((urunBulListesi[i].id = id)) {
@@ -494,7 +557,7 @@ export default {
     yorumGonder() {
       var token = localStorage.getItem("token");
       axios
-        .post("http://localhost:8180/comment", {
+        .post(`${process.env.VUE_APP_URL}/comment`, {
           id: this.id,
           text: this.yorum,
           baslik: this.yorumBasligi,

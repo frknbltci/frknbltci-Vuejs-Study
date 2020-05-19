@@ -343,7 +343,7 @@ export default {
   },
   async created() {
     try {
-      const Marka = await axios.get("http://localhost:8180/markalar");
+      const Marka = await axios.get(`${process.env.VUE_APP_URL}/markalar`);
       this.markaList = Marka.data;
     } catch (err) {
       console.log("err", err);

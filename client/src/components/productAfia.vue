@@ -304,7 +304,7 @@ export default {
   },
   async created() {
     try {
-      const res = await axios.get("http://localhost:8180/productsAfia");
+      const res = await axios.get(`${process.env.VUE_APP_URL}/productsAfia`);
       this.productsList = res.data;
     } catch (err) {
       console.log("err", err);

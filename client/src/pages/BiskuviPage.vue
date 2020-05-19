@@ -439,7 +439,7 @@ export default {
 
   methods: {
     async filterPrice() {
-      const res = await axios.get("http://localhost:8180/biskuvi");
+      const res = await axios.get(`${process.env.VUE_APP_URL}/biskuvi`);
       this.productsList = res.data;
       var fiyatUrunler = [];
 
@@ -458,7 +458,7 @@ export default {
       this.sepetAddPopUp = true;
     },
     async filterBiskuvi() {
-      const res = await axios.get("http://localhost:8180/products");
+      const res = await axios.get(`${process.env.VUE_APP_URL}/products`);
       this.productsList = res.data;
       var biskuviUrunler = [];
 
@@ -470,7 +470,7 @@ export default {
       this.productsList = biskuviUrunler;
     },
     async filterGofret() {
-      const res = await axios.get("http://localhost:8180/products");
+      const res = await axios.get(`${process.env.VUE_APP_URL}/products`);
       this.productsList = res.data;
       var gofretUrunler = [];
       for (var i = 0; i < this.productsList.length; i++) {
@@ -481,7 +481,7 @@ export default {
       this.productsList = gofretUrunler;
     },
     async filterKraker() {
-      const res = await axios.get("http://localhost:8180/products");
+      const res = await axios.get(`${process.env.VUE_APP_URL}/products`);
       this.productsList = res.data;
 
       var krakerUrunler = [];
@@ -518,7 +518,7 @@ export default {
   },
   async created() {
     try {
-      const res = await axios.get("http://localhost:8180/biskuvi");
+      const res = await axios.get(`${process.env.VUE_APP_URL}/biskuvi`);
       this.productsList = res.data;
       console.log(this.productsList);
       var a = 0;
@@ -540,7 +540,7 @@ export default {
       console.log("err", err);
     }
     try {
-      const res = await axios.get("http://localhost:8180/category");
+      const res = await axios.get(`${process.env.VUE_APP_URL}/category`);
       this.categoryList = res.data;
     } catch (err) {
       console.log("err", err);

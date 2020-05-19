@@ -279,7 +279,7 @@ export default {
   methods: {
     async messageGonder() {
       await axios
-        .post("http://localhost:8180/contact", {
+        .post(`${process.env.VUE_APP_URL}/contact`, {
           name: this.ad,
           surname: this.soyad,
           email: this.email,
