@@ -42,8 +42,8 @@
       
         <v-dialog
           v-model="sepetAddPopUp"
-          max-width="1200"
-         
+          max-width="80%"
+         max-height="100%"
         >
           <v-card>
             <v-card-title class="headline">Ürün Sepetinize Eklendi</v-card-title>
@@ -57,20 +57,20 @@
           <b class="sepetDivfont">Ürün Adı</b>
 
           </v-col>
-          <v-col style="border-right:1px solid rgb(216, 212, 212);" cols=2>
+          <v-col class="miktarBrm" cols=2>
           <b class="sepetDivfont">Miktar Birim</b>
 
           </v-col>
 
-          <v-col style="border-right:1px solid rgb(216, 212, 212);" cols=2>
+          <v-col class="miktarBrm" cols=2>
           <b class="sepetDivfont">Birim Fiyat</b>
 
           </v-col>
-          <v-col style="border-right:1px solid rgb(216, 212, 212);" cols=1>
+          <v-col class="toplamTutarKısmı" >
           <b class="sepetDivfont">Toplam Tutar</b>
 
           </v-col>
-          <v-col style="border-right:1px solid rgb(216, 212, 212);" cols=2>
+          <v-col class="miktarBrm" cols=2>
           <b class="sepetDivfont">Sil</b>
 
           </v-col>
@@ -89,12 +89,12 @@
           <v-col style="border-bottom:1px solid rgb(216, 212, 212);" cols=3  >
             
               <b>{{urun.brand}}</b>
-              <p style="font-size:18px;">{{urun.title}}</p>
+              <p class="fontSz">{{urun.title}}</p>
               
                         
 
           </v-col>
-          <v-col style="margin-left:2%; border-bottom:1px solid rgb(216, 212, 212);" cols=2>
+          <v-col class="gösterme" style="margin-left:2%; border-bottom:1px solid rgb(216, 212, 212);" cols=2>
             <v-row style="border:1px solid rgb(216, 212, 212); width:80%; height:30%; text-align:center;">
 
                   <p style="text-align:left; margin-top:3%; margin-left:1%;" >ADET:</p>
@@ -106,15 +106,15 @@
 
           </v-col>
 
-          <v-col style="border-bottom:1px solid rgb(216, 212, 212);" cols=2>
+          <v-col  class="gösterme" style="border-bottom:1px solid rgb(216, 212, 212);" cols=2>
             <b> {{urun.price}} </b>
           </v-col>
-          <v-col style="border-bottom:1px solid rgb(216, 212, 212);" cols=1>
+          <v-col style="border-bottom:1px solid rgb(216, 212, 212);" >
           
           <p>{{toplamTutar=urun.price}}</p>
 
           </v-col>
-          <v-col style="border-bottom:1px solid rgb(216, 212, 212);" cols=1>
+          <v-col class="gösterme" style="border-bottom:1px solid rgb(216, 212, 212);" cols=1>
           
                 <button @click="urunSil(urun.id)" class="silBtn">X</button>
 
@@ -139,8 +139,8 @@
                   <v-spacer></v-spacer>
 
                 <v-col cols=3>
-                  <div style=" border: 1px solid grey; text-align:center; margin-top:-19px;"> <b>Sepet Toplamı: </b> {{sepetToplami}} TL </div>
-                  <v-btn  style=" margin-top:10px; background-color:green; color:white;"
+                  <div class="fontSz" style=" border: 1px solid grey; text-align:center; margin-top:-19px;"> <b>Sepet Toplamı: </b> {{sepetToplami}} TL </div>
+                  <v-btn  style="margin-left:-58px; margin-top:27px; background-color:green; color:white;"
                 
                     block
                     text
@@ -159,6 +159,40 @@
 </template>
 
 <style scoped>
+@media screen and (max-width: 540px) {
+  .app {
+    margin-left: -80% !important;
+    margin-top: 15% !important;
+  }
+  .miktarBrm {
+    display: none;
+  }
+  .gösterme {
+    display: none;
+  }
+  .sepetDivfont {
+    text-align: center;
+    margin-left: 10%;
+    font-size: 15px;
+  }
+  .toplamTutarKısmı {
+    width: 60px;
+  }
+  .fontSz {
+    font-size: 13px !important;
+  }
+}
+
+.miktarBrm {
+  border-right: 1px solid rgb(216, 212, 212);
+}
+.toplamTutarKısmı {
+  border-right: 1px solid rgb(216, 212, 212);
+}
+.fontSz {
+  font-size: 18px;
+}
+
 .app {
   margin-left: -63%;
 }

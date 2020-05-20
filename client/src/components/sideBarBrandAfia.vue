@@ -81,6 +81,14 @@ export default {
 </script>
 
 <style >
+@media screen and (max-width: 540px) {
+  .rangSlide {
+    display: none;
+  }
+  .sideBar {
+    display: none;
+  }
+}
 .navAlti {
   border: 0.2px solid rgb(221, 213, 213);
   height: 40%;
