@@ -39,11 +39,13 @@
       <v-row justify="center">
       
         <v-dialog
+        class="sepetRes"
           v-model="sepetAddPopUp"
           max-width="80%"
          max-height="100%"
+         
         >
-          <v-card>
+          <v-card >
             <v-card-title class="headline">Ürün Sepetinize Eklendi</v-card-title>
           
   <v-row style="width:100%; background-color:rgb(230, 227, 227);" > 
@@ -249,6 +251,11 @@
 }
 .silBtn:hover {
   background-color: black;
+}
+@media screen and (max-width: 750px) {
+  .sepetRes {
+    max-width: 70%;
+  }
 }
 </style>
 <script>

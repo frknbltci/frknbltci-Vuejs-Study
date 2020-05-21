@@ -1,30 +1,4 @@
 <template>
-    <!--<div class="footer" :style="{'background-image': 'url(' + require('../assets/footer_bg.jpg') + ')'}">-->
-  
-        <!--  <v-col cols="12">
-     <v-img
-          :src="require('../assets/logo.png')"
-          class="my-3"
-          contain
-          height="200"
-        />
-      </v-col>
-
-     <v-col class="mb-3">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
-        </h1>
-
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
-        </p>
-      </v-col>-->
-
   <v-app class="">
     <footer class="footer" :style="{'background-image': 'url(' + require('../assets/footer_bg.jpg') + ')'}">
  
@@ -35,7 +9,7 @@
     <b>Kategoriler</b>
 <ul class="list">
   <li  > 
-   <a class="href" href="https://www.afiagida.com/magazalarimiz.xhtml"> Mağazalar</a>
+   <a class="href" @click="()=>{this.$router.push('/magazalar')}"> Mağazalar</a>
   </li>
   
 </ul>
@@ -104,8 +78,100 @@
   
 </div>
 
+<section id="app" class="section">
+    
+    <article class="message" :class="accordionClasses">
+      <div class="message-header"  @click="toggleAccordion" >
+        Kategoriler  <v-icon class="icon">add_circle_outline</v-icon>     
+      </div>
+      <div  class="message-body">
+        <hr class="cizgi"/>
+        <div class="message-content">
+        <a style="color:black;" @click="()=>{this.$router.push('/magazalar')}"> Mağazalar  </a>
+        </div>
+        <hr class="cizgi"/>
+      </div>
+          </article>
+
+        <article class="message" :class="accordionClasses1">  
+ <div class="message-header"  @click="toggleAccordion1" >
+        İade Şartları  <v-icon class="icon">add_circle_outline</v-icon>     
+      </div>
+      <div  class="message-body">
+        <hr class="cizgi"/>
+        <div class="message-content">
+          İade Şartları  
+        </div>
+        <hr class="cizgi"/>
+      </div>
+        </article>    
+        
+        <article class="message" :class="accordionClasses2">  
+ <div class="message-header"  @click="toggleAccordion2" >
+        Neden Afia?  <v-icon class="icon">add_circle_outline</v-icon>     
+      </div>
+      <div  class="message-body">
+        <hr class="cizgi"/>
+        <div class="message-content">
+          Afia Hakkında Ne Nedir ?  
+        </div>
+        <hr class="cizgi"/> 
+        <div class="message-content">
+          Reklam Filmlerimiz
+        </div>
+        <hr class="cizgi"/>
+      </div>
+        </article>    
+        
+        <article class="message" :class="accordionClasses3">  
+ <div class="message-header"  @click="toggleAccordion3" >
+       Önemli Bilgiler  <v-icon class="icon">add_circle_outline</v-icon>     
+      </div>
+      <div  class="message-body">
+        <hr class="cizgi"/>
+        <div class="message-content">
+          Teslimat Koşulları  
+        </div>
+        <hr class="cizgi"/>
+        <div class="message-content">
+         Üyelik Sözleşmesi
+        </div>
+        <hr class="cizgi"/>
+         <div class="message-content">
+        Satış Sözleşmesi
+        </div>
+        <hr class="cizgi"/>
+         <div class="message-content">
+         Garanti Ve İade Koşulları
+        </div>
+        <hr class="cizgi"/>
+         <div class="message-content">
+         Gizlilik Ve Güvenlik
+        </div>
+        <hr class="cizgi"/>
+      </div>
+        </article>   
+        
+        <article class="message" :class="accordionClasses4">  
+ <div class="message-header"  @click="toggleAccordion4" >
+      Hızlı Erişim  <v-icon class="icon">add_circle_outline</v-icon>     
+      </div>
+      <div  class="message-body">
+        <hr class="cizgi"/>
+        <div class="message-content">
+          Anasayfa 
+        </div>
+        <hr class="cizgi"/>
+        <div class="message-content">
+          Yeni Ürünler
+        </div>
+        <hr class="cizgi"/>
+      </div>
+        </article>     
+  </section>
+
 <div class="mid">
- <h4> İletişim Bilgileri</h4>
+ <h4 > İletişim Bilgileri</h4>
   <h5> <img class="resim" src="../assets/phone_icon.png">
   0850 302 6 555</h5>
    <h5> <img class="resim" src="../assets/letter_icon.png">
@@ -131,75 +197,212 @@
 </template>
 
 <style scoped>
-.footer{
-   height:100%;
- width:100%;
- margin-top: 6%;
+.footer {
+  height: 100%;
+  width: 100%;
+  margin-top: 6%;
 }
 
-.ust_footer{
-margin-right: 6%;
-font-size: 75%;
-float:left;
-text-decoration: none;
-width: 13%;
-font-weight:500;
-
+.ust_footer {
+  margin-right: 6%;
+  font-size: 75%;
+  float: left;
+  text-decoration: none;
+  width: 13%;
+  font-weight: 500;
 }
-.title{
+.title {
   margin-left: 2%;
   height: 40%;
   width: 100%;
-  
-  
-  }
-.list
-{
+}
+.list {
   list-style: none;
   display: block;
   color: black;
   margin-left: -13%;
   margin-top: 5%;
- 
 }
-.href{
+.href {
   text-decoration: none;
   color: black;
 }
-.mid{
+.mid {
   height: 15%;
   width: 100%;
- 
- float: left;
+
+  float: left;
   margin-left: 2%;
 }
-.resim{
+.resim {
   height: 20px;
   width: 20px;
   margin-top: 1%;
-  margin-right: 2% ;
+  margin-right: 2%;
 }
-.bosluk{
+.bosluk {
   margin-left: 50px;
 }
-.mid2{
-height: 20px;
- width: 100%;
+.mid2 {
+  height: 20px;
+  width: 100%;
 
- float: left;
- margin-left: 2%;
+  float: left;
+  margin-left: 2%;
 }
-.b-bosluk{
-margin-right:12%;
+.b-bosluk {
+  margin-right: 12%;
 }
-.b-bosluk2{
-margin-right:27%;
+.b-bosluk2 {
+  margin-right: 27%;
 }
-.footer_alt{
+.footer_alt {
   width: 98%;
   height: auto;
+}
+.message {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 15px;
+  background-color: #6c6c6c;
+}
+.message-header {
+  cursor: pointer;
+  margin-left: 7px;
+  font-weight: 500;
+  color: white;
+  background-color: #6c6c6c;
+  padding-bottom: 5px;
+}
+.message-body {
+  padding: 0;
+  max-height: auto;
+  overflow: hidden;
+  transition: 0.3s ease all;
+  background-color: #dadada;
+}
+.is-closed .message-body {
+  max-height: 0;
+  margin: auto;
+}
+
+.message-content {
+  margin-left: 7px;
+  font-size: 15px;
+  text-decoration: none;
+}
+.cizgi {
+  background: white;
+}
+.icon {
+  float: right;
+  padding-right: 10px;
+}
+@media screen and (min-width: 750px) {
+  .section {
+    width: 0px;
+    height: 0px;
+    margin: auto;
+    
+  }
+  .message-header {
+    font-size: 0px;
+  }
+  .icon {
+    visibility: hidden;
+  }
+}
+@media screen and (max-width: 750px) {
+  .title {
+    display: none;
+  }
+  .icon {
+    visibility: visible;
+  }
+  h4 {
+    margin-top: 30px;
+    font-size: 15px;
+  }
+  h5 {
+    font-size: 12px;
+  }
+  .b-bosluk {
+    display: none;
+  }
+  .b-bosluk2 {
+    display: none;
+  }
+  .footer_alt {
+    height: 130px;
+    margin-bottom: -180px;
+  }
+  .footer {
+    margin: auto;
+    margin-top: 95px;
+  }
 }
 </style>
 
 
 
+
+<script>
+export default {
+  name: "Footer",
+
+  data() {
+    return {
+      isOpen: false,
+      isOpen1: false,
+      isOpen2: false,
+      isOpen3: false,
+      isOpen4: false,
+    };
+  },
+  computed: {
+    accordionClasses: function() {
+      return {
+        "is-closed": !this.isOpen,
+      };
+    },
+    accordionClasses1: function() {
+      return {
+        "is-closed": !this.isOpen1,
+      };
+    },
+    accordionClasses2: function() {
+      return {
+        "is-closed": !this.isOpen2,
+      };
+    },
+    accordionClasses3: function() {
+      return {
+        "is-closed": !this.isOpen3,
+      };
+    },
+    accordionClasses4: function() {
+      return {
+        "is-closed": !this.isOpen4,
+      };
+    },
+  },
+  methods: {
+    toggleAccordion: function() {
+      this.isOpen = !this.isOpen;
+    },
+    toggleAccordion1: function() {
+      this.isOpen1 = !this.isOpen1;
+    },
+    toggleAccordion2: function() {
+      this.isOpen2 = !this.isOpen2;
+    },
+    toggleAccordion3: function() {
+      this.isOpen3 = !this.isOpen3;
+    },
+    toggleAccordion4: function() {
+      this.isOpen4 = !this.isOpen4;
+    },
+  },
+};
+</script>

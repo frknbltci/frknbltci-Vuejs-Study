@@ -285,7 +285,7 @@
       </v-row>
     </template> 
         
-
+  
 <Footer></Footer>
   </v-app>
 </template>

@@ -383,7 +383,7 @@ export default {
   margin-left: 2%;
   border: 0.2px solid rgb(221, 213, 213);
   border-top: none;
-  margin-top: -7%;
+  margin-top: 0%;
 }
 .textSide {
   color: red;

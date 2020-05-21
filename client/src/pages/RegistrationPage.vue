@@ -4,7 +4,7 @@
       <Header ></Header>
           <h6   v-if="hataGoster" style="color:red; font-size:16px; margin-left:40%; "> Kayıtlı Mail Girdiniz </h6>
             <div class="top">
-                <img src="../assets/reg1.png" style="float:left; margin-left:2%; width:4%;">
+                <img src="../assets/reg1.png" class="reg" style="float:left; margin-left:2%; width:4%;">
                 <p></p>
                 
                  <h5 style="margin-top:1.7%; margin-left:8%; font-weight:350;" >  ÜYE KAYIT/DÜZENLEME </h5>
@@ -168,13 +168,13 @@
   </tr>
     <tr><td><p></p></td><td></td></tr>
 </table>
-<div style="margin-top:-2px; background-color:#ececec; width: 90%;    height:40px; ">
-<input type="checkbox" id="checkbox" style="float:left; margin-top:2.5%; margin-left:3%;   vertical-align: middle;" >
-<label for="checkbox" style="margin-left:10px;margin-top:0.3%; "> <h6 style="font-size:12px;">Tarafınızdan gönderilecek bilgilendirme e-postalarını almak istiyorum.</h6></label>
+<div class="yaziDiv" style="margin-top:-2px; background-color:#ececec; width: 90%;    height:40px; ">
+<input type="checkbox" id="checkbox" class="cb"  style="float:left; margin-top:2.5%; margin-left:3%;   vertical-align: middle;" >
+<label for="checkbox" style="margin-left:10px;margin-top:0.3%; "> <h6 class="yazi" style="font-size:12px;">Tarafınızdan gönderilecek bilgilendirme e-postalarını almak istiyorum.</h6></label>
 </div>
-<div style="margin-top: 10px; background-color:#ececec; width: 90%;    height:40px; ">
+<div class="yaziDiv" style="margin-top: 10px; background-color:#ececec; width: 90%;    height:40px; ">
 <input type="checkbox" id="checkbox" style="float:left; margin-top:2.5%; margin-left:3%;   vertical-align: middle;" >
-<label for="checkbox" style="margin-left:10px;margin-top:0.3%; "> <h6 style="font-size:12px;">Tarafınızdan gönderilecek bilgilendirme sms'lerini almak istiyorum.</h6></label>
+<label for="checkbox" style="margin-left:10px;margin-top:0.3%; "> <h6 class="yazi" style="font-size:12px;">Tarafınızdan gönderilecek bilgilendirme sms'lerini almak istiyorum.</h6></label>
 </div>
 <div style="margin-top:10px; background-color:#ececec; width: 90%;    height:40px; ">
 <input type="checkbox" id="checkbox" style="float:left; margin-top:2.5%; margin-left:3%;   vertical-align: middle;" >
@@ -182,7 +182,7 @@
 </div>
 <v-btn @click="kayitOl()" style="margin-top:10px;"  height="50" width="90%" color="#6c6c6c"  ><h5 style=" margin-top:5px; color:white; font-weight:370; vertical-align:middle; ">KAYDET</h5></v-btn>
 </div>  
-        <div style="width:98%; margin-left:1%;  margin-bottom:2%;  border: 2px solid #ececec; height=30px; font-size:14px; background-color:white; padding-left:1%;  float: left;" >  Firmamız hiçbir şekilde e-mailinizi ve kişisel bilgilerinizi ticari amaç uğruna kullanmaz. </div>     
+        <div class="yaziAlt" style="width:98%; margin-left:1%;  margin-bottom:2%; display:none; border: 2px solid #ececec; height=30px; font-size:14px; background-color:white; padding-left:1%;  float: left;" >  Firmamız hiçbir şekilde e-mailinizi ve kişisel bilgilerinizi ticari amaç uğruna kullanmaz. </div>     
    
               </div>
 
@@ -276,7 +276,48 @@
   font-size: 13px;
   opacity: 1;
 }
+.reg {
+  margin-left: 350px;
+}
+
+@media screen and (max-width: 750px) {
+  .top {
+    align-self: center;
+    width: 90%;
+  }
+  .main {
+    align-self: center;
+    width: 90%;
+    padding-left: 5px;
+  }
+  .left {
+    width: 100%;
+    height: 720px;
+    padding-top: 10px;
+  }
+  .right {
+    float: none;
+    width: 100%;
+    height: 400px;
+    padding-top: 10px;
+  }
+  .reg {
+    display: none;
+  }
+  .yazi {
+    margin-left: 22px;
+    margin-top: -55px;
+  }
+  .yaziAlt {
+    margin-top: 105px;
+  }
+  .yaziDiv {
+    padding-bottom: 50px;
+  }
+}
 </style>
+
+
 
 
 <script>
@@ -311,7 +352,7 @@ export default {
     };
   },
   methods: {
-    //kayıt ol yapıyor ama eşleşme sıkıntısı oluyor
+    
     async kayitOl() {
       try {
         this.hataGoster = false;

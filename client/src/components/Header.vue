@@ -30,7 +30,7 @@
     <ul v-if="currentUser">Hesap</ul>
     <ul v-if="currentUser">Fav</ul>
     <ul v-if="currentUser" @click="cikisYap()" > Çıkış Yap </ul>
-    
+    <ul v-if="!currentUser"> <a style="text-decoration:none;" @click="()=>{this.$router.push('/registration')}">  Kayıt Ol </a> </ul>
     <ul v-if="!currentUser" @click="()=>{this.seen=true; closeNav();}" >Giriş Yap</ul>
   </div>
 
@@ -40,7 +40,7 @@
   <span class="iconspan" @click="openNav()">&#9776; </span>
 
        <v-col class="logo2"  xs='1' sm='2'>
-         <a  style=" " href="http://localhost:3030/">
+         <a   @click="()=>{this.$router.push('/')}">
                 <img
                     class="logo"
                     src="//www.afiagida.com/Data/EditorFiles/afia_logo_little.png"
@@ -51,7 +51,7 @@
                
          </v-col>
         <v-col class="sadeSepet" cols="3">
-           <a href="http://localhost:3030/sepet">
+           <a @click="gitSepet()">
            <v-icon 
                   style="color:red;" x-large >shopping_cart</v-icon> 
           
@@ -154,9 +154,9 @@
 
  <v-col xs5>
     
-    <a style="text-decoration:none;" href="http://localhost:3030/sepet">
+    <a style="text-decoration:none;" @click="gitSepet()" >
           
-        <div class="sepet">
+        <div  class="sepet">
           
             <div class="sepeticYuvarlak">
             
@@ -204,11 +204,11 @@
     <button class="dropbtn">KATEGORİLER </button>
     <div class="dropdown-content">
 
-      <a  v-bind:href="title.path" v-for="title of categoryList" :key="title.id">{{title.title}}</a>
+      <a  @click="()=>{this.$router.push(title.path)}" v-for="title of categoryList" :key="title.id">{{title.title}}</a>
     </div>
   </div>
  
- <a  v-bind:href="title.path" v-for="title of menuList" :key="title.id">{{title.title}}</a>
+ <a  @click="()=>{this.$router.push(title.path)}"  v-for="title of menuList" :key="title.id">{{title.title}}</a>
   
 </div>
 
@@ -290,6 +290,9 @@ export default {
     },
   },
   methods: {
+     gitSepet() {
+      this.$router.push({ path: `sepet` });
+    },
     otherClick: function() {
       if (this.seenSearch == true) {
         return (this.seenSearch = false);
