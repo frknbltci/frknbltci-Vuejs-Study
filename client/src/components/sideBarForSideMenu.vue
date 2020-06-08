@@ -13,7 +13,7 @@
   <b-collapse id="collapse-1" class="mt-2">
     <b-card>
       <ul href="#" class="card-text2">
-        <ul><a href="http://localhost:3030/biskuvi">Bisküvi</a></ul>
+        <ul><a @click="()=>{this.$router.push('/biskuvi')}">Bisküvi</a></ul>
         <ul><a href="#">Gofret</a></ul>
         <ul><a href="#">Kraker Çeşitleri</a></ul>
          <ul class="tumGorTexts2"><a href="#">Tümünü Gör >></a></ul>

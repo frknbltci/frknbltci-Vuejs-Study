@@ -72,37 +72,37 @@
   <div  class="sepetDiv" v-show="step === 1">
 	<v-container fluid="true">
 		
-	<v-row style="background-color:rgb(230, 227, 227);" > 
-			<v-col style="border-right:1px solid rgb(216, 212, 212);" cols=2>
-			<b class="sepetDivfont">Ürün</b>
+	<v-row class="title" style="background-color:rgb(230, 227, 227);" > 
+			<v-col class="t1" cols=2 style="border-right:1px solid rgb(216, 212, 212)" >
+			<b class="sepetDivfontU"  >Ürün</b>
 
 			</v-col>
-			<v-col style="border-right:1px solid rgb(216, 212, 212);" cols=3>
-			<b class="sepetDivfont">Ürün Adı</b>
+			<v-col class="t2" style="border-right:1px solid rgb(216, 212, 212); " cols=3>
+			<b class="sepetDivfont" style="height:20px;">Ürün Adı</b>
 
 			</v-col>
-			<v-col style="border-right:1px solid rgb(216, 212, 212);" cols=2>
+			<v-col class="t3"  style="border-right:1px solid rgb(216, 212, 212);" cols=2>
 			<b class="sepetDivfont">Miktar Birim</b>
 
 			</v-col>
 
-			<v-col style="border-right:1px solid rgb(216, 212, 212);" cols=2>
-			<b class="sepetDivfont">Birim Fiyat</b>
+			<v-col class="t1" style="border-right:1px solid rgb(216, 212, 212);" cols=2>
+			<b class="sepetDivfontU">Birim Fiyat</b>
 
 			</v-col>
-			<v-col style="border-right:1px solid rgb(216, 212, 212);" cols=1>
+			<v-col class="t5" style="border-right:1px solid rgb(216, 212, 212);" cols=1>
 			<b class="sepetDivfont">Toplam Tutar</b>
 
 			</v-col>
-			<v-col style="border-right:1px solid rgb(216, 212, 212);" cols=1>
+			<v-col class="t6"  style="border-right:1px solid rgb(216, 212, 212);" cols=2>
 			<b class="sepetDivfont">Sil</b>
 
 			</v-col>
 	</v-row>
     <v-row v-for="urun in sepetUrunleri" :key="urun.id"  >
-		<v-col style="border-bottom:1px solid rgb(216, 212, 212);" cols=2>
+		<v-col class="namePr" style="border-bottom:1px solid rgb(216, 212, 212);" cols=2>
 			<div  >
-			<img style="border:1px solid rgb(216, 212, 212);; height:50%; width:80%;" 
+			<img class="imagePr" style="border:1px solid rgb(216, 212, 212);; height:50%; width:80%;" 
 			src="../assets/images/AfiaMarka.jpg"/>
 
                   
@@ -110,31 +110,31 @@
 			
 
 			</v-col>
-			<v-col style="border-bottom:1px solid rgb(216, 212, 212);" cols=3  >
+			<v-col class="t2A" style="border-bottom:1px solid rgb(216, 212, 212);" cols=3  >
 				
 					<b>{{urun.brand}}</b>
-					<p style="font-size:18px;">{{urun.title}}</p>
+					<p class="titR">{{urun.title}}</p>
 					<button v-on="on" class="siparisNotu"  @click.stop="dialog = true"
 					>Sipariş Notu Ekle</button>
                      
 
 			</v-col>
-			<v-col style="margin-left:2%; border-bottom:1px solid rgb(216, 212, 212);" cols=2>
-				<v-row style="border:1px solid rgb(216, 212, 212); width:80%; height:30%; text-align:center;">
+			<v-col class="t3A" cols=2>
+				<v-row class="t3R">
 
-							<p style="text-align:left; margin-top:3%; margin-left:1%;" >ADET:</p>
+							<p class="t3Adet" style="text-align:left; margin-top:3%; margin-left:1%;" >ADET:</p>
 							
-							<button style="width:18%; height:75%; margin-top:3%; margin-left:4%; border:1px solid rgb(216, 212, 212) ;"> -</button>
-															<p style="margin-top:6%; margin-left:5%; " >  {{miktar}} </p>
-							<button style="width:18%; height:75%; margin-top:3%; margin-left:9%; border:1px solid rgb(216, 212, 212) ;"> +</button>
+							<button class="t3Rp"> -</button>
+							<p style="margin-top:6%; margin-left:5%; " >  {{miktar}} </p>
+							<button class="t3Rm"> +</button>
 				</v-row>
 
 			</v-col>
 
-			<v-col style="border-bottom:1px solid rgb(216, 212, 212);" cols=2>
+			<v-col class="namePr" style="border-bottom:1px solid rgb(216, 212, 212);" cols=2>
 			   <b> {{urun.price}} </b>
 			</v-col>
-			<v-col style="border-bottom:1px solid rgb(216, 212, 212);" cols=1>
+			<v-col class="t5P" style="border-bottom:1px solid rgb(216, 212, 212);" cols=1>
 			
 			<p>{{toplamTutar=urun.price}}</p>
 
@@ -151,7 +151,7 @@
 
 </v-row>
 
-	<v-row style="margin-left:3px;">
+	<v-row class="etiket">
 	<v-col cols=8>
 		
 			<button class="besliButon" >Yazdır</button>
@@ -160,7 +160,7 @@
 			<button @click="alisveriseDevam()" class="besliButon" >Alışverişe Devam</button>
 			<button class="besliButon" >Alışveriş Listeme Ekle</button>
 		
-			<div style="background-color:rgb(230, 227, 227); width:100%; height:100px;">
+			<div class="kupon">
 			
 				<p style="margin-left:2%; font-size:20px; margin-top:2%;" >	İNDİRİM KUPONU </p>
 
@@ -173,26 +173,27 @@
 
    	</v-col>
 
-	<v-col cols=2>
+	<v-col class="tprice" cols=2>
 	   
-	   <div style="margin-top:-4%; border:1px solid black; width:100%; height:30%; font-size:18px; text-align:center; overflow:auto;">Sepet Toplamı</div>
-	   <div style=" border:1px solid black;width:100%; height:30%; font-size:18px; text-align:center; overflow:auto;">Genel Toplamı</div>
+	   <div class="tp1"><b>Sepet</b> <b class="d1">Toplamı</b></div>
+	   <div class="tp2" ><b>Genel</b> <b class="d1">Toplamı</b></div>
 	</v-col>
-		<v-col  cols=2>
+		<v-col class="tprice" cols=2>
 	   
-	   <div style=" margin-top:-4%;margin-left:-11%;  border:1px solid black; width:100%; height:30%; font-size:18px; text-align:end; overflow:auto;" ><b>{{sepetToplami}} TL </b></div>
-	   <div style="margin-left:-11%; border:1px solid black; width:100%; height:30%; font-size:18px; text-align:end ;"><b>{{sepetToplami}} TL </b></div>
+	   <div class="tp3" ><b>{{sepetToplami}}</b><b class="d2">TL </b></div>
+	   <div class="tp4" ><b>{{sepetToplami}}</b><b class="d2">TL </b></div>
 	</v-col>
 </v-row> 
 
 <v-row>
 	<v-col cols=9>
- <p style="font-size:19px;"> Sepetinizde değişiklik yaptıysanız <b>güncellemeyi unutmayın.</b> Ödeme ve onay sayfasına kadar satın alma işleminizi iptal edebilirsiniz.</p>
+ <!--<p class="pr" style="font-size:19px;"> Sepetinizde değişiklik yaptıysanız <b>güncellemeyi unutmayın.</b> Ödeme ve onay sayfasına kadar satın alma işleminizi iptal edebilirsiniz.</p> -->
 	</v-col>
 
-	<v-col>
- 
-			<button @click.prevent="SatınAl()" class="stnAlBtn" >Satın Al</button>
+	<v-col class="butonS">
+
+			
+      	<button @click.prevent="SatınAl()" class="stnAlBtn" >Satın Al</button>
 			<v-icon  style=
 			"margin-left:-20%;
 			 position:absolute;
@@ -215,25 +216,25 @@
 
   <div  class="adresDiv" v-show="step === 2">
    <v-row>
-		<v-col cols=4>
+		<v-col class="ikonA" cols=4>
 		<v-row>
 			<v-icon  style=" margin-left:5%;" x-large   >shopping_cart</v-icon> 
 			<p style=" margin-left:2%; font-size:25px; color:grey;">ADRESLER </p>
 		</v-row>
 		</v-col>
 		
-		<v-col style="text-align:end;" cols=4>
+		<v-col class="btnY" cols=4>
 		
-			<v-btn color="success" x-large>YENİ EKLE</v-btn>
+			<v-btn class="btnE" color="success" x-large>YENİ EKLE</v-btn>
 		
 		</v-col>
 
    </v-row>
-		<v-col style=" margin-top:-5%;  margin-left:75%; width:100%;" cols=3>
+		<v-col class="ozet" cols=3>
 			
 		
 				
-					<div style="background-color:rgb(230, 227, 227);">
+					<div class="ozetD" style="background-color:rgb(230, 227, 227);">
 						<v-row>
 							<v-icon  style=" margin-left:4%;  " x-large   >shopping_cart</v-icon> 
 							<p style="text-overflow:ellipsis;">SİPARİŞ ÖZETİ</p>
@@ -241,36 +242,32 @@
 						</v-row>
 					</div>
 			   		 <div   v-if="goster" 
-							style="border:1px solid rgb(230, 227, 227); 
-							margin-left:1px; 
-							text-overflow:ellipsis;
-							position:absolute;
-						
-						">
+							class="ozetOpen"
+							>
 							
 							<v-row   v-for="urun in sepetUrunleri" :key="urun.id">
-								<img style="height:10%; width:20%; margin-left:10%;" 
+								<img class="imageY" style="height:10%; width:20%; margin-left:10%;" 
 								src="../assets/images/AfiaMarka.jpg"/>
-								<b>{{urun.title}} <p>{{urun.price}} </p></b>
+								<b class="urunN">{{urun.title}} <p class="imageY">{{urun.price}} </p></b>
 								
 							</v-row>
-							<div style="border:1px solid rgb(230, 227, 227); 
+							<div class="ozetWord" style="border:1px solid rgb(230, 227, 227); 
 						margin-left:1px; 
 						text-overflow:ellipsis;
-						font-size:20px;
+						
 						
 						"> ARA TOPLAM  :  {{sepetToplami}} </div>
-						<div style="border:1px solid rgb(230, 227, 227); 
+						<div class="ozetWord" style="border:1px solid rgb(230, 227, 227); 
 						margin-left:1px; 
 						text-overflow:ellipsis;
-						font-size:20px;
+						
 						
 						"> KARGO :   10 TL</div>
 							
-					   	<div style="border:1px solid rgb(230, 227, 227); 
+					   	<div class="ozetWord" style="border:1px solid rgb(230, 227, 227); 
 						margin-left:1px; 
 						text-overflow:ellipsis;
-						font-size:20px;
+						
 						
 						"> <b>GENEL TOPLAM : {{parseFloat(sepetToplami)+10 }} TL </b></div>
 							
@@ -281,34 +278,32 @@
 			
 		</v-col>
 
-<v-col cols=8>
+<v-col class="adresDiv2" cols=8>
 	
-	<div style="margin-top:2%; background-color:rgb(230, 227, 227);">
+	<div class="adresDiv3">
 		<b style="margin-left:1%;">Fatura Adresi</b>
 		
-		<b style="margin-left:50%;">Teslimat Adresi</b>
-		
-		
-		
+		<b class="boslukA1" >Teslimat Adresi</b>	
+				
 	</div>
-	<v-row>
+	<v-row >
 		<v-col>
 			<v-card >
-				<v-card-title style="background-color:grey;">
-						<v-row style="margin-left:61%;" >
+				<v-card-title class="adresD1" style="background-color:grey;">
+						<v-row class="btnDzn" >
 					  <v-btn color="error" >X</v-btn>
-					  <v-btn color="success" >Düzenle</v-btn>
+					  <v-btn  color="success" ><a class="btnDzn1">Düzenle</a></v-btn>
 					  </v-row>
 				</v-card-title>
-				{{currentUser}} 'ın Fatura Adresi
+			{{currentUser}} 'ın Fatura Adresi
 			</v-card>
 		</v-col>
 		<v-col>
 			<v-card >
-	 			<v-card-title style=background-color:grey;>
-					 	<v-row style="margin-left:61%;" >
+	 			<v-card-title class="adresD1" style=background-color:grey;>
+					 	<v-row class="btnDzn">
 					  <v-btn color="error" >X</v-btn>
-					  <v-btn color="success" >Düzenle</v-btn>
+					  <v-btn  color="success" ><a class="btnDzn1">Düzenle</a></v-btn>
 					  </v-row>
 	 			</v-card-title>
 				 {{currentUser}} 'ın Teslimat Adresi
@@ -332,13 +327,13 @@
 <div class="odemeDiv" v-show="step === 3">
 	<v-row>
 	<v-col cols=8>
-	  <v-row style="border-bottom:1px solid rgb(230, 227, 227);">
+	  <v-row class="odemeS" style="border-bottom:1px solid rgb(230, 227, 227);">
 		  
    			<v-icon  style=" margin-left:4%;  " x-large   >shopping_cart</v-icon>
-            <p style="font-size:25px; color:grey; margin-left:2%; margin-top:1%;">ÖDEME SEÇENEKLERİ</p>
+            <p class="odemeSec" style="color:grey; margin-left:2%; margin-top:1%;">ÖDEME SEÇENEKLERİ</p>
 
 	 </v-row>
-    <v-row style="margin-left: 1%; border-bottom:1px solid rgb(230, 227, 227);">
+    <v-row class="substepsT" style="margin-left: 1%; border-bottom:1px solid rgb(230, 227, 227);">
 		<button v-bind:class="{subSelectedKrediKarti:subSelectedKrediKarti}"
 		 @click="()=>{this.subStep=1,this.subSelectedHavale=false,this.subSelectedKapida=false,this.subSelectedKrediKarti=true,this.kapidaOdemeHizmetBedeli=false;}" class="substeps">KREDİ KARTI</button>
 		<button v-bind:class="{subSelectedHavale:subSelectedHavale}"
@@ -352,12 +347,12 @@
 
 	 <div v-show="subStep === 1">
 	<v-row>
-		<v-icon style="margin-left:4%; margin-top:2%;" x-large> shopping_cart  </v-icon> <h6 style="font-size:18px; margin-left:2%; margin-top:3%;">  Kart Bilgileri</h6>
+		<v-icon style="margin-left:5%; margin-top:2%;" x-large> shopping_cart  </v-icon> <h6 style="font-size:18px; margin-left:2%; margin-top:3%;">  Kart Bilgileri</h6>
 	</v-row>
 
 	<v-row>	
 
-		<h4 style="margin-left:1%;">Kart Üzerindeki Ad Soyad <p><input  style="padding:2%; width:170%; height:50px; border:1px solid black; margin-top:2%; margin-left:2%;" type="text" placeholder="Ad Soyad" /> </p> </h4>
+		<h4 class="subsY1">Kart Üzerindeki Ad Soyad <p><input  style="padding:2%; width:170%; height:50px; border:1px solid black; margin-top:2%; margin-left:2%;" type="text" placeholder="Ad Soyad" /> </p> </h4>
           
 		<img  class="kart" 
 								src="../assets/images/kredikartı.jpg"/>
@@ -365,9 +360,9 @@
 				
     </v-row>
          
-    	<h4>Kart Numarası<p><input  style="padding:1%; width:48.1%; height:50px; border:1px solid black; margin-top:2%;" type="text" placeholder="Kart Numarası " /> </p> </h4>
+    	<h4 class="subsY2">Kart Numarası<p><input class="subsYT"  type="text" placeholder="Kart Numarası " /> </p> </h4>
 	<v-row>	<b class="bfont" >Ay</b>  <b class="bfont">Yıl</b> <b class="bfont">CVC</b> </v-row>
-		<select style=" margin-left:2%; border:1px solid black; width:10%; height:40px; padding-left:1%;" name="DOBMonth">
+		<select class="s1"  name="DOBMonth">
 			<option>- Ay -  </option>
 			<option value="Ocak">Ocak</option>
 			<option value="Şubat">Şubat</option>
@@ -383,7 +378,7 @@
 			<option value="Aralık">Aralık</option>
        </select>
       
-	  	<select style="margin-left:2%; border:1px solid black; width:10%; height:40px; padding-left:1%;" name="DOBMonth">
+	  	<select class="s2"  name="DOBMonth">
 					<option>- Yıl -</option>
 					<option value="2020">2020</option>
 					<option value="2019">2019</option>
@@ -395,7 +390,7 @@
        </select>
   
 
-		<input  style="margin-left:3%; padding:1%; width:10%; height:40px; border:1px solid black; margin-top:2%;" type="text" placeholder=" " /> 
+		<input class="s3" type="text" placeholder=" " /> 
     </div>
 	<div style="margin-left:2%;" v-show="subStep === 2">
     	<h6>Havale Fiyatı: {{sepetToplami}} TL + 10,00 TL Kargo ücreti = {{parseFloat(sepetToplami)+10}} TL (0 indirimli) idir.
@@ -441,41 +436,37 @@ Sipariş onaylandıktan sonra oluşacak "SP..." ile başlayan Sipariş Numaranı
     
     </div>
 	</v-col>
-	<v-col style=" position:absolute; margin-top:0%;  margin-left:70%; width:100%;" cols=3>
+<v-col class="ozet2" cols=3>
 			
 		
 				
-					<div @click="goster=!goster" style="background-color:rgb(230, 227, 227);">
+					<div class="ozetD" style="background-color:rgb(230, 227, 227);">
 						<v-row>
-							<v-icon  style=" margin-left:35px;  " x-large   >shopping_cart</v-icon> 
+							<v-icon  style=" margin-left:4%;  " x-large   >shopping_cart</v-icon> 
 							<p style="text-overflow:ellipsis;">SİPARİŞ ÖZETİ</p>
-							<button @click="goster=!goster"  style=" text-overflow:ellipsis;  text-align:end; margin-left:30px;" dark> <v-icon>person</v-icon>  </button>
+							<button @click="goster=!goster"  style=" text-overflow:ellipsis;  text-align:end; margin-left:30%;" dark> <v-icon>person</v-icon>  </button>
 						</v-row>
 					</div>
 			   		 <div   v-if="goster" 
-							style="border:1px solid rgb(230, 227, 227); 
-							margin-left:1px; 
-							text-overflow:ellipsis;
-							position:absolute;
-						
-						">
+							class="ozetOpen"
+							>
 							
 							<v-row   v-for="urun in sepetUrunleri" :key="urun.id">
-								<img style="height:10%; width:20%; margin-left:10%;" 
+								<img class="imageY" style="height:10%; width:20%; margin-left:10%;" 
 								src="../assets/images/AfiaMarka.jpg"/>
-								<b>{{urun.title}} <p>{{urun.price}} </p></b>
+								<b class="urunN">{{urun.title}} <p class="imageY">{{urun.price}} </p></b>
 								
 							</v-row>
-							<div style="border:1px solid rgb(230, 227, 227); 
+							<div class="ozetWord" style="border:1px solid rgb(230, 227, 227); 
 						margin-left:1px; 
 						text-overflow:ellipsis;
-						font-size:20px;
+						
 						
 						"> ARA TOPLAM  :  {{sepetToplami}} </div>
-						<div style="border:1px solid rgb(230, 227, 227); 
+						<div class="ozetWord" style="border:1px solid rgb(230, 227, 227); 
 						margin-left:1px; 
 						text-overflow:ellipsis;
-						font-size:20px;
+						
 						
 						"> KARGO :   10 TL</div>
 
@@ -936,6 +927,291 @@ export default {
   margin-top: 110%;
 }
 
+.cardInside {
+  color: grey;
+  margin-top: 5%;
+  margin-left: 35%;
+  font-size: 24px;
+}
+.iconsCss {
+  color: grey;
+  margin-left: 15%;
+  margin-top: 8%;
+}
+
+.cards {
+  width: 100%;
+  height: 100px;
+  margin-top: -13%;
+  background-color: rgb(230, 227, 227);
+}
+.selectedCard {
+  width: 100%;
+  height: 100px;
+  margin-top: -13%;
+  background-color: rgb(230, 227, 227);
+}
+
+.sepetDivfont {
+  color: black;
+  font-size: 17px;
+}
+.sepetDivfontU {
+  color: black;
+  font-size: 17px;
+}
+.sepetDivfontA {
+  color: black;
+  font-size: 17px;
+}
+.siparisNotu {
+  color: grey;
+  background-color: rgb(230, 227, 227);
+  border: 1px solid rgb(230, 227, 227);
+}
+
+.siparisNotu:hover {
+  color: white;
+  background-color: grey;
+}
+.silBtn {
+  border: 1px solid black;
+  width: 25px;
+  font-size: 25px;
+  color: white;
+  background-color: grey;
+}
+.silBtn:hover {
+  background-color: black;
+}
+.besliButon {
+  color: white;
+  background-color: grey;
+  text-align: center;
+  margin-left: 1px;
+  padding: 2px;
+}
+.besliButon:hover {
+  background-color: black;
+}
+.stnAlBtn {
+  width: 100%;
+  height: 140%;
+  color: white;
+  border-radius: 5%;
+  background-color: rgb(226, 170, 65);
+  font-size: 20px;
+}
+.stnAlBtn:hover .devamBtn:hover {
+  background-color: rgb(201, 134, 10);
+}
+
+.devamBtn {
+  width: 25%;
+  height: 60px;
+  color: white;
+  border-radius: 5%;
+  float: right;
+  margin-top: 5%;
+  background-color: rgb(226, 170, 65);
+  font-size: 20px;
+}
+
+.substeps {
+  padding: 10px;
+  font-size: 18px;
+  background-color: rgb(241, 235, 235);
+  border: 1px solid rgb(218, 213, 213);
+  color: rgb(112, 107, 107);
+}
+
+.substeps:hover {
+  background-color: rgb(90, 87, 87);
+  color: white;
+}
+.selectedSepet {
+  background-color: rgb(238, 13, 13);
+}
+.selectedAdres {
+  background-color: rgb(80, 76, 76);
+}
+.selectedOdeme {
+  background-color: rgb(80, 76, 76);
+}
+.selectedOnay {
+  background-color: rgb(80, 76, 76);
+}
+.cardFontsepet {
+  color: white;
+}
+.cardFontadres {
+  color: white;
+}
+.cardFontodeme {
+  color: white;
+}
+.cardFontonay {
+  color: white;
+}
+.subSelectedKrediKarti {
+  background-color: rgb(80, 76, 76);
+  color: white;
+}
+.subSelectedHavale {
+  background-color: rgb(80, 76, 76);
+  color: white;
+}
+.subSelectedKapida {
+  background-color: rgb(80, 76, 76);
+  color: white;
+}
+.bfont {
+  font-size: 125%;
+  margin-left: 8%;
+}
+.radioButtons {
+  border: 1px solid grey;
+  height: 20%;
+  padding: 1%;
+  background-color: rgb(212, 209, 209);
+}
+.titR {
+  font-size: 18px;
+}
+.t3A {
+  margin-left: 0%;
+  border-bottom: 1px solid rgb(216, 212, 212);
+}
+.t3R {
+  border: 1px solid rgb(216, 212, 212);
+  width: 80%;
+  height: 30%;
+  text-align: center;
+}
+.t3Rp {
+  width: 18%;
+  height: 75%;
+  margin-top: 3%;
+  margin-left: 4%;
+  border: 1px solid rgb(216, 212, 212);
+}
+.t3Rm {
+  width: 18%;
+  height: 75%;
+  margin-top: 3%;
+  margin-left: 9%;
+  border: 1px solid rgb(216, 212, 212);
+}
+.etiket {
+  margin-left: 3px;
+}
+.tp1 {
+  margin-top: -4%;
+  border: 1px solid black;
+  width: 100%;
+  height: 30%;
+  font-size: 18px;
+  text-align: center;
+  overflow: auto;
+}
+.tp2 {
+  border: 1px solid black;
+  width: 100%;
+  height: 30%;
+  font-size: 18px;
+  text-align: center;
+  overflow: auto;
+}
+.tp3 {
+  margin-top: -4%;
+  margin-left: -11%;
+  border: 1px solid black;
+  width: 100%;
+  height: 30%;
+  font-size: 18px;
+  text-align: end;
+  overflow: auto;
+}
+.tp4 {
+  margin-left: -11%;
+  border: 1px solid black;
+  width: 100%;
+  height: 30%;
+  font-size: 18px;
+  text-align: end;
+}
+.kupon {
+  background-color: rgb(230, 227, 227);
+  width: 100%;
+  height: 100px;
+}
+.btnY {
+  text-align: end;
+}
+.ozet {
+  margin-top: -5%;
+  margin-left: 75%;
+  width: 100%;
+}
+.ozet2 {
+  margin-top: -5%;
+  margin-left: 75%;
+  width: 100%;
+}
+.ozetOpen {
+  border: 1px solid rgb(230, 227, 227);
+  margin-left: 1px;
+  text-overflow: ellipsis;
+  position: absolute;
+}
+.ozetWord {
+  font-size: 20px;
+}
+.boslukA1 {
+  margin-left: 50%;
+}
+.adresDiv3 {
+  margin-top: 2%;
+  background-color: rgb(230, 227, 227);
+}
+.btnDzn {
+  margin-left: 75%;
+}
+.subsY1 {
+  margin-left: 1%;
+}
+.subsYT {
+  padding: 1%;
+  width: 48.1%;
+  height: 50px;
+  border: 1px solid black;
+  margin-top: 2%;
+}
+.s1 {
+  margin-left: 2%;
+  border: 1px solid black;
+  width: 10%;
+  height: 40px;
+  padding-left: 1%;
+}
+.s2 {
+  margin-left: 2%;
+  border: 1px solid black;
+  width: 10%;
+  height: 40px;
+  padding-left: 1%;
+}
+.s3 {
+  margin-left: 3%;
+  padding: 1%;
+  width: 10%;
+  height: 40px;
+  border: 1px solid black;
+  margin-top: 2%;
+}
+.odemeSec {
+  font-size: 25px;
+}
 @media screen and (max-width: 540px) {
   .kart {
     border-radius: 2%;
@@ -956,6 +1232,265 @@ export default {
   }
   .cardInside {
     display: none;
+  }
+  .iconsCss {
+    color: grey;
+    margin-left: 15%;
+    margin-top: 30%;
+  }
+  .cardInside {
+    display: none;
+  }
+  .cards {
+    width: 100%;
+    height: 80px;
+  }
+  .sepetDivfontU {
+    display: none;
+  }
+  .sepetDivfont {
+    font-size: 13px;
+  }
+  .imagePr {
+    display: none;
+  }
+  .t1 {
+    display: none;
+  }
+  .namePr {
+    display: none;
+  }
+  .title {
+    height: 100px;
+    text-align: center;
+  }
+  .t2 {
+    padding-right: 29%;
+  }
+  .t3 {
+    padding-right: 18%;
+  }
+  .t2A {
+    margin-right: 12%;
+    font-size: 13px;
+  }
+  .titR {
+    font-size: 12px;
+  }
+  .t3A {
+    font-size: 13px;
+  }
+  .t3R {
+    border: 1px solid rgb(216, 212, 212);
+    width: 140%;
+    height: 65%;
+    text-align: center;
+  }
+  .t3Rp {
+    width: 30%;
+    height: 30%;
+    border: 1px solid rgb(216, 212, 212);
+  }
+  .t3Rm {
+    width: 30%;
+    height: 30%;
+    border: 1px solid rgb(216, 212, 212);
+  }
+  .t5 {
+    padding-right: 18%;
+  }
+  .t5P {
+    margin-right: 12%;
+    margin-left: 3%;
+  }
+  .silBtn {
+    width: 20px;
+    font-size: 15px;
+  }
+  .tprice {
+    float: left;
+    margin-top: -25%;
+    z-index: 9999;
+  }
+  .etiket {
+    margin-top: 30%;
+    float: right;
+  }
+  .tp1 {
+    margin-left: -700%;
+    padding-right: 500%;
+    height: 10%;
+    padding-left: 10%;
+  }
+  .tp2 {
+    height: 10%;
+    margin-left: -700%;
+    padding-right: 500%;
+    padding-left: 10%;
+  }
+  .tp3 {
+    height: 10%;
+    margin-left: -350%;
+    padding-right: 350%;
+    padding-left: 10%;
+  }
+  .tp4 {
+    height: 10%;
+    margin-left: -350%;
+    padding-right: 350%;
+    padding-left: 10%;
+  }
+  .d1 {
+    position: absolute;
+    margin-left: 93%;
+    margin-top: -47.5%;
+  }
+  .d2 {
+    position: absolute;
+    margin-left: 55%;
+    margin-top: -48%;
+  }
+  .besliButon {
+    width: 140%;
+    margin-top: 0.5%;
+  }
+  .kupon {
+    width: 140%;
+  }
+  .butonS {
+    margin-top: 50%;
+    float: left;
+    margin-left: -75%;
+  }
+  .stnAlBtn {
+    position:absolute;
+    margin-left:10px;
+    margin-top:350px;
+    width:350px;
+    height:80px;
+  }
+ 
+  .ikonA {
+    margin-left: 8%;
+    float: right;
+    padding-right: 65%;
+    margin-bottom: -10%;
+  }
+  .btnY {
+    float: left;
+    margin-left: 2%;
+  }
+  .btnE {
+    width: 330%;
+    margin-bottom: 5%;
+  }
+  .ozet {
+    margin-top: -5%;
+    margin-left: 0%;
+    width: 100%;
+  }
+  .ozet2 {
+    margin-left: -67%;
+    margin-top: 18%;
+  }
+  .ozetD {
+    width: 500%;
+  }
+  .adresDiv2 {
+    margin-top: 40%;
+  }
+  .ozetOpen {
+    width: 360%;
+  }
+  .imageY {
+    display: none;
+  }
+  .urunN {
+    margin-left: 5%;
+  }
+  .ozetWord {
+    font-size: 15px;
+  }
+  .adresDiv3 {
+    width: 150%;
+    height: 40px;
+  }
+  .boslukA1 {
+    margin-left: 20%;
+  }
+  .adresD1 {
+    width: 150%;
+  }
+  .btnDzn {
+    margin-left: 70%;
+  }
+  .btnDzn1 {
+    font-size: 12px;
+  }
+  .devamBtn {
+    float: none;
+    width: 90%;
+    margin: 5%;
+  }
+  .pr {
+    margin-left: 5%;
+  }
+  .odemeS {
+    margin-bottom: 200%;
+  }
+  .substeps {
+    padding: 5px;
+    font-size: 13px;
+  }
+  .substepsT {
+    width: 150%;
+  }
+  .subsY1 {
+    font-size: 15px;
+    margin-top: 5%;
+    margin-left: 3%;
+  }
+  .subsY2 {
+    font-size: 15px;
+    margin-top: 0%;
+    margin-left: 0%;
+  }
+  .subsYT {
+    width: 155%;
+  }
+  .s1 {
+    margin-left: 5%;
+    border: 1px solid black;
+    width: 30%;
+    height: 40px;
+    padding-left: 1%;
+  }
+  .s2 {
+    margin-left: 2%;
+    border: 1px solid black;
+    width: 30%;
+    height: 40px;
+    padding-left: 1%;
+  }
+  .s3 {
+    margin-left: 3%;
+    padding: 1%;
+    width: 30%;
+    height: 40px;
+    border: 1px solid black;
+    margin-top: 2%;
+  }
+  .bfont {
+    margin-left: 17%;
+  }
+  .odemeSec {
+    font-size: 15px;
+  }
+  .siparisiTamamlaBtn {
+    margin-left: 20%;
+    position: absolute;
+    margin-top: 300%;
+    width: 330%;
   }
 }
 </style>

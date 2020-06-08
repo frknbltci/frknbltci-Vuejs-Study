@@ -133,6 +133,9 @@
          <img src="../assets/mail.png" style="height:50px; margin-bottom:4%;" >
       <b-form-input v-model="email" class="texB"  placeholder="E-Mail"></b-form-input>
       </div>
+
+<b-form-input v-model="email"  placeholder="E-Mail"></b-form-input>
+<b-form-input v-model="sifre"   placeholder="Şifre"></b-form-input>
        <div class="t1">
          <img src="../assets/pass.png" style="height:50px; margin-bottom:4%;" >
       <b-form-input v-model="sifre" class="texB"  placeholder="Şifre"></b-form-input>
@@ -590,6 +593,7 @@ h6 {
     width: 200px;
     height: 40px;
     margin-left: 0% !important;
+  
   }
   .login {
     background-color: white;
